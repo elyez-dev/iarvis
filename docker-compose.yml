@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: iarvis_ollama
+    volumes:
+      - ./ollama-data:/root/.ollama  # Guarda los modelos
+    ports:
+      - "11434:11434"
+    networks:
+      - iarvis_network
+
+  n8n:
+    image: n8n/n8n:latest
+    container_name: iarvis_n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=n8n
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - NODE_ENV=production
+      - WEBHOOK_URL=http://localhost:5678/
+      # Desactivar analíticas
+      - N8N_DIAGNOSTICS_ENABLED=false
+    volumes:
+      - ./n8n:/home/node/.n8n
+    networks:
+      - iarvis_network
+    depends_on:
+      - ollama
+
+  backend:
+    build: ./backend  # Construye la imagen usando el Dockerfile
+    container_name: iarvis_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app # Hot-reload
+    environment:
+      - OLLAMA_URL=http://ollama:11434 # URL interna para que el backend hable con Ollama
+      - N8N_WEBHOOK_URL=http://n8n:5678/webhook # URL interna para hablar con n8n
+    networks:
+      - iarvis_network
+    depends_on:
+      - n8n
+      - ollama
+
+networks:
+  iarvis_network:
+    driver: bridge
