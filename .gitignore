@@ -490,3 +490,12 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+# Ignorar carpetas de datos voluminosos
+ollama-data/
+
+# Ignorar datos de usuario de n8n (contiene tu base de datos y claves)
+n8n/
+
+# Ignorar archivos del sistema
+.DS_Store
+Thumbs.db

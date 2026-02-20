@@ -5,16 +5,21 @@ services:
   ollama:
     image: ollama/ollama:latest
     container_name: iarvis_ollama
+    restart: always
     volumes:
       - ./ollama-data:/root/.ollama  # Guarda los modelos
     ports:
       - "11434:11434"
+    environment:
+      - OLLAMA_KEEP_ALIVE=-1
+      - OLLAMA_MAX_LOADED_MODELS=2
     networks:
       - iarvis_network
 
   n8n:
-    image: n8n/n8n:latest
+    image: n8nio/n8n:latest
     container_name: iarvis_n8n
+    restart: always
     ports:
       - "5678:5678"
     environment:
@@ -22,9 +27,10 @@ services:
       - N8N_PORT=5678
       - N8N_PROTOCOL=http
       - NODE_ENV=production
-      - WEBHOOK_URL=http://localhost:5678/
+      - WEBHOOK_URL=http://100.102.164.18:5678/
       # Desactivar analíticas
       - N8N_DIAGNOSTICS_ENABLED=false
+      - N8N_SECURE_COOKIE=false
     volumes:
       - ./n8n:/home/node/.n8n
     networks:
@@ -35,6 +41,7 @@ services:
   backend:
     build: ./backend  # Construye la imagen usando el Dockerfile
     container_name: iarvis_backend
+    restart: always
     ports:
       - "8000:8000"
     volumes:
