@@ -13,6 +13,13 @@ services:
     environment:
       - OLLAMA_KEEP_ALIVE=-1
       - OLLAMA_MAX_LOADED_MODELS=2
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     networks:
       - iarvis_network
 
@@ -54,6 +61,32 @@ services:
     depends_on:
       - n8n
       - ollama
+
+  # --- BASE DE DATOS PARA HISTORIAL DE CHAT ---
+  postgres:
+    image: postgres:15-alpine
+    container_name: iarvis_postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=n8n_user
+      - POSTGRES_PASSWORD=n8n_password
+      - POSTGRES_DB=chat_history
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    networks:
+      - iarvis_network
+
+  # --- BASE DE DATOS VECTORIAL PARA RAG ---
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: iarvis_qdrant
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+    volumes:
+      - ./qdrant-data:/qdrant/storage
+    networks:
+      - iarvis_network
 
 networks:
   iarvis_network:

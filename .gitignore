@@ -499,3 +499,7 @@ n8n/
 # Ignorar archivos del sistema
 .DS_Store
 Thumbs.db
+
+# no guardar archivos de las bases de datos
+postgres-data/
+qdrant-data/
