@@ -1,10 +1,10 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional
 
 class ChatRequest(BaseModel):
-    message: str
-    chat_id: Optional[str] = None
+    message: str = Field(..., example="Hello!")
+    chat_id: Optional[str] = Field(None, example="1")
 
 class ChatResponse(BaseModel):
     response: str
-    chat_id: str
+    chat_id: Optional[str] = Field(None, example="1")

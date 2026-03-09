@@ -494,7 +494,7 @@ cython_debug/
 ollama-data/
 
 # Ignorar datos de usuario de n8n (contiene tu base de datos y claves)
-n8n/
+n8n/*
 
 #guardar workflows
 !n8n/workflows/

@@ -76,6 +76,21 @@ services:
     networks:
       - iarvis_network
 
+  # --- VISOR WEB PARA POSTGRES ---
+  pgweb:
+    image: sosedoff/pgweb:latest
+    container_name: iarvis_pgweb
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    environment:
+      # Conecta automáticamente usando el nombre del contenedor de postgres y las credenciales
+      - DATABASE_URL=postgres://n8n_user:n8n_password@postgres:5432/chat_history?sslmode=disable
+    networks:
+      - iarvis_network
+    depends_on:
+      - postgres
+
   # --- BASE DE DATOS VECTORIAL PARA RAG ---
   qdrant:
     image: qdrant/qdrant:latest
