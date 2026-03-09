@@ -498,6 +498,7 @@ n8n/
 
 #guardar workflows
 !n8n/workflows/
+!n8n/workflows/**
 
 # Ignorar archivos del sistema
 .DS_Store
