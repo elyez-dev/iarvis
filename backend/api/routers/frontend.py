@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from schemas.chat import ChatRequest, ChatResponse
+from fastapi.responses import JSONResponse
+from schemas.chat import ChatRequest, ChatResponse, DecisionCheckResponse
 from services import chat_service
 import httpx
 
@@ -30,19 +31,28 @@ async def chat(request: ChatRequest):
 
 @router.post(
     "/decision_check",
-    summary="Checks the format of the string of the AI decision making process",
+    summary="Checks the ROUTER AI response format",
     description="Verifies that the AI's decision-making string is formatted correctly.",
-    response_model=ChatResponse,
+    response_model=DecisionCheckResponse,
     responses={
-        200: {"description": "Successful response"},
+        200: {"description": "Correct format"},
         400: {"description": "Bad request"},
         500: {"description": "Internal server error"}
     }
 )
 async def decision_check(request: ChatRequest):
     try:
-        return await service.decision_check(request.message)
+        # pass message and number of tries
+        return await service.decision_check(request.message, request.tries)
     except ValueError as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        next_tries = (request.tries or 0) + 1
+        return JSONResponse(
+            status_code=400,
+            content={"detail": str(e), "tries": next_tries}
+        )
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        next_tries = (request.tries or 0) + 1
+        return JSONResponse(
+            status_code=500,
+            content={"detail": str(e), "tries": next_tries}
+        )

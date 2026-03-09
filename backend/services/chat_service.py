@@ -4,6 +4,7 @@ from core import config
 from core.user_settings import user_settings
 from schemas.chat import ChatResponse
 from services.translation_service import translator, NLLB_LANG_MAP
+from schemas.chat import ChatResponse, DecisionCheckResponse
 from typing import Optional
 
 class ChatService:
@@ -65,4 +66,35 @@ class ChatService:
         except httpx.RequestError as e:
             error_type = type(e).__name__
             raise ValueError(f"n8n request failed ({error_type}): {str(e)}")
+
+    async def decision_check(self, keywords_str: str, tries: Optional[int] = None) -> DecisionCheckResponse:
+        """
+        Validate keywords string and return decision flags.
+        Keywords should be comma-separated: "SEARCH,STORE" or "NONE"
+        Valid keywords: STORE, SEARCH, TOOL, NONE.
+        NONE must be sent alone, other keywords can be combined.
+        """
+        # Parse comma-separated string and clean up whitespace
+        keywords = [kw.strip().upper() for kw in keywords_str.split(",") if kw.strip()]
+        
+        valid_keywords = {"STORE", "SEARCH", "TOOL", "NONE"}
+        
+        # Validate all keywords are valid
+        if not all(kw in valid_keywords for kw in keywords):
+            raise ValueError(f"Invalid keywords. Must be one of: {valid_keywords}")
+        
+        # NONE must be alone
+        if "NONE" in keywords and len(keywords) > 1:
+            raise ValueError("NONE keyword must be sent alone")
+        
+        # If NONE, return all False
+        if "NONE" in keywords:
+            return DecisionCheckResponse(search=False, store=False, tool=False)
+        
+        # Otherwise, return True for each keyword present
+        return DecisionCheckResponse(
+            search="SEARCH" in keywords,
+            store="STORE" in keywords,
+            tool="TOOL" in keywords
+        )
         
