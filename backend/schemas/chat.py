@@ -4,6 +4,7 @@ from typing import Optional
 class ChatRequest(BaseModel):
     message: str = Field(..., example="Hello!")
     chat_id: Optional[str] = Field(None, example="1")
+    tries: Optional[int] = Field(0)
 
 class ChatResponse(BaseModel):
     response: str = Field(..., example="Hi there! How can I assist you today?")

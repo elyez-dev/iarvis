@@ -28,28 +28,28 @@ class TranslationService:
     def __init__(self):
         if self._initialized:
             return
-        print("Cargando modelo multilingüe NLLB-200 (CPU)...")
+        print("Loading multilingual NLLB-200 model (CPU)...")
         model_name = "facebook/nllb-200-distilled-600M"
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForSeq2SeqLM.from_pretrained(model_name).to("cpu")
         self._initialized = True
-        print("NLLB cargado y listo en RAM.")
+        print("NLLB loaded and ready in RAM.")
 
     def translate(self, text: str, src_lang: str, tgt_lang: str) -> str:
-        # Si el idioma de origen y destino es el mismo, devolvemos el texto original
+        # If source and target languages match, return the original text
         if src_lang == tgt_lang:
             return text
             
-        # Configuramos el tokenizer para el idioma de origen
+        # Configure tokenizer for the source language
         self.tokenizer.src_lang = src_lang
         inputs = self.tokenizer(text, return_tensors="pt", padding=True)
         
-        # Generamos la traducción forzando el idioma de destino
+        # Generate translation while forcing the target language
         tgt_lang_id = self.tokenizer.lang_code_to_id[tgt_lang]
         translated_tokens = self.model.generate(
             **inputs, 
             forced_bos_token_id=tgt_lang_id,
-            max_length=512 # Límite de seguridad para evitar cuelgues con textos muy largos
+            max_length=512 # Safety cap to avoid issues with very long texts
         )
         return self.tokenizer.batch_decode(translated_tokens, skip_special_tokens=True)[0]
 

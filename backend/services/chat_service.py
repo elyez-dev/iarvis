@@ -1,31 +1,67 @@
 import httpx
 import asyncio
+import logging
 from core import config
 from core.user_settings import user_settings
-from schemas.chat import ChatResponse
 from services.translation_service import translator, NLLB_LANG_MAP
 from schemas.chat import ChatResponse, DecisionCheckResponse
 from typing import Optional
 
+
+logger = logging.getLogger(__name__)
+
 class ChatService:
     def __init__(self):
         self.n8n_url = config.settings().n8n_url
+        self.timeout = config.settings().default_timeout
         self.user_settings = user_settings().settings
 
     async def _send_to_n8n(self, message: str, chat_id: Optional[str] = None) -> dict:
         """Send message to n8n and return response data"""
-        async with httpx.AsyncClient(timeout=config.settings().default_timeout) as client:
-            payload = {"message": message, "settings": self.user_settings}
-            if chat_id:
-                payload["chat_id"] = chat_id
-            
-            response = await client.post(self.n8n_url+"/chat", json=payload)
-            response.raise_for_status()
+        payload = {"message": message, "settings": self.user_settings}
+        if chat_id:
+            payload["chat_id"] = chat_id
 
-            data = response.json()
-            if "response" not in data or "chat_id" not in data:
-                raise ValueError("Invalid response from n8n: missing 'response' or 'chat_id' fields")
-            return data
+        candidate_urls = self._candidate_chat_urls()
+        last_error: Optional[Exception] = None
+
+        async with httpx.AsyncClient(timeout=self.timeout) as client:
+            for url in candidate_urls:
+                try:
+                    logger.info("Sending chat request to n8n: url=%s", url)
+                    response = await client.post(url, json=payload)
+                    response.raise_for_status()
+
+                    data = response.json()
+                    if not isinstance(data, dict):
+                        raise ValueError("Invalid response from n8n: expected a JSON object")
+
+                    if "response" not in data or "chat_id" not in data:
+                        raise ValueError(
+                            "Invalid response from n8n: missing 'response' or 'chat_id' fields "
+                            f"(keys={list(data.keys())})"
+                        )
+                    return data
+                except (httpx.RequestError, httpx.HTTPStatusError, ValueError) as exc:
+                    last_error = exc
+                    logger.warning("n8n chat call failed for url=%s error=%s", url, exc)
+
+        raise ValueError(f"n8n chat request failed on all candidate URLs: {last_error}")
+
+    def _candidate_chat_urls(self) -> list[str]:
+        base = self.n8n_url.rstrip("/")
+        candidates: list[str] = [f"{base}/chat"]
+
+        if "/webhook-test" in base:
+            candidates.append(f"{base.replace('/webhook-test', '/webhook')}/chat")
+        elif "/webhook" in base:
+            candidates.append(f"{base.replace('/webhook', '/webhook-test')}/chat")
+
+        unique_candidates: list[str] = []
+        for url in candidates:
+            if url not in unique_candidates:
+                unique_candidates.append(url)
+        return unique_candidates
         
 
     async def chat(self, message: str, chat_id: Optional[str] = None) -> ChatResponse:
@@ -63,7 +99,7 @@ class ChatService:
 
             return ChatResponse(response=response_translated, chat_id=data["chat_id"])
 
-        except httpx.RequestError as e:
+        except (httpx.RequestError, httpx.HTTPStatusError) as e:
             error_type = type(e).__name__
             raise ValueError(f"n8n request failed ({error_type}): {str(e)}")
 
