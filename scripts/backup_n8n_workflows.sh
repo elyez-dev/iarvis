@@ -1,27 +1,30 @@
 #!/bin/bash
 
-# ===== CONFIG =====
-CONTAINER_NAME="iarvis_n8n"
-BACKUP_DIR="../n8n/workflows" # local folder
-TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+# Backup n8n workflows to <repo>/n8n/workflows/
+# Robust to cwd: resolves paths relative to this script, not the caller.
 
-# ===== CREATE FOLDER IF NOT EXISTS =====
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+BACKUP_DIR="$REPO_ROOT/n8n/workflows"
+
+CONTAINER_NAME="${N8N_CONTAINER_NAME:-iarvis_n8n}"
+TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+BACKUP_FILE="$BACKUP_DIR/workflows_$TIMESTAMP.json"
+
 mkdir -p "$BACKUP_DIR"
 
-echo "Exporting n8n workflows..."
+echo "Exporting n8n workflows from container '$CONTAINER_NAME'..."
 
-# ===== EXPORT WORKFLOWS INSIDE CONTAINER =====
-docker exec -t $CONTAINER_NAME \
+docker exec -t "$CONTAINER_NAME" \
   n8n export:workflow --all \
-  --output=/home/node/workflows_$TIMESTAMP.json
+  --output="/home/node/workflows_$TIMESTAMP.json"
 
-# ===== COPY FILE TO HOST =====
-docker cp $CONTAINER_NAME:/home/node/workflows_$TIMESTAMP.json \
-  "$BACKUP_DIR/workflows_$TIMESTAMP.json"
+docker cp "$CONTAINER_NAME:/home/node/workflows_$TIMESTAMP.json" "$BACKUP_FILE"
 
-# ===== CLEAN TEMP FILE INSIDE CONTAINER =====
-docker exec -t $CONTAINER_NAME \
-  rm /home/node/workflows_$TIMESTAMP.json
+docker exec -t "$CONTAINER_NAME" \
+  rm "/home/node/workflows_$TIMESTAMP.json"
 
 echo "Backup completed:"
-echo "$BACKUP_DIR/workflows_$TIMESTAMP.json"
+echo "  $BACKUP_FILE"

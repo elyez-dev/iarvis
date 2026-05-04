@@ -507,3 +507,7 @@ Thumbs.db
 # no guardar archivos de las bases de datos
 postgres-data/
 qdrant-data/
+# Notas de desarrollo de Claude (no compartir en el repo)
+.claude/
+/CLAUDE.md
+dgraph-data/

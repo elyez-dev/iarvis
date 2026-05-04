@@ -7,12 +7,12 @@ services:
     container_name: iarvis_ollama
     restart: always
     volumes:
-      - ./ollama-data:/root/.ollama  # Guarda los modelos
+      - ./ollama-data:/root/.ollama
     ports:
-      - "11434:11434"
+      - "${OLLAMA_PORT:-11434}:11434"
     environment:
-      - OLLAMA_KEEP_ALIVE=-1
-      - OLLAMA_MAX_LOADED_MODELS=2
+      - OLLAMA_KEEP_ALIVE=${OLLAMA_KEEP_ALIVE:--1}
+      - OLLAMA_MAX_LOADED_MODELS=${OLLAMA_MAX_LOADED_MODELS:-2}
     deploy:
       resources:
         reservations:
@@ -28,16 +28,15 @@ services:
     container_name: iarvis_n8n
     restart: always
     ports:
-      - "5678:5678"
+      - "${N8N_PORT:-5678}:5678"
     environment:
-      - N8N_HOST=n8n
-      - N8N_PORT=5678
-      - N8N_PROTOCOL=http
+      - N8N_HOST=${N8N_HOST:-n8n}
+      - N8N_PORT=${N8N_PORT:-5678}
+      - N8N_PROTOCOL=${N8N_PROTOCOL:-http}
       - NODE_ENV=production
-      - WEBHOOK_URL=http://100.102.164.18:5678/
-      # Desactivar analíticas
-      - N8N_DIAGNOSTICS_ENABLED=false
-      - N8N_SECURE_COOKIE=false
+      - WEBHOOK_URL=${N8N_PUBLIC_URL}
+      - N8N_DIAGNOSTICS_ENABLED=${N8N_DIAGNOSTICS_ENABLED:-false}
+      - N8N_SECURE_COOKIE=${N8N_SECURE_COOKIE:-false}
     volumes:
       - ./n8n:/home/node/.n8n
     networks:
@@ -46,62 +45,85 @@ services:
       - ollama
 
   backend:
-    build: ./backend  # Construye la imagen usando el Dockerfile
+    build: ./backend
     container_name: iarvis_backend
     restart: always
     ports:
-      - "8000:8000"
+      - "${BACKEND_PORT:-8000}:8000"
     volumes:
-      - ./backend:/app # Hot-reload
+      - ./backend:/app
     environment:
-      - OLLAMA_URL=http://ollama:11434 # URL interna para que el backend hable con Ollama
-      - N8N_WEBHOOK_URL=http://n8n:5678/webhook # URL interna para hablar con n8n
+      - OLLAMA_URL=${OLLAMA_URL:-http://ollama:11434}
+      - N8N_WEBHOOK_URL=${N8N_WEBHOOK_URL:-http://n8n:5678/webhook-test}
+      - QDRANT_URL=${QDRANT_URL:-http://qdrant:6333}
+      - QDRANT_COLLECTION=${QDRANT_COLLECTION:-long_term_memory}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-nomic-embed-text:latest}
+      - DGRAPH_GRPC_URL=${DGRAPH_GRPC_URL:-dgraph:9080}
     networks:
       - iarvis_network
     depends_on:
       - n8n
       - ollama
 
-  # --- BASE DE DATOS PARA HISTORIAL DE CHAT ---
   postgres:
     image: postgres:15-alpine
     container_name: iarvis_postgres
     restart: unless-stopped
     environment:
-      - POSTGRES_USER=n8n_user
-      - POSTGRES_PASSWORD=n8n_password
-      - POSTGRES_DB=chat_history
+      - POSTGRES_USER=${POSTGRES_USER:-n8n_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-n8n_password}
+      - POSTGRES_DB=${POSTGRES_DB:-chat_history}
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
     networks:
       - iarvis_network
 
-  # --- VISOR WEB PARA POSTGRES ---
   pgweb:
     image: sosedoff/pgweb:latest
     container_name: iarvis_pgweb
     restart: unless-stopped
     ports:
-      - "8081:8081"
+      - "${PGWEB_PORT:-8081}:8081"
     environment:
-      # Conecta automáticamente usando el nombre del contenedor de postgres y las credenciales
-      - DATABASE_URL=postgres://n8n_user:n8n_password@postgres:5432/chat_history?sslmode=disable
+      - DATABASE_URL=postgres://${POSTGRES_USER:-n8n_user}:${POSTGRES_PASSWORD:-n8n_password}@postgres:5432/${POSTGRES_DB:-chat_history}?sslmode=disable
     networks:
       - iarvis_network
     depends_on:
       - postgres
 
-  # --- BASE DE DATOS VECTORIAL PARA RAG ---
   qdrant:
     image: qdrant/qdrant:latest
     container_name: iarvis_qdrant
     restart: unless-stopped
     ports:
-      - "6333:6333"
+      - "${QDRANT_PORT:-6333}:6333"
     volumes:
       - ./qdrant-data:/qdrant/storage
     networks:
       - iarvis_network
+
+  dgraph:
+    image: dgraph/standalone:latest
+    container_name: iarvis_dgraph
+    restart: unless-stopped
+    ports:
+      - "${DGRAPH_HTTP_PORT:-8082}:8080"
+      - "${DGRAPH_GRPC_PORT:-9080}:9080"
+    volumes:
+      - ./dgraph-data:/dgraph
+    networks:
+      - iarvis_network
+
+  ratel:
+    image: dgraph/ratel:latest
+    container_name: iarvis_ratel
+    restart: unless-stopped
+    ports:
+      - "${DGRAPH_RATEL_PORT:-8001}:8000"
+    networks:
+      - iarvis_network
+    depends_on:
+      - dgraph
 
 networks:
   iarvis_network:

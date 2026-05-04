@@ -30,8 +30,8 @@ class MemoryService:
         self.qdrant_client = QdrantClient(url=settings.qdrant_url, timeout=settings.default_timeout)
         self.ollama_url = settings.ollama_url.rstrip("/")
         self.timeout = settings.default_timeout
-        self.embedding_model = "nomic-embed-text:latest"
-        self.default_collection = "long_term_memory"
+        self.embedding_model = settings.embedding_model
+        self.default_collection = settings.qdrant_collection
         self.max_results = 5
         self.collection_ready_retries = 8
         self.collection_ready_delay_seconds = 1.0
@@ -47,10 +47,11 @@ class MemoryService:
         )
         self._validate_query(n8n_query)
         matches = await self._search_qdrant(n8n_query)
+        formatted = self._format_memory_results(matches)
 
         return LibrarianQueryResponse(
             n8n_query=n8n_query,
-            memory_results=matches,
+            memory_results=formatted,
         )
 
     async def archivist_query(self, message: str) -> ArchivistQueryResponse:
@@ -74,14 +75,14 @@ class MemoryService:
             "graph_entities": self._normalize_string_list(
                 self._pick_first(payload, ["graph_entities", "entities", "entity_list", "keywords"])
             ),
-            "time_context": self._pick_first(payload, ["time_context", "time", "temporal_context", "date_context"]),
+            "time_context": self._pick_first(payload, ["time_context", "time", "temporal_context", "date_context"]) or "",
         }
 
         try:
             return LibrarianN8NQuery.model_validate(normalized_payload)
         except ValidationError as exc:
             raise ValueError(
-                "Librarian query must include: rag_query (str), graph_entities (list[str]), time_context (str)"
+                "Librarian query must include 'rag_query' (str). Optional fields: graph_entities (list[str]), time_context (str)"
             ) from exc
 
     def _parse_archivist_message(self, message: str) -> ArchivistN8NQuery:
@@ -94,14 +95,14 @@ class MemoryService:
         normalized_payload = {
             "rag_document": self._pick_first(payload, ["rag_document", "document", "memory_text", "content"]),
             "graph_triplets": normalized_triplets,
-            "time_context": self._pick_first(payload, ["time_context", "time", "timestamp", "date_context"]),
+            "time_context": self._pick_first(payload, ["time_context", "time", "timestamp", "date_context"]) or "",
         }
 
         try:
             return ArchivistN8NQuery.model_validate(normalized_payload)
         except ValidationError as exc:
             raise ValueError(
-                "Archivist query must include: rag_document (str), graph_triplets (list[{subject,predicate,object}]), time_context (str)"
+                "Archivist query must include 'rag_document' (str) and 'graph_triplets' (list[{subject,predicate,object}]). Optional: time_context (str)"
             ) from exc
 
     def _parse_json_payload_from_message(self, message: str, label: str) -> Dict[str, Any]:
@@ -185,24 +186,40 @@ class MemoryService:
     def _validate_query(self, n8n_query: LibrarianN8NQuery) -> None:
         if not n8n_query.rag_query.strip():
             raise ValueError("'rag_query' must be a non-empty string")
-        if not n8n_query.time_context.strip():
-            raise ValueError("'time_context' must be a non-empty string")
-        cleaned_entities = [entity.strip() for entity in n8n_query.graph_entities if entity and entity.strip()]
-        if not cleaned_entities:
-            raise ValueError("'graph_entities' must include at least one entity")
-        n8n_query.graph_entities = cleaned_entities
+        # graph_entities and time_context are optional; LLM may omit them legitimately.
+        # Just clean up entities (strip empties).
+        n8n_query.graph_entities = [entity.strip() for entity in n8n_query.graph_entities if entity and entity.strip()]
 
     def _validate_archivist_query(self, n8n_query: ArchivistN8NQuery) -> None:
         if not n8n_query.rag_document.strip():
             raise ValueError("'rag_document' must be a non-empty string")
-        if not n8n_query.time_context.strip():
-            raise ValueError("'time_context' must be a non-empty string")
+        # time_context is optional; LLM may omit it for non-temporal facts.
         if not n8n_query.graph_triplets:
             raise ValueError("'graph_triplets' must include at least one triplet")
 
+
+    def _format_memory_results(self, points: list) -> str:
+        """Convert raw Qdrant points into a clean prose list for the AGENT.
+        Filters out hits below RAG_SCORE_THRESHOLD. Returns "NONE" if nothing passes."""
+        threshold = config.settings().rag_score_threshold
+        kept = []
+        for p in points:
+            score = p.get("score")
+            if score is None or score < threshold:
+                continue
+            payload = p.get("payload") or {}
+            doc = payload.get("rag_document") or payload.get("document") or ""
+            doc = doc.strip()
+            if doc:
+                kept.append(f"- {doc}")
+        if not kept:
+            return "NONE"
+        return chr(10).join(kept)
+
+
     async def _search_qdrant(self, n8n_query: LibrarianN8NQuery) -> List[Dict[str, Any]]:
         query_text = self._build_query_text(n8n_query)
-        query_vector = await self._embed_text(query_text)
+        query_vector = await self._embed_text(query_text, is_query=True)
         await self._ensure_collection_exists(len(query_vector))
 
         try:
@@ -230,6 +247,30 @@ class MemoryService:
         document_text = self._build_document_text(n8n_query)
         document_vector = await self._embed_text(document_text)
         await self._ensure_collection_exists(len(document_vector))
+
+        # Dedupe check: skip insert if a near-duplicate already exists.
+        dedupe_threshold = config.settings().rag_dedupe_threshold
+        try:
+            similar = await asyncio.to_thread(
+                self.qdrant_client.search,
+                collection_name=self.default_collection,
+                query_vector=document_vector,
+                limit=1,
+                with_payload=True,
+            )
+        except Exception as exc:
+            logger.warning(
+                "Dedupe pre-search failed (will insert anyway): %s", exc
+            )
+            similar = []
+        if similar and similar[0].score is not None and similar[0].score >= dedupe_threshold:
+            existing_id = str(similar[0].id)
+            existing_doc = (similar[0].payload or {}).get("rag_document", "")
+            logger.info(
+                "Dedupe skip: new=%r similar_score=%.4f existing_id=%s existing=%r",
+                n8n_query.rag_document, similar[0].score, existing_id, existing_doc[:80]
+            )
+            return existing_id
 
         point_id = str(uuid.uuid4())
         payload = {
@@ -301,7 +342,13 @@ class MemoryService:
             logger.exception("Failed to list Qdrant collections")
             raise ValueError(f"Failed to list Qdrant collections: {exc}") from exc
 
-    async def _embed_text(self, text: str) -> List[float]:
+    async def _embed_text(self, text: str, is_query: bool = False) -> List[float]:
+        # nomic-embed-text v1.5 was trained with task-specific instruction prefixes.
+        # Apply them transparently when the configured model belongs to the nomic-embed family.
+        # Any other embedding model: leave the text untouched.
+        if "nomic-embed-text" in self.embedding_model:
+            prefix = "search_query: " if is_query else "search_document: "
+            text = prefix + text
         try:
             async with httpx.AsyncClient(timeout=self.timeout) as client:
                 response = await client.post(
