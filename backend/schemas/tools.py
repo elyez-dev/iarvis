@@ -24,6 +24,7 @@ class ToolListResponse(BaseModel):
 class ExecuteToolRequest(BaseModel):
     tool_id: str = Field(..., example="tool_send_email")
     parameters: Dict[str, Any] = Field(default_factory=dict)
+    chat_id: Optional[str] = Field(None, example="abc123")
 
 
 class ExecuteToolResponse(BaseModel):

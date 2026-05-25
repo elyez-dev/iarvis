@@ -5,7 +5,8 @@ import logging
 from core import config
 from core.user_settings import user_settings
 from services.translation_service import translator, NLLB_LANG_MAP
-from schemas.chat import ChatResponse, DecisionCheckResponse
+from schemas.chat import ActionDetail, ChatResponse, DecisionCheckResponse
+from services.action_log import ActionLog
 from typing import Optional
 
 
@@ -32,13 +33,32 @@ class ChatService:
     def __init__(self):
         self.n8n_url = config.settings().n8n_url
         self.timeout = config.settings().default_timeout
-        self.user_settings = user_settings().settings
+        self._action_log = ActionLog.instance()
+
+    def _fresh_settings(self) -> dict:
+        """Read current user settings from disk (not cached) so language/name/tone
+        changes take effect without restart."""
+        return user_settings().settings
+
+    async def _sync_action_details(self, chat_id: Optional[str]) -> list[ActionDetail]:
+        """Pop any action entries that arrived synchronously during the n8n call.
+        SEARCH (librarian) is synchronous — its results are ready when the webhook
+        returns. STORE/TOOL may also be ready by luck. Remaining ones arrive via SSE."""
+        if not chat_id:
+            return []
+        entries = await self._action_log.pop(chat_id)
+        return [
+            ActionDetail(type=e.action_type, summary=e.summary, detail=e.detail)
+            for e in entries
+        ]
 
     async def _send_to_n8n(self, message: str, chat_id: Optional[str] = None) -> dict:
         """Send message to n8n and return response data."""
-        payload = {"message": message, "settings": self.user_settings}
+        payload = {"message": message, "settings": self._fresh_settings()}
         if chat_id:
             payload["chat_id"] = chat_id
+            # Discard stale ActionLog entries from previous messages in this chat
+            await self._action_log.discard(chat_id)
 
         url = f"{self.n8n_url.rstrip('/')}/chat"
 
@@ -64,12 +84,19 @@ class ChatService:
 
     async def chat(self, message: str, chat_id: Optional[str] = None) -> ChatResponse:
         try:
-            language_code = self.user_settings.get("language_code", "es")
+            language_code = self._fresh_settings().get("language_code", "es")
+            logger.info("[Chat] language_code=%r user_msg_start=%r", language_code, message[:80])
 
             # If user speaks English, skip translation
             if language_code == "en":
+                logger.info("[Chat] skipping translation (English)")
                 data = await self._send_to_n8n(message, chat_id)
-                return ChatResponse(response=data["response"], chat_id=data["chat_id"])
+                action_details = await self._sync_action_details(chat_id)
+                return ChatResponse(
+                    response=data["response"],
+                    chat_id=data["chat_id"],
+                    action_details=action_details,
+                )
 
             # Translate input: User language -> English
             nllb_user_lang = NLLB_LANG_MAP.get(language_code, "spa_Latn")
@@ -77,7 +104,7 @@ class ChatService:
 
             message_to_translate = _normalize_casing_for_translation(message)
             if message_to_translate != message:
-                print(f"[Normalize] casing shouted -> lowercased: '{message}' -> '{message_to_translate}'")
+                logger.info("[Normalize] casing shouted -> lowercased: %r -> %r", message, message_to_translate)
 
             message_en = await asyncio.to_thread(
                 translator.translate,
@@ -85,7 +112,7 @@ class ChatService:
                 src_lang=nllb_user_lang,
                 tgt_lang=nllb_eng
             )
-            print(f"[Traductor IN] {language_code}: '{message_to_translate}' -> en: '{message_en}'")
+            logger.info("[Traductor IN] %s: %r -> en: %r", language_code, message_to_translate, message_en)
 
             # Send to n8n
             data = await self._send_to_n8n(message_en, chat_id)
@@ -97,9 +124,14 @@ class ChatService:
                 src_lang=nllb_eng,
                 tgt_lang=nllb_user_lang
             )
-            print(f"[Traductor OUT] en: '{data['response']}' -> {language_code}: '{response_translated}'")
+            logger.info("[Traductor OUT] en: %r -> %s: %r", data["response"], language_code, response_translated)
 
-            return ChatResponse(response=response_translated, chat_id=data["chat_id"])
+            action_details = await self._sync_action_details(chat_id)
+            return ChatResponse(
+                response=response_translated,
+                chat_id=data["chat_id"],
+                action_details=action_details,
+            )
 
         except (httpx.RequestError, httpx.HTTPStatusError) as e:
             error_type = type(e).__name__

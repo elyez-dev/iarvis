@@ -59,6 +59,7 @@ services:
       - QDRANT_COLLECTION=${QDRANT_COLLECTION:-long_term_memory}
       - EMBEDDING_MODEL=${EMBEDDING_MODEL:-nomic-embed-text:latest}
       - DGRAPH_GRPC_URL=${DGRAPH_GRPC_URL:-dgraph:9080}
+      - POSTGRES_URL=${POSTGRES_URL:-postgres://n8n_user:n8n_password@postgres:5432/chat_history}
     networks:
       - iarvis_network
     depends_on:
@@ -125,6 +126,22 @@ services:
       - iarvis_network
     depends_on:
       - dgraph
+
+  frontend:
+    build: ./frontend
+    container_name: iarvis_frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-8501}:8501"
+    volumes:
+      - ./frontend:/app
+    environment:
+      - BACKEND_URL=http://backend:8000
+      - BACKEND_PORT=${BACKEND_PORT:-8000}
+    networks:
+      - iarvis_network
+    depends_on:
+      - backend
 
 networks:
   iarvis_network:

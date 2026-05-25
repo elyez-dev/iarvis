@@ -12,4 +12,5 @@ class settings:
         self.rag_score_threshold = float(os.getenv("RAG_SCORE_THRESHOLD", "0.6"))
         self.rag_dedupe_threshold = float(os.getenv("RAG_DEDUPE_THRESHOLD", "0.98"))
         self.dgraph_grpc_url = os.getenv("DGRAPH_GRPC_URL", "dgraph:9080")
+        self.postgres_url = os.getenv("POSTGRES_URL", "postgres://n8n_user:n8n_password@postgres:5432/chat_history")
         self.default_timeout = 120.0
