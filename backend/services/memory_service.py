@@ -35,7 +35,7 @@ class MemoryService:
         self.timeout = settings.default_timeout
         self.embedding_model = settings.embedding_model
         self.default_collection = settings.qdrant_collection
-        self.max_results = 5
+        self.max_results = 6
         self.collection_ready_retries = 8
         self.collection_ready_delay_seconds = 1.0
         # Cache for Qdrant collection existence to avoid frequent get_collections

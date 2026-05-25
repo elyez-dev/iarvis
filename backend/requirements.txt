@@ -1,4 +1,4 @@
-fastapi==0.109.0
+﻿fastapi==0.109.0
 uvicorn==0.27.0
 httpx==0.26.0
 pydantic==2.6.0
@@ -8,3 +8,4 @@ transformers==4.36.2
 torch==2.1.2
 sentencepiece==0.2.1
 qdrant-client==1.7.3
+pydgraph>=24.2.0,<25.0.0

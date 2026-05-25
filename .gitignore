@@ -511,3 +511,4 @@ qdrant-data/
 .claude/
 /CLAUDE.md
 dgraph-data/
+opencode.json

@@ -3,7 +3,8 @@ from fastapi.responses import JSONResponse
 import logging
 from schemas.chat import ChatRequest
 from schemas.memory import ArchivistQueryResponse, LibrarianQueryResponse
-from services import chat_service, memory_service
+from schemas.tools import ExecuteToolRequest, ExecuteToolResponse, ToolListResponse
+from services import chat_service, memory_service, tool_service
 import httpx
 
 from api.routes import TrackedValidationRoute
@@ -19,6 +20,7 @@ tracked_router = APIRouter(route_class=TrackedValidationRoute)
 
 chatService = chat_service.ChatService()
 memoryService = memory_service.MemoryService()
+toolService = tool_service.ToolService()
 
 # endpoint for n8n to check the AI's decision-making string format
 # use tracked_router to get the tries counter in case of validation errors
@@ -111,5 +113,43 @@ async def archivist_query(request: ChatRequest):
             status_code=500,
             content={"detail": str(e), "tries": next_tries}
         )
+
+# --- Tool endpoints ---
+
+@tracked_router.get(
+    "/list_tools",
+    summary="List available tools",
+    description="Returns the catalog of available tools with their parameters.",
+    response_model=ToolListResponse,
+    responses={
+        200: {"description": "Tool catalog returned"},
+    },
+)
+async def list_tools():
+    return toolService.list_public_tools()
+
+
+@tracked_router.post(
+    "/execute_tool",
+    summary="Validate and execute a tool",
+    description="Validates the tool_id and parameters, then calls the corresponding n8n tool webhook.",
+    response_model=ExecuteToolResponse,
+    responses={
+        200: {"description": "Tool executed (check success field)"},
+        400: {"description": "Bad request"},
+        422: {"description": "Validation error"},
+        500: {"description": "Internal server error"},
+    },
+)
+async def execute_tool(request: ExecuteToolRequest):
+    try:
+        return await toolService.execute_tool(request.tool_id, request.parameters)
+    except Exception as e:
+        logger.exception("Unexpected execute_tool error")
+        return JSONResponse(
+            status_code=500,
+            content={"detail": str(e)},
+        )
+
 
 router.include_router(tracked_router, tags=["n8n"])

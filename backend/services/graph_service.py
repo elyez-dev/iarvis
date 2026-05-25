@@ -529,6 +529,8 @@ class GraphService:
         v = val.replace("\\", "\\\\").replace('"', '\\"')
         if kind == "type":
             return f'eq(type, "{v}")'
+        if "_" not in val:
+            return f'regexp(name, /^{re.escape(v)}(_.*)?$/)'
         return f'eq(name, "{v}")'
 
     def _slot_child_filter(self, kind: Optional[str], val: Optional[str]) -> str:
@@ -538,6 +540,8 @@ class GraphService:
         v = val.replace("\\", "\\\\").replace('"', '\\"')
         if kind == "type":
             return f' @filter(eq(type, "{v}"))'
+        if "_" not in val:
+            return f' @filter(regexp(name, /^{re.escape(v)}(_.*)?$/))'
         return f' @filter(eq(name, "{v}"))'
 
     def _format_pattern_results(

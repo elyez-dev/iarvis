@@ -64,6 +64,7 @@ services:
     depends_on:
       - n8n
       - ollama
+      - dgraph
 
   postgres:
     image: postgres:15-alpine
