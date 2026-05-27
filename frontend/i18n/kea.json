@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Txiga na nha petu",
+  "settings.delete_memory": "Bu pode kaba ku kel-li",
+  "settings.delete_memory_title": "Bu pode kaba ku kel-li",
+  "settings.delete_memory_confirm": "Bu sta sertéza ma bu krê borra Tudu memória di assistente? Kel-li ta inklui stória di konbersu, informasons di RAG i gráfiku di konhisimentu. Bu krê kontinua?",
+  "settings.delete_memory_yes": "É si",
+  "settings.delete_memory_no": "Ka ta",
+  "settings.delete_memory_success": "Tudu algen ki ta lenbra di el dja kaba ku el.",
+  "settings.delete_memory_error": "Erru na purmeru: {erru}",
+  "chat.delete": "Bu pode kaba ku kel-li",
+  "chat.delete_confirm": "Bu ka pode faze kel-li.",
+  "chat.delete_yes": "É si, kaba ku es",
+  "chat.delete_no": "Kansela",
+  "chat.deleted": "Diskursu foi skrebedu ku sukursus.",
+  "chat.rename": "Modi ki bu pode muda di nómi",
+  "chat.new_chat": "Novu konbersu"
 }

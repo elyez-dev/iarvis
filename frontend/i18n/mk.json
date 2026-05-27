@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Початувајте со",
+  "settings.delete_memory": "Избришете ја меморијата",
+  "settings.delete_memory_title": "Избришете ја меморијата",
+  "settings.delete_memory_confirm": "Дали сте сигурни дека сакате да ги избришете сите споменици на асистентот?",
+  "settings.delete_memory_yes": "Да, тоа е.",
+  "settings.delete_memory_no": "Не, не.",
+  "settings.delete_memory_success": "Сите спомени се успешно избришани.",
+  "settings.delete_memory_error": "Грешка во бришење на меморијата: {great}",
+  "chat.delete": "Избришете го разговор",
+  "chat.delete_confirm": "Избришете го чат '{title}'?",
+  "chat.delete_yes": "Да, избришете",
+  "chat.delete_no": "Отсекајте",
+  "chat.deleted": "Чатот успешно се избриша.",
+  "chat.rename": "Преименовање",
+  "chat.new_chat": "Нов разговор"
 }

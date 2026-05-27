@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "ဢုပ်ႇဢူဝ်းၵၼ်တင်း",
+  "settings.delete_memory": "သုတ်ႉပၼ်မၢႆတွင်း",
+  "settings.delete_memory_title": "သုတ်ႉပၼ်မၢႆတွင်း",
+  "settings.delete_memory_confirm": "သင်ဝႃႈသူၶႂ်ႈသုတ်ႉဢွၵ်ႇလႆႈ မၢႆတွင်းၶွင် ၽူႈၸွႆႈထႅမ်တင်းသဵင်ႈၼႆၸိုင် ၶဝ်ႈပႃးဝႆႉ ပိုၼ်းလွင်ႈဢုပ်ႇဢူဝ်း၊ ၶေႃႈမုၼ်းဢၼ်သိုဝ်ႉဝႆႉ RAG လႄႈ လွင်ႈၸၼ်ႁၢင်ႈတၢင်းႁူႉ။ သူၶႂ်ႈသိုပ်ႇႁဵတ်းႁိုဝ်?",
+  "settings.delete_memory_yes": "ၸႂ်ႈၶႃႈဢေႃႈ",
+  "settings.delete_memory_no": "ဢမ်ႇလႆႈ",
+  "settings.delete_memory_success": "မၢႆတွင်းတၢင်းမူတ်းၼႆႉ လႆႈထုၵ်ႇသုတ်ႉဢွၵ်ႇၵႂႃႇယဝ်ႉ။",
+  "settings.delete_memory_error": "လွင်ႈလိူင်ႈႁေႉႁၢမ်ႈမၢႆတွင်း: { error}",
+  "chat.delete": "သုတ်ႉလွင်ႈဢုပ်ႇဢူဝ်း",
+  "chat.delete_confirm": "သုတ်ႉဢွၵ်ႇလွင်ႈဢုပ်ႇဢူဝ်း '{title}? လွင်ႈၼႆႉ ဢမ်ႇၸၢင်ႈႁဵတ်းၶိုၼ်းလႆႈ။",
+  "chat.delete_yes": "ၸႂ်ႈၶႃႈ၊ သုတ်ႉ",
+  "chat.delete_no": "ပႅတ်ႈ",
+  "chat.deleted": "Chat လႆႈထုၵ်ႇမွတ်ႇၵႂႃႇလူၺ်ႈလွင်ႈတၢင်းလီ။",
+  "chat.rename": "မႄးၸိုဝ်ႈ",
+  "chat.new_chat": "ဢုပ်ႇဢူဝ်းၵၼ်မႂ်ႇ"
 }

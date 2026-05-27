@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Solula ti",
+  "settings.delete_memory": "Katula Lusungiminu",
+  "settings.delete_memory_title": "Katula Lusungiminu",
+  "settings.delete_memory_confirm": "Keti nge ke ndima nde nge ta katula mabanza ya muntu yina ke sadisa nge?",
+  "settings.delete_memory_yes": "Ee, yo kele",
+  "settings.delete_memory_no": "Ve, yandi me sala yo ve.",
+  "settings.delete_memory_success": "Bo me katulaka mbote-mbote mabanza yonso.",
+  "settings.delete_memory_error": "Kifu ya kukatula mabanza: {error}",
+  "chat.delete": "Katula masolo",
+  "chat.delete_confirm": "Katula disolo '{title}'?",
+  "chat.delete_yes": "Ee, katula yo",
+  "chat.delete_no": "Kuzenga",
+  "chat.deleted": "Bo katulaka disolo na mutindu ya mbote.",
+  "chat.rename": "Kubalula zina",
+  "chat.new_chat": "Kisalu ya Kusolula ya Mpa"
 }

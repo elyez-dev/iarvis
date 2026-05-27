@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "સાથે ચેટ",
+  "settings.delete_memory": "મેમરી કાઢી નાખો",
+  "settings.delete_memory_title": "મેમરી કાઢી નાખો",
+  "settings.delete_memory_confirm": "શું તમે ખાતરી કરો કે તમે મદદનીશની બધી મેમરી કાઢી નાખવા માંગો છો? આમાં વાતચીત ઇતિહાસ, આરએજી સંગ્રહિત ડેટા અને જ્ઞાન ગ્રાફ શામેલ છે. શું તમે ચાલુ રાખવા માંગો છો?",
+  "settings.delete_memory_yes": "હા",
+  "settings.delete_memory_no": "ના",
+  "settings.delete_memory_success": "બધી મેમરી સફળતાપૂર્વક કાઢી નાખવામાં આવી છે.",
+  "settings.delete_memory_error": "મેમરી કાઢી નાખવાની ભૂલ: {error}",
+  "chat.delete": "ચેટ કાઢી નાખો",
+  "chat.delete_confirm": "ચેટ '{title} કાઢી નાખો? આ ક્રિયાને રદ કરી શકાતી નથી.",
+  "chat.delete_yes": "હા, કાઢી નાખો",
+  "chat.delete_no": "રદ કરો",
+  "chat.deleted": "ચેટ સફળતાપૂર્વક કાઢી નાખવામાં આવી.",
+  "chat.rename": "નામ બદલવું",
+  "chat.new_chat": "નવી ચેટ"
 }

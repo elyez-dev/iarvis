@@ -223,5 +223,20 @@
     "zh_tw": "الصينية (تدريسية)",
     "ms": "الملايو",
     "zu": "زولوي"
-  }
+  },
+  "chat.title": "كلم مع",
+  "settings.delete_memory": "مَحِّي الذاكرة",
+  "settings.delete_memory_title": "مَحِّي الذاكرة",
+  "settings.delete_memory_confirm": "إِنْتِ مُتَبَيّْنْ إِنْتِ تْحِبْ تْمِحْ مِالمُسَاعِدْ مِالمْتَاعْ؟ هَاذَا شَمْلُو سِتَّارِي المَدَاعَة، البيانات مَخْزُونَة في RAG وِالشَّرْفْ مْتَاعِي المَعْرْفَة. تْحِبْ تْكُونْ تَوْصِلْ؟",
+  "settings.delete_memory_yes": "إيه",
+  "settings.delete_memory_no": "لا، لا",
+  "settings.delete_memory_success": "تم حذف كل الذاكرة بنجاح.",
+  "settings.delete_memory_error": "الخطأ في حذف الذاكرة: {خطأ}",
+  "chat.delete": "مَحِّي المحادثة",
+  "chat.delete_confirm": "مُحَيِّدْ المحادثة '{title}؟ هذا الإجراء ما يُمْكِنْشْ يِتْعَاوِي.",
+  "chat.delete_yes": "إيه، مُحَذِّفْ",
+  "chat.delete_no": "إلغاء",
+  "chat.deleted": "قَلّْلُوا المحادثة بنجاح.",
+  "chat.rename": "إعادة الإسم",
+  "chat.new_chat": "كالمحادثة الجديدة"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Maccurita sibawa",
+  "settings.delete_memory": "Paddésu'i Akkaleng",
+  "settings.delete_memory_title": "Paddésu'i Akkaleng",
+  "settings.delete_memory_confirm": "Mappikkiri'ga akkattamu untu' mappaccappui sininna memori assistanta? Iyya muttama ri sejarah assisambangeng, data RAG iya ripallebbangnge nenniya grafik pangissengenna. Macinnai muperonroi?",
+  "settings.delete_memory_yes": "Iya iya",
+  "settings.delete_memory_no": "De'gaga",
+  "settings.delete_memory_success": "Sininna memori pura rihapus sibawa sukku.",
+  "settings.delete_memory_error": "Akkelong pammuweng: {kasala}",
+  "chat.delete": "Paddésu appadissengeng",
+  "chat.delete_confirm": "Paddésu'i appadécéngeng '{title}'? Aksi'e de'na nawedding ripaddésu'i.",
+  "chat.delete_yes": "Iya, peddéi",
+  "chat.delete_no": "Kennai",
+  "chat.deleted": "Chat ripaccappui sibawa suksès.",
+  "chat.rename": "Aseng paimeng",
+  "chat.new_chat": "New Chat"
 }

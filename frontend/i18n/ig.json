@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Kparịtanụ",
+  "settings.delete_memory": "Ihichapụ Ebe Ncheta",
+  "settings.delete_memory_title": "Ihichapụ Ebe Ncheta",
+  "settings.delete_memory_confirm": "Ị̀ maara na ị chọrọ ihichapụ ihe niile onye na-enyere gị aka na-echeta? Nke a gụnyere akụkọ ihe mere eme nke mkparịta ụka, data echekwara na RAG na eserese ihe ọmụma. Ị chọrọ ịnọgide?",
+  "settings.delete_memory_yes": "Ee, ọ bụ ya",
+  "settings.delete_memory_no": "Ọ dịghị.",
+  "settings.delete_memory_success": "Ehichapụwo ebe nchekwa nile nke ọma.",
+  "settings.delete_memory_error": "Njehie na-ehichapụ ebe nchekwa: {njehie}",
+  "chat.delete": "Ihichapụ mkparịta ụka",
+  "chat.delete_confirm": "Ihichapụ mkparịta ụka '{ aha}'?",
+  "chat.delete_yes": "Ee, ehichapụ ya",
+  "chat.delete_no": "Ịgbanyụ",
+  "chat.deleted": "Ehichapụwo nkata ahụ nke ọma.",
+  "chat.rename": "Gbanwee aha",
+  "chat.new_chat": "Mkparịta ụka ọhụrụ"
 }

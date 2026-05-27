@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Rakontu kun",
+  "settings.delete_memory": "Forviŝu la memoron",
+  "settings.delete_memory_title": "Forviŝu la memoron",
+  "settings.delete_memory_confirm": "Ĉu vi certas, ke vi volas forigi la tutan memoron de la asistanto? Tio inkluzivas konversacian historion, RAG-datumojn kaj scio-grafojn. Ĉu vi volas daŭrigi?",
+  "settings.delete_memory_yes": "Jes, mi scias.",
+  "settings.delete_memory_no": "Ne, ne.",
+  "settings.delete_memory_success": "Ĉiuj memoroj estis sukcese forviŝitaj.",
+  "settings.delete_memory_error": "Eraro foriganta memoron: {eraro}",
+  "chat.delete": "Forviŝi babilejon",
+  "chat.delete_confirm": "Forigu la babilejon \"{titolo}\"?",
+  "chat.delete_yes": "Jes, forigu",
+  "chat.delete_no": "Nu, nu, nu, nu, nu!",
+  "chat.deleted": "La babilejo estis sukcese forigita.",
+  "chat.rename": "Renomo",
+  "chat.new_chat": "Nova Ĉat"
 }

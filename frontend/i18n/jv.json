@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chat karo",
+  "settings.delete_memory": "Mbusak Memori",
+  "settings.delete_memory_title": "Mbusak Memori",
+  "settings.delete_memory_confirm": "Apa sampeyan yakin sampeyan pengin mbusak kabeh memori asisten? Iki kalebu riwayat obrolan, data RAG disimpen lan grafik pengetahuan. Apa sampeyan pengin terus?",
+  "settings.delete_memory_yes": "Ya, iku",
+  "settings.delete_memory_no": "Ora",
+  "settings.delete_memory_success": "Kabeh memori wis sukses dibusak.",
+  "settings.delete_memory_error": "Kesalahan mbusak memori: {kesalahan}",
+  "chat.delete": "Mbusak obrolan",
+  "chat.delete_confirm": "Mbusak obrolan '{title}'? Tindakan iki ora bisa dibalèkaké.",
+  "chat.delete_yes": "Ya, mbusak",
+  "chat.delete_no": "Mbatalake",
+  "chat.deleted": "Chat dibusak kanthi sukses.",
+  "chat.rename": "Jeneng manèh",
+  "chat.new_chat": "Chat anyar"
 }

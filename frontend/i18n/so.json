@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "La sheekayso",
+  "settings.delete_memory": "Xusuusta ka tirtir",
+  "settings.delete_memory_title": "Xusuusta ka tirtir",
+  "settings.delete_memory_confirm": "Ma waxaad dooneysaa inaad tirtirto Xusuusta kaaliyeha oo dhan? Tan waxaa ka mid ah taariikhda wadahadalka, xogta RAG ee lagu kaydiyay iyo jaantusyada aqoonta. Ma dooneysaa inaad sii wadato?",
+  "settings.delete_memory_yes": "Haa waa",
+  "settings.delete_memory_no": "Ma aha",
+  "settings.delete_memory_success": "Xusuusta oo dhan ayaa si guul leh loo tirtiray.",
+  "settings.delete_memory_error": "Khaladaadka tirtirka xusuusta: {khaladaadka}",
+  "chat.delete": "Ka saar sheekada",
+  "chat.delete_confirm": "Ka saar sheekada '{title}'? ficilkani lama beddeli karo.",
+  "chat.delete_yes": "Haa, tirtir",
+  "chat.delete_no": "Ka noqoshada",
+  "chat.deleted": "Wada sheekaysiga ayaa la tirtiray.",
+  "chat.rename": "Magaca la beddelo",
+  "chat.new_chat": "Wada sheekaysiga cusub"
 }

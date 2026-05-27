@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Reke ngũhe ũhoro",
+  "settings.delete_memory": "Kũriganĩrwo nĩ Ciĩko",
+  "settings.delete_memory_title": "Kũriganĩrwo nĩ Ciĩko",
+  "settings.delete_memory_confirm": "Hihi nĩ ũrona atĩ nĩ ũrenda kũharũrũkia meciria mothe ma mũteithia? Ũndũ ũcio nĩ ũkoragwo na ũhoro wa tene wa mĩario, data iria ciigĩtwo RAG na marũa ma ũmenyo. Hihi nĩ ũrenda gũthiĩ na mbere?",
+  "settings.delete_memory_yes": "Ĩĩ nĩ ma",
+  "settings.delete_memory_no": "Aca, ti ũguo",
+  "settings.delete_memory_success": "Maũndũ mothe marĩa tũririkanaga nĩ mahingĩtwo na kĩyo.",
+  "settings.delete_memory_error": "Kĩhĩĩ gĩa kũruta kĩhĩĩ: {thĩĩna}",
+  "chat.delete": "Kũharũra gĩtaarĩro",
+  "chat.delete_confirm": "Nĩ ũrahota kũgarũra gĩcunjĩ gĩkĩ?",
+  "chat.delete_yes": "Ĩĩ, nĩ kũharũrũkwo",
+  "chat.delete_no": "Kũniina",
+  "chat.deleted": "Mũrata wakwa nĩ aakuire na kĩyo.",
+  "chat.rename": "Rĩĩtwa rĩngĩ",
+  "chat.new_chat": "Mũcemanio Mwega"
 }

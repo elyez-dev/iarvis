@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "با اين كودك",
+  "settings.delete_memory": "مڠحذف ڤمبلاجرن",
+  "settings.delete_memory_title": "مڠحذف ڤمبلاجرن",
+  "settings.delete_memory_confirm": "آيا مطمئنيد كه مي خوايد تمام حافظه اسيستنت را حذف كنيد؟ اين شامل تاريخچه مکالمه ها، داده هاي ذخیره شده RAG و گراف دانش است. آيا مي خوايد ادامه دهيد؟",
+  "settings.delete_memory_yes": "بلي بلي بلي بلي",
+  "settings.delete_memory_no": "لالالالالالالالالالالالالالا",
+  "settings.delete_memory_success": "سموا ڤمبلاجرن دڤرچايا?? ي.",
+  "settings.delete_memory_error": "خطا حذف حافظه: {خطأ}",
+  "chat.delete": "ڤڠڬيلن چيت",
+  "chat.delete_confirm": "مڠحذف چيت '{ عنوان}؟ اين اكشن تيدق دڤرچايا?? ي.",
+  "chat.delete_yes": "بله، حذف",
+  "chat.delete_no": "ڤڠاجرن",
+  "chat.deleted": "چت دبريتاهو.",
+  "chat.rename": "نامن ڤڠاجرن",
+  "chat.new_chat": "چت جديد"
 }

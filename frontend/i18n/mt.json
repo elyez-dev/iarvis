@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Tmur biex titkellem ma '",
+  "settings.delete_memory": "Ħassar il- Memorja",
+  "settings.delete_memory_title": "Ħassar il- Memorja",
+  "settings.delete_memory_confirm": "Inti żgur li trid tħassar il-memorja kollha tal-assistent? Dan jinkludi storja tal-konversazzjoni, data maħżuna RAG u grafika ta 'għarfien. tixtieq tkompli?",
+  "settings.delete_memory_yes": "Iva,",
+  "settings.delete_memory_no": "Le",
+  "settings.delete_memory_success": "Il-memorja kollha ġiet mħassra b'suċċess.",
+  "settings.delete_memory_error": "Errore biex tħassar il-memorja: {errore}",
+  "chat.delete": "Iċċarġja l- chat",
+  "chat.delete_confirm": "Ħassar il- chat '{title}? Din l- azzjoni ma tistax tiġi rrevokata.",
+  "chat.delete_yes": "Iva, tħassar",
+  "chat.delete_no": "Ikkanċella",
+  "chat.deleted": "Chat mħassar b'suċċess.",
+  "chat.rename": "Ismu mill-ġdid",
+  "chat.new_chat": "Chat ġdid"
 }

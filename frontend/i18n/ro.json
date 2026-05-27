@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Vorbeşte cu",
+  "settings.delete_memory": "Şterge memoria",
+  "settings.delete_memory_title": "Şterge memoria",
+  "settings.delete_memory_confirm": "Eşti sigur că vrei să ștergi toate memoriele asistentului?",
+  "settings.delete_memory_yes": "Da, da.",
+  "settings.delete_memory_no": "Nu, nu.",
+  "settings.delete_memory_success": "Toate memoriele au fost șterse cu succes.",
+  "settings.delete_memory_error": "Erore de ștergere a memoriei: {eror}",
+  "chat.delete": "Ștergeți chat-ul",
+  "chat.delete_confirm": "Ștergeți chatul \"{title}\"? Această acțiune nu poate fi anulată.",
+  "chat.delete_yes": "Da, șterge",
+  "chat.delete_no": "Anularea",
+  "chat.deleted": "Chat-ul a fost eliminat cu succes.",
+  "chat.rename": "Renume",
+  "chat.new_chat": "Nouă discuţie"
 }

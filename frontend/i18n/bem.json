@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Tamba na",
+  "settings.delete_memory": "Mufwile Ukuleka Ukulaibukisha",
+  "settings.delete_memory_title": "Mufwile Ukuleka Ukulaibukisha",
+  "settings.delete_memory_confirm": "Bushe mwalicetekela ukuti mulefwaya ukufumya fyonse ifyo kafundisha aleibukisha? Pali ifi paba ne lyashi lya lyashi, ifyebo fya pa RAG ne fya pa kompyuta. Bushe mulefwaya ukutwalilila?",
+  "settings.delete_memory_yes": "Ee, nalimutemwa",
+  "settings.delete_memory_no": "Awe",
+  "settings.delete_memory_success": "Ifyebo fyonse ifyo balembapo fyalipwa.",
+  "settings.delete_memory_error": "Ulubembu pa kupoosa icilonganino: {ulubembu}",
+  "chat.delete": "Mufwile ukufumyako icipande",
+  "chat.delete_confirm": "Bushe kuti mwafumyapo icipande ca '{title}'?",
+  "chat.delete_yes": "Ee, mufwile ukufumyako",
+  "chat.delete_no": "Ukufumisha",
+  "chat.deleted": "Ba Nte balibafumishe bwino.",
+  "chat.rename": "Ukubwelela ishina",
+  "chat.new_chat": "Ulwa Kubila"
 }

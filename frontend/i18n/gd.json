@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Còmhradh le",
+  "settings.delete_memory": "Cuir às do chuimhne",
+  "settings.delete_memory_title": "Cuir às do chuimhne",
+  "settings.delete_memory_confirm": "A bheil thu cinnteach gu bheil thu airson a h-uile cuimhne an neach-taic a sguabadh? Tha seo a 'toirt a-steach eachdraidh còmhraidh, dàta RAG stòradh agus grafaich eòlas. A bheil thu airson a dhol air adhart?",
+  "settings.delete_memory_yes": "Tha e.",
+  "settings.delete_memory_no": "Cha 'n 'eil",
+  "settings.delete_memory_success": "Chaidh a h-uile cuimhne a sguabadh gu soirbheachail.",
+  "settings.delete_memory_error": "Mearachd a'sguabadh cuimhne: {dearror}",
+  "chat.delete": "Cuir às do chata",
+  "chat.delete_confirm": "Cuir às do chata '{title}'? Chan urrainn an gnìomh seo a dhèanamh air ais.",
+  "chat.delete_yes": "Tha, cuir às",
+  "chat.delete_no": "A dh'ath-dhùnadh",
+  "chat.deleted": "Chaidh an cabadaich a dhubhadh às gu soirbheachail.",
+  "chat.rename": "Ath-ainmeachadh",
+  "chat.new_chat": "Còmhradh ùr"
 }

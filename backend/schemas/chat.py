@@ -2,6 +2,17 @@ from pydantic import BaseModel, Field
 from typing import List, Optional
 
 
+class TranslateRequest(BaseModel):
+    text: str
+    src_lang: str = "eng_Latn"
+    tgt_lang: str
+    is_light_or_dark: bool = False
+
+
+class TranslateResponse(BaseModel):
+    translation: str
+
+
 class ActionDetail(BaseModel):
     type: str = Field(..., example="STORE")
     summary: str = Field(..., example="The user likes cheese.")
@@ -60,3 +71,17 @@ class ChatHistoryResponse(BaseModel):
 
 class NewChatResponse(BaseModel):
     chat_id: str
+
+
+class ChatUpdateRequest(BaseModel):
+    title: str = Field(..., min_length=1, max_length=255)
+
+
+class ChatDeleteResponse(BaseModel):
+    deleted: str
+    detail: str
+
+
+class DeleteMemoryResponse(BaseModel):
+    deleted: list[str] = Field(default_factory=list)
+    errors: list[str] = Field(default_factory=list)

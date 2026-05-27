@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Puhu",
+  "settings.delete_memory": "Poista muisti",
+  "settings.delete_memory_title": "Poista muisti",
+  "settings.delete_memory_confirm": "Haluatko poistaa koko assistentin muistiin?",
+  "settings.delete_memory_yes": "- Kyllä, minä olen.",
+  "settings.delete_memory_no": "- Ei, ei.",
+  "settings.delete_memory_success": "Kaikki muisti on poistettu.",
+  "settings.delete_memory_error": "Virhe poistaa muisti: {virhe}",
+  "chat.delete": "Poista keskustelu",
+  "chat.delete_confirm": "Tämä toiminta ei voi peruuttaa.",
+  "chat.delete_yes": "Kyllä, poista",
+  "chat.delete_no": "Perustetaan",
+  "chat.deleted": "- Chatti poistettiin menestyksekkäästi.",
+  "chat.rename": "Nimi uudelleen",
+  "chat.new_chat": "Uusi chat"
 }

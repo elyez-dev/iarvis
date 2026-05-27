@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Rozmawiaj z",
+  "settings.delete_memory": "Usunięcie pamięci",
+  "settings.delete_memory_title": "Usunięcie pamięci",
+  "settings.delete_memory_confirm": "Czy jesteś pewien, że chcesz usunąć całą pamięć asystenta?",
+  "settings.delete_memory_yes": "Tak, to prawda.",
+  "settings.delete_memory_no": "Nie, nie.",
+  "settings.delete_memory_success": "Wszystkie pamięci zostały z powodzeniem usunięte.",
+  "settings.delete_memory_error": "b) błędy w usuwaniu pamięci: {error}",
+  "chat.delete": "Usunięcie rozmowy",
+  "chat.delete_confirm": "/Nie można tego zrobić.",
+  "chat.delete_yes": "Tak, usunięcie",
+  "chat.delete_no": "Odwołanie",
+  "chat.deleted": "Czat został usunięty.",
+  "chat.rename": "Przekonane nazwy",
+  "chat.new_chat": "Nowy Chat"
 }

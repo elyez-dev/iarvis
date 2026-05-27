@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Pasikalbėk su",
+  "settings.delete_memory": "Ištrinkite atmintį",
+  "settings.delete_memory_title": "Ištrinkite atmintį",
+  "settings.delete_memory_confirm": "Ar tikrai norite ištrinti visą asistento atmintį? Tai apima pokalbių istoriją, RAG saugomus duomenis ir žinių grafikus. Ar norite tęsti?",
+  "settings.delete_memory_yes": "Taip.",
+  "settings.delete_memory_no": "Ne, ne.",
+  "settings.delete_memory_success": "Visos atmintinės buvo sėkmingai ištrintos.",
+  "settings.delete_memory_error": "Ištrinkimo atminties klaida: {blogo}",
+  "chat.delete": "Ištrinti pokalbį",
+  "chat.delete_confirm": "Ištrinkite pokalbį \"{title}\"?",
+  "chat.delete_yes": "Taip, ištrinkite",
+  "chat.delete_no": "Atšaukti",
+  "chat.deleted": "Pokalbis sėkmingai ištrintas.",
+  "chat.rename": "Paskutinis pavadinimas",
+  "chat.new_chat": "Naujas pokalbis"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Qhapaq",
+  "settings.delete_memory": "Imatapas yuyarikun",
+  "settings.delete_memory_title": "Imatapas yuyarikun",
+  "settings.delete_memory_confirm": "¿Qanqa tukuy imaymana yuyayniyoq kaqkunata chinkachiyta munankichu? ¿Kaypiqa parlanakuymanta willakuyta, RAGpi ima ima ima ima ima ima ima ima ima ima ima ima ima ima ima. ¿Qanqa willakuyta munankichu?",
+  "settings.delete_memory_yes": "Arí",
+  "settings.delete_memory_no": "Mana",
+  "settings.delete_memory_success": "Tukuy imapas allinpuni chinkachisqa kashan.",
+  "settings.delete_memory_error": "Imaynatam hukchasqa kayku: {error}",
+  "chat.delete": "Qhapaqta chinkachiy",
+  "chat.delete_confirm": "¿Kay ruwasqaqa mana allinchu kanman?",
+  "chat.delete_yes": "Arí, chinkachiy",
+  "chat.delete_no": "Cancel",
+  "chat.deleted": "Chay videotaqa allinpuni chinkachirqa.",
+  "chat.rename": "Imaynan sutichakun",
+  "chat.new_chat": "Musuq qelqakuna"
 }

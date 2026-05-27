@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Man-chat ed",
+  "settings.delete_memory": "I-delete so Memory",
+  "settings.delete_memory_title": "I-delete so Memory",
+  "settings.delete_memory_confirm": "Kasin labay mon ekalen so amin ya memorya na assistant? Kaibad satan so istoryay impitongtong, saray data ya in-register ed RAG tan saray graph na pikakabat. Labay mo kasin ituloy?",
+  "settings.delete_memory_yes": "On",
+  "settings.delete_memory_no": "Andi",
+  "settings.delete_memory_success": "Amin ya memorya et asumpal ya inekal.",
+  "settings.delete_memory_error": "Pakaekal na Memory: {error}",
+  "chat.delete": "I-delete so chat",
+  "chat.delete_confirm": "No walay nagawaan na satan, agmo napaliisan.",
+  "chat.delete_yes": "On, pa-delete",
+  "chat.delete_no": "I-cancel",
+  "chat.deleted": "Say chat et asumpal ya inekal.",
+  "chat.rename": "Pangaranen",
+  "chat.new_chat": "Balon Chat"
 }

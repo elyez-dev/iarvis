@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Ala sara lisoro na",
+  "settings.delete_memory": "Kangbi ni Kangbi ni",
+  "settings.delete_memory_title": "Kangbi ni Kangbi ni",
+  "settings.delete_memory_confirm": "Mo yeke na kite pëpe so mo ye ti zi ye kue so assistant ni ayeke dabe ti lo dä? Ye so andu mbaï ti lisoro, angobo so a bata ni na yâ RAG nga na afoto ti hingango ye. Mo ye ti ngbâ ti sara ni?",
+  "settings.delete_memory_yes": "Biani",
+  "settings.delete_memory_no": "A yeke tongaso pëpe",
+  "settings.delete_memory_success": "A zi na lege ni aye kue so mo yeke dabe ti mo na ni.",
+  "settings.delete_memory_error": "A yeke ziango tënë na yâ ti mbeni tënë so ayeke na yâ ti mbeti ni: {error}",
+  "chat.delete": "Kangbi na tënë",
+  "chat.delete_confirm": "Mo lingbi ti zi tënë ti \"{titre}\"?",
+  "chat.delete_yes": "Biani, zi ni",
+  "chat.delete_no": "A yeke zi ni",
+  "chat.deleted": "A zi tënë ni nzoni.",
+  "chat.rename": "Iri ni akiri na ni",
+  "chat.new_chat": "Fini lisoro"
 }

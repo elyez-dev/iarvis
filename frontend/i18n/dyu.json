@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Ka kuma ni",
+  "settings.delete_memory": "I hakili to a la",
+  "settings.delete_memory_title": "I hakili to a la",
+  "settings.delete_memory_confirm": "Yala i lanin b'a la ko i b'a fɛ ka dɛmɛbaga ka hakiliɲagami bɛɛ ban wa? O be kumaɲɔgɔnya kɛcogo, RAG ka kunnafoniw ani lɔnniya yiracogow bɛɛ lajɛ. Yala i b'a fɛ ka to o kan wa?",
+  "settings.delete_memory_yes": "Ɔnhɔn",
+  "settings.delete_memory_no": "Ayi, o tɛ se ka kɛ.",
+  "settings.delete_memory_success": "An ka ɲininkari bɛɛ tununa.",
+  "settings.delete_memory_error": "Kɔrɔbɔli min be ɲinini bali: {kɔrɔbɔli}",
+  "chat.delete": "Ka baro kɛcogo dɔ bɔ",
+  "chat.delete_confirm": "I tɛ se k'o kɛ tugun.",
+  "chat.delete_yes": "Ɔnhɔn, a ka kan ka ban",
+  "chat.delete_no": "Ka ban",
+  "chat.deleted": "U ye baro kɛcogo dɔ bɔ.",
+  "chat.rename": "I tɔgɔ yɛlɛma",
+  "chat.new_chat": "Ɲiningali kura"
 }

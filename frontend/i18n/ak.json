@@ -223,5 +223,20 @@
     "zh_tw": "China (Ɔmanfo)",
     "ms": "Malay",
     "zu": "Zulufoɔ"
-  }
+  },
+  "chat.title": "Wo ne no mmɔ nkɔmmɔ",
+  "settings.delete_memory": "Ma W'ani Nnye Nkae Ho",
+  "settings.delete_memory_title": "Ma W'ani Nnye Nkae Ho",
+  "settings.delete_memory_confirm": "W'ani gye ho sɛ wopɛ sɛ wusi ɔboafo no nkae nyinaa? Eyi ka nkɔmmɔbɔ abakɔsɛm, RAG a wɔde akorae data ne nimdeɛ graphs ho. Wopɛ sɛ wotra so?",
+  "settings.delete_memory_yes": "Yiw, ɛyɛ ampa",
+  "settings.delete_memory_no": "Dabi",
+  "settings.delete_memory_success": "Wɔapopa nkae nyinaa.",
+  "settings.delete_memory_error": "Mfomso a ɛtwe adwene kɔ: {afiri}",
+  "chat.delete": "Yi chat no firi",
+  "chat.delete_confirm": "Yi chat '{title} no fi hɔ?",
+  "chat.delete_yes": "Yiw, yi",
+  "chat.delete_no": "Twerɛ no",
+  "chat.deleted": "Wɔyii chat no fii hɔ.",
+  "chat.rename": "Din foforo",
+  "chat.new_chat": "Nkrataafa foforo"
 }

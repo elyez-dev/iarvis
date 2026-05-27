@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "대화",
+  "settings.delete_memory": "기억을 삭제",
+  "settings.delete_memory_title": "기억을 삭제",
+  "settings.delete_memory_confirm": "당신은 당신이 보조의 모든 메모리를 삭제하고 싶다는 확신이 있습니까? 이것은 대화 역사, RAG 저장된 데이터 및 지식 그래프를 포함합니다. 당신은 계속하고 싶습니까?",
+  "settings.delete_memory_yes": "그래",
+  "settings.delete_memory_no": "아니",
+  "settings.delete_memory_success": "모든 기억이 성공적으로 삭제되었습니다.",
+  "settings.delete_memory_error": "메모리 삭제 오류: {실점}",
+  "chat.delete": "채팅을 삭제",
+  "chat.delete_confirm": "채팅 '{title}'를 삭제하세요. 이 동작은 취소할 수 없습니다.",
+  "chat.delete_yes": "그래, 삭제",
+  "chat.delete_no": "취소",
+  "chat.deleted": "채팅은 성공적으로 삭제되었습니다.",
+  "chat.rename": "이름 변경",
+  "chat.new_chat": "새로운 채팅"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Поговори с",
+  "settings.delete_memory": "Удалить память",
+  "settings.delete_memory_title": "Удалить память",
+  "settings.delete_memory_confirm": "Вы уверены, что хотите удалить всю память помощника? Это включает в себя историю разговора, хранимые в RAG данные и графы знаний.",
+  "settings.delete_memory_yes": "Да, это так.",
+  "settings.delete_memory_no": "Нет, нет.",
+  "settings.delete_memory_success": "Все воспоминания удалось удалить.",
+  "settings.delete_memory_error": "Ошибка удаления памяти: {error}",
+  "chat.delete": "Удалить чат",
+  "chat.delete_confirm": "Удалите чат \"{title}\"?",
+  "chat.delete_yes": "Да, удалить",
+  "chat.delete_no": "Отменить",
+  "chat.deleted": "Чат удален успешно.",
+  "chat.rename": "Переименование",
+  "chat.new_chat": "Новый чат"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "ምስ",
+  "settings.delete_memory": "ዝኽሪ ኣጥፍእ",
+  "settings.delete_memory_title": "ዝኽሪ ኣጥፍእ",
+  "settings.delete_memory_confirm": "ናይ'ቲ ሓጋዚ ዝኽሪ ኩሉ ክትሰርዝ ከም እትደሊ ርግጸኛ ዲኻ? እዚ ድማ ታሪኽ ዝርርብ፡ RAG ዝተሓማመ ዳታታትን ግራፊክታት ፍልጠት ይርከቦ። ክትቅጽል ትደሊዶ?",
+  "settings.delete_memory_yes": "እወ",
+  "settings.delete_memory_no": "ኣይፋል",
+  "settings.delete_memory_success": "ኵሉ መዘከርታ ብዓወት ተሰርሐ።",
+  "settings.delete_memory_error": "ጌጋ ናይ ምዝካር ስጉምቲ: {ስሕተት}",
+  "chat.delete": "ቻት ስረዝ",
+  "chat.delete_confirm": "'{title}' ክሰረዝ'ዶ? እዚ ተግባር እዚ ክስረዝ ኣይክእልን እዩ።",
+  "chat.delete_yes": "እወ፡ ክሰርዝ",
+  "chat.delete_no": "ምቅላስ",
+  "chat.deleted": "ቻት ብዓወት ተሰርሐ።",
+  "chat.rename": "ስሙ ቀይር",
+  "chat.new_chat": "ሓድሽ ቻት"
 }

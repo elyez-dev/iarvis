@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Kōrero ki",
+  "settings.delete_memory": "Whakakorea te Maumahara",
+  "settings.delete_memory_title": "Whakakorea te Maumahara",
+  "settings.delete_memory_confirm": "Kei te hiahia koe ki te muku i te mahara katoa o te kaiawhina? Kei roto i tenei he hītori korerorero, raraunga kua rongoa i te RAG me nga mahere matauranga. Kei te hiahia koe ki te haere tonu?",
+  "settings.delete_memory_yes": "Ae, e pai ana",
+  "settings.delete_memory_no": "Kāore",
+  "settings.delete_memory_success": "Kua oti te whakakore i ngā mahara katoa.",
+  "settings.delete_memory_error": "He hapa te muku i te mahara: {kino}",
+  "chat.delete": "Mukua te kōrerorero",
+  "chat.delete_confirm": "Ka whakakorea te kōrerorero '{title}'?",
+  "chat.delete_yes": "Ae, ka whakakorea",
+  "chat.delete_no": "Whakakorea",
+  "chat.deleted": "Kua whakakorea te kōrerorero.",
+  "chat.rename": "Whakahoki ingoa",
+  "chat.new_chat": "He kōrerorero hou"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "ສົນທະນາກັບ",
+  "settings.delete_memory": "ລຶບຄວາມຊົງ ຈໍາ",
+  "settings.delete_memory_title": "ລຶບຄວາມຊົງ ຈໍາ",
+  "settings.delete_memory_confirm": "ທ່ານແນ່ໃຈວ່າທ່ານຕ້ອງການລຶບຄວາມຊົງ ຈໍາ ຂອງຜູ້ຊ່ວຍທັງ ຫມົດ ນີ້ລວມທັງປະຫວັດການສົນທະນາ, ຂໍ້ມູນທີ່ເກັບໄວ້ໃນ RAG ແລະກາຟຄວາມຮູ້. ທ່ານຕ້ອງການສືບຕໍ່ບໍ?",
+  "settings.delete_memory_yes": "ແມ່ນແລ້ວ",
+  "settings.delete_memory_no": "ບໍ່",
+  "settings.delete_memory_success": "ຄວາມຊົງ ຈໍາ ທັງ ຫມົດ ໄດ້ຖືກລຶບອອກດ້ວຍຜົນ ສໍາ ເລັດ.",
+  "settings.delete_memory_error": "ຄວາມຜິດພາດໃນການລຶບຄວາມຊົງ ຈໍາ: {ຄວາມຜິດພາດ}",
+  "chat.delete": "ລຶບການສົນທະນາ",
+  "chat.delete_confirm": "ລຶບ chat '{title}? ການກະ ທໍາ ນີ້ບໍ່ສາມາດເຮັດໄດ້.",
+  "chat.delete_yes": "ແມ່ນແລ້ວ, ລຶບ",
+  "chat.delete_no": "ຍົກເລີກ",
+  "chat.deleted": "ການສົນທະນາຖືກລຶບອອກດ້ວຍຜົນສໍາເລັດ.",
+  "chat.rename": "ປ່ຽນຊື່",
+  "chat.new_chat": "Chat ໃຫມ່"
 }

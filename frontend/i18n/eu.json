@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Hitz egin berarekin.",
+  "settings.delete_memory": "Ezabatu memoria",
+  "settings.delete_memory_title": "Ezabatu memoria",
+  "settings.delete_memory_confirm": "Ziur zaude laguntzailearen memoria guztia ezabatu nahi duzula?",
+  "settings.delete_memory_yes": "Bai, bai.",
+  "settings.delete_memory_no": "Ez, ez.",
+  "settings.delete_memory_success": "Oroimen guztia ezabatu da.",
+  "settings.delete_memory_error": "Akats bat memoria ezabatzeko: {errore}",
+  "chat.delete": "Ezabatu txat",
+  "chat.delete_confirm": "Ezabatu \"{title}\" elkarrizketa?",
+  "chat.delete_yes": "Bai, ezabatuko dut.",
+  "chat.delete_no": "Bertan behera utz",
+  "chat.deleted": "Txateak porrot egin du.",
+  "chat.rename": "Izen aldaketa",
+  "chat.new_chat": "Txate berri bat"
 }

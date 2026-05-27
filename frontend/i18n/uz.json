@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "bilan suhbatlashing",
+  "settings.delete_memory": "Xotiralarni oʻchirish",
+  "settings.delete_memory_title": "Xotiralarni oʻchirish",
+  "settings.delete_memory_confirm": "Siz yordamchining barcha xotirasini o'chirib tashlashni xohlaysizmi? Bu suhbat tarixini, RAGda saqlangan ma'lumotlarni va ma'lumot grafikalarini o'z ichiga oladi.",
+  "settings.delete_memory_yes": "Ha, shunday",
+  "settings.delete_memory_no": "Yoʻq",
+  "settings.delete_memory_success": "Barcha xotira muvaffaqiyatli o'chirildi.",
+  "settings.delete_memory_error": "Xotira o'chirib tashlashda xato: {xato}",
+  "chat.delete": "Chatni oʻchirish",
+  "chat.delete_confirm": "\"{title}\" chaatni o'chirish? Ushbu harakat bekor qilinmaydi.",
+  "chat.delete_yes": "Ha, o'chirib tashlang",
+  "chat.delete_no": "bekor qilish",
+  "chat.deleted": "Chat muvaffaqiyatli o'chirildi.",
+  "chat.rename": "Nomini oʻzgartirish",
+  "chat.new_chat": "Yangi suhbat"
 }

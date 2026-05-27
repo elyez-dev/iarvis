@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Pogovorite se z",
+  "settings.delete_memory": "Izbrišite spomin",
+  "settings.delete_memory_title": "Izbrišite spomin",
+  "settings.delete_memory_confirm": "Ste prepričani, da želite izbrisati vse pomnilnike asistenta?",
+  "settings.delete_memory_yes": "-Ja, res.",
+  "settings.delete_memory_no": "Ne, ne.",
+  "settings.delete_memory_success": "Vse spomine so bile uspešno izbrisane.",
+  "settings.delete_memory_error": "Napaka pri brisanju pomnilnika: {napaka}",
+  "chat.delete": "Izbrišite klepet",
+  "chat.delete_confirm": "Če je to mogoče, ne moreš preklicati.",
+  "chat.delete_yes": "Ja, izbrisati",
+  "chat.delete_no": "Odpoved",
+  "chat.deleted": "Čat je uspešno izbrisan.",
+  "chat.rename": "Premenitev imena",
+  "chat.new_chat": "Novi klepet"
 }

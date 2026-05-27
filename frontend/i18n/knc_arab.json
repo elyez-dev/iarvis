@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "تَحَدَّثْ مَعَ",
+  "settings.delete_memory": "مُحَرِّفُ الْمَذْكَرِ",
+  "settings.delete_memory_title": "مُحَرِّفُ الْمَذْكَرِ",
+  "settings.delete_memory_confirm": "أَتَأْمَنُونَ أَنْ تَمْحُوْنَ كُلَّ ذِكْرِ المُسَاعِدِ؟ يَتَضَمَّنُ هَذَا مِنْ سِتْرِ المَحادِثَاتِ، وَبَيْنَهُمْ دَاءُ مَخْزُوْنَ RAG وَجَرَافَاتُ المعْرِفَةِ. أَتَرِيدُ أَنْ تَتَمَامَلَ؟",
+  "settings.delete_memory_yes": "بَلْ",
+  "settings.delete_memory_no": "لاَ",
+  "settings.delete_memory_success": "كُلُّ الْمَذْكِرِ مَحْذُوفَ بِنَجَاحٍ.",
+  "settings.delete_memory_error": "خطأ في حذف الذاكرة: {خطأ}",
+  "chat.delete": "مُحَذِّفُ المُحادَثَةِ",
+  "chat.delete_confirm": "مُحَيِّرُ الدّعَاءِ \"{ عنوان}؟ هَذَا الإجْرَامُ لا يُمْكِنُ أَنْ يُمْكِنَ أَنْ يُمْكِنَ",
+  "chat.delete_yes": "بَلْ، مُحَذِّفْ",
+  "chat.delete_no": "إلغاء",
+  "chat.deleted": "مُحَرَّرَةٌ مُحَرَّرَةٌ بِنَجَاحٍ.",
+  "chat.rename": "تَسْمِي",
+  "chat.new_chat": "حديث جديد"
 }

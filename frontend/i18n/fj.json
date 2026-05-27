@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Veitalanoa kei",
+  "settings.delete_memory": "Vakamatei na iVakananumi",
+  "settings.delete_memory_title": "Vakamatei na iVakananumi",
+  "settings.delete_memory_confirm": "O vakadeitaka ni o via bokoca na ka kece e dau cakava na dauveivuke? E okati kina na itukutuku ni veivosaki, na itukutuku e maroroi ena RAG kei na itukutuku ni kila ka. O via tomana tiko?",
+  "settings.delete_memory_yes": "Io, e dina",
+  "settings.delete_memory_no": "Sega",
+  "settings.delete_memory_success": "Sa boko vinaka na nanuma kece.",
+  "settings.delete_memory_error": "Cala ni bokoci na nanuma: {cala}",
+  "chat.delete": "Vukica na veivosaki",
+  "chat.delete_confirm": "Me boko na ivosavosa '{title}'? E sega ni rawa ni veisautaki na ka oqo.",
+  "chat.delete_yes": "Io, bokoca",
+  "chat.delete_no": "Vakatabui",
+  "chat.deleted": "Sa boko vinaka na veitalanoa.",
+  "chat.rename": "Yaca tale",
+  "chat.new_chat": "Veitalanoa Vou"
 }

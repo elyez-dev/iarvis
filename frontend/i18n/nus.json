@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Lät kɛ",
+  "settings.delete_memory": "Käk Ŋäc",
+  "settings.delete_memory_title": "Käk Ŋäc",
+  "settings.delete_memory_confirm": "Ji̱n ŋa̱c ɛn ɣöö görɛ ɣöö bi̱ ŋaknɔmni̱ diaal tin caa la̱t ɛ jak kä ruac, kä bi̱ kɛ kuic kɛ ruac, kɛnɛ ŋäc ŋɔaani̱ tin ca tɔ̱w kɛ RAG.",
+  "settings.delete_memory_yes": "Ɛpuc",
+  "settings.delete_memory_no": "/Ciee jɛn",
+  "settings.delete_memory_success": "Ca ŋäc ŋɔaani diaal thöp kɛ buɔ̱m.",
+  "settings.delete_memory_error": "Mi̱ ci̱ ca̱r mi̱ ci̱ ca̱r kɛ ɣöö bɛ cu car: {mi̱ ci̱ tuɔɔk}",
+  "chat.delete": "Kɛnɛ ruac",
+  "chat.delete_confirm": "Kɛn ruac /ca dee luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ kɛ luäŋ.",
+  "chat.delete_yes": "Ɣɔ̱ɔ̱n, carɛ jɛ",
+  "chat.delete_no": "Läkdɛ",
+  "chat.deleted": "Ca ruacdɛ thöp kɛ pɛ̈th.",
+  "chat.rename": "Cuaa ciötdɛ nyɔk kɛ nyɔk kɛ cɔɔli̱",
+  "chat.new_chat": "Cäät mi̱ pay tuɔɔk"
 }

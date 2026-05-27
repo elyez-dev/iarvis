@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Agsarsarita ken",
+  "settings.delete_memory": "Ikkatem ti Memoria",
+  "settings.delete_memory_title": "Ikkatem ti Memoria",
+  "settings.delete_memory_confirm": "Sigurado ka a kayatmo a pukawen ti amin a memorya ti asistent? Kasla ti pakasaritaan ti sarita, RAG a naurnong a datos ken graphs ti pannakaammo. Kayatmo kadi a ituloy?",
+  "settings.delete_memory_yes": "Wen, wen",
+  "settings.delete_memory_no": "Saan",
+  "settings.delete_memory_success": "Naimpusuan a napunas ti amin a pakalaglagipan.",
+  "settings.delete_memory_error": "Lalaki a mangikkat iti memorya: {error}",
+  "chat.delete": "Ikkatem ti saritaan",
+  "chat.delete_confirm": "Ikkatem ti '{title}' a pagsaritaan?",
+  "chat.delete_yes": "Wen, ikkatem",
+  "chat.delete_no": "Panagansela",
+  "chat.deleted": "Naimpusuan a naikkat ti chat.",
+  "chat.rename": "Panagiinnagan",
+  "chat.new_chat": "Baro a Chat"
 }

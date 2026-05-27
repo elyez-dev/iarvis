@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Toktok wantaim",
+  "settings.delete_memory": "Kisim Bek Ol Samting",
+  "settings.delete_memory_title": "Kisim Bek Ol Samting",
+  "settings.delete_memory_confirm": "Yu laik rausim olgeta samting bilong assistant? Dispela i makim stori bilong toktok, RAG save na save grafis. Yu laik go moa yet?",
+  "settings.delete_memory_yes": "Yes, yu ken",
+  "settings.delete_memory_no": "Nogat",
+  "settings.delete_memory_success": "Ol i bin rausim olgeta samting bilong tingting bilong ol.",
+  "settings.delete_memory_error": "Ol i rausim tingting: {eror}",
+  "chat.delete": "Slipim toksave",
+  "chat.delete_confirm": "Toktok bilong dispela toktok i no inap senis.",
+  "chat.delete_yes": "Yes, rausim",
+  "chat.delete_no": "Kisim bek",
+  "chat.deleted": "Ol i rausim toksave bilong ol long rot bilong toktok.",
+  "chat.rename": "Nem bilong narapela",
+  "chat.new_chat": "Nupela toktok"
 }

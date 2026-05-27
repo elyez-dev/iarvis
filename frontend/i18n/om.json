@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "waliin mari'adhaa",
+  "settings.delete_memory": "Yaadannoo Duubaa",
+  "settings.delete_memory_title": "Yaadannoo Duubaa",
+  "settings.delete_memory_confirm": "Seenaa marii, odeeffannoo RAG fi graafika beekumsa dabalatee, yaada kee hunda ni balleessa.",
+  "settings.delete_memory_yes": "Eeyyee",
+  "settings.delete_memory_no": "Hin ta'u",
+  "settings.delete_memory_success": "Yaadannoon hundi milkaa'ina argatee ni dhumame.",
+  "settings.delete_memory_error": "Dogoggoraan yaadannoo balleessu: {dhibbaa}",
+  "chat.delete": "Qophii qoosaas ni balleessa",
+  "chat.delete_confirm": "'{title}' qoosachuu irraa fuudhu? Gocha kana deebisee hin deebisu.",
+  "chat.delete_yes": "Eeyyee, balleessaa",
+  "chat.delete_no": "Galuu",
+  "chat.deleted": "Qophii haasawaa milkaa'ina argatee haasa'e.",
+  "chat.rename": "Maqaa jijjiiramaa",
+  "chat.new_chat": "Qophii Haaraa"
 }

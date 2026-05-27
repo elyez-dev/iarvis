@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "அரட்டை",
+  "settings.delete_memory": "நினைவகத்தை நீக்கு",
+  "settings.delete_memory_title": "நினைவகத்தை நீக்கு",
+  "settings.delete_memory_confirm": "நீங்கள் உதவியாளரின் நினைவகத்தை நீக்க விரும்புகிறீர்களா? இதில் உரையாடல் வரலாறு, RAG சேமித்த தரவு மற்றும் அறிவு வரைபடங்கள் அடங்கும். நீங்கள் தொடர விரும்புகிறீர்களா?",
+  "settings.delete_memory_yes": "ஆம்",
+  "settings.delete_memory_no": "இல்லை",
+  "settings.delete_memory_success": "அனைத்து நினைவகங்களும் வெற்றிகரமாக நீக்கப்பட்டுள்ளன.",
+  "settings.delete_memory_error": "நினைவகத்தை நீக்குவதில் தவறுஃ {தவறு}",
+  "chat.delete": "அரட்டை நீக்கவும்",
+  "chat.delete_confirm": "'{title}' என்ற உரையாடலை நீக்கவும்? இந்த செயலைத் திரும்பப் பெற முடியாது.",
+  "chat.delete_yes": "ஆம், நீக்கவும்",
+  "chat.delete_no": "ரத்து செய்ய",
+  "chat.deleted": "அரட்டை வெற்றிகரமாக நீக்கப்பட்டது.",
+  "chat.rename": "பெயர் மாற்றம்",
+  "chat.new_chat": "புதிய அரட்டை"
 }

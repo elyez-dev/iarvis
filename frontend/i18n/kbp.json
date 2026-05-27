@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Ñɔɔzɩ ña-tɩ nɛ ŋyɔɔdɩnɩ-ɩ",
+  "settings.delete_memory": "Ñɔɔzɩ tɔm ndʋ tɩ-yɔɔ",
+  "settings.delete_memory_title": "Ñɔɔzɩ tɔm ndʋ tɩ-yɔɔ",
+  "settings.delete_memory_confirm": "Ŋsɔɔlaa se ŋlɩzɩ tɔm susuu tʋmɩyɛ nɖɩ ɖɩ-taa tɔm susuu tʋmɩyɛ tɩŋa yɔ?",
+  "settings.delete_memory_yes": "Ɛɛɛ",
+  "settings.delete_memory_no": "Pɩfɛyɩ ɖeu",
+  "settings.delete_memory_success": "Paɖaɣnɩ-wɛ ɖʋʋ tɔm ndʋ payɩ pamaɣzɩɣ yɔ.",
+  "settings.delete_memory_error": "Pɩtɩŋna se ŋlɩzɩ tɔm ndʋ tɩ-taa: {ɛyʋtʋ}",
+  "chat.delete": "Ñɔɔzɩ tɔm susuu",
+  "chat.delete_confirm": "Pɩtɩkɛ pɩpɩzɩɣ nɛ pɩla mbʋ.",
+  "chat.delete_yes": "Ɛɛɛ, ŋcosi-i",
+  "chat.delete_no": "Kʋyɩ",
+  "chat.deleted": "Paɖɩzɩ-ɩ nɛ pɩla-ɩ leleŋ.",
+  "chat.rename": "Pɛlɛɣzɩ-ɩ hɩɖɛ",
+  "chat.new_chat": "Tɔm susuu tʋmɩyɛ kɩfaɖɛ"
 }

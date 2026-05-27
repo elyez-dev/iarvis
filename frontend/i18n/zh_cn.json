@@ -223,5 +223,20 @@
     "zh_cn": "简体中文",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "聊天",
+  "settings.delete_memory": "删除记忆",
+  "settings.delete_memory_title": "删除记忆",
+  "settings.delete_memory_confirm": "你是否想删除助理的全部记忆?包括对话历史,RAG存储的数据和知识图表.你是否想继续?",
+  "settings.delete_memory_yes": "现在",
+  "settings.delete_memory_no": "没有",
+  "settings.delete_memory_success": "所有记忆都已成功被删除.",
+  "settings.delete_memory_error": "删除内存的错误: {错误}",
+  "chat.delete": "删除聊天",
+  "chat.delete_confirm": "删除聊天'{title}? 这项操作不能撤销.",
+  "chat.delete_yes": "是的,删除",
+  "chat.delete_no": "取消",
+  "chat.deleted": "聊天成功删除.",
+  "chat.rename": "改名",
+  "chat.new_chat": "新的聊天"
 }

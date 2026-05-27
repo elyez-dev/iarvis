@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chat pamwe",
+  "settings.delete_memory": "Bvisa Ndangariro",
+  "settings.delete_memory_title": "Bvisa Ndangariro",
+  "settings.delete_memory_confirm": "Une chokwadi here kuti unoda kudzima zvose zvekuyeuka kweanobatsira? Izvi zvinosanganisira nhoroondo yekutaurirana, RAG yakachengetwa data uye ruzivo rwekuziva. Unoda kuenderera mberi here?",
+  "settings.delete_memory_yes": "Hungu",
+  "settings.delete_memory_no": "Kwete",
+  "settings.delete_memory_success": "Ndangariro dzose dzakabviswa zvinobudirira.",
+  "settings.delete_memory_error": "Kukanganisa kubvisa ndangariro: {kanganiso}",
+  "chat.delete": "Bvisa chat",
+  "chat.delete_confirm": "Bvisa chati '{title}'?",
+  "chat.delete_yes": "Hungu, bvisa",
+  "chat.delete_no": "Kubvisa",
+  "chat.deleted": "Chat yakabviswa zvinobudirira.",
+  "chat.rename": "Zita idzva",
+  "chat.new_chat": "Chat itsva"
 }

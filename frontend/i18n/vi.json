@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Nói chuyện với",
+  "settings.delete_memory": "Xóa trí nhớ",
+  "settings.delete_memory_title": "Xóa trí nhớ",
+  "settings.delete_memory_confirm": "Bạn có chắc rằng bạn muốn xóa tất cả bộ nhớ của trợ lý? Điều này bao gồm lịch sử cuộc trò chuyện, dữ liệu được lưu trữ RAG và biểu đồ kiến thức. Bạn có muốn tiếp tục?",
+  "settings.delete_memory_yes": "- Phải.",
+  "settings.delete_memory_no": "Không",
+  "settings.delete_memory_success": "Tất cả bộ nhớ đã được xóa thành công.",
+  "settings.delete_memory_error": "Hình ảnh lỗi xóa bộ nhớ: { lỗi}",
+  "chat.delete": "Xóa trò chuyện",
+  "chat.delete_confirm": "xóa chat '{title}? hành động này không thể không được thực hiện.",
+  "chat.delete_yes": "Vâng, xóa",
+  "chat.delete_no": "Tháo lại",
+  "chat.deleted": "Chat đã bị xóa thành công.",
+  "chat.rename": "Tên đổi",
+  "chat.new_chat": "Chuyện mới"
 }

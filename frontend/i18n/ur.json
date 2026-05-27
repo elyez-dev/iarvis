@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "چیٹ کے ساتھ",
+  "settings.delete_memory": "میموری کو حذف کریں",
+  "settings.delete_memory_title": "میموری کو حذف کریں",
+  "settings.delete_memory_confirm": "کیا آپ اسسٹنٹ کی ساری میموری حذف کرنا چاہتے ہیں؟ اس میں گفتگو کی تاریخ، RAG ذخیرہ کردہ ڈیٹا اور علم کے گراف شامل ہیں۔ کیا آپ جاری رکھنا چاہتے ہیں؟",
+  "settings.delete_memory_yes": "ہاں",
+  "settings.delete_memory_no": "نہیں",
+  "settings.delete_memory_success": "تمام میموری کامیابی سے حذف کر دیا گیا ہے.",
+  "settings.delete_memory_error": "میموری کو حذف کرنے میں غلطی: {غلطی}",
+  "chat.delete": "چیٹ حذف کریں",
+  "chat.delete_confirm": "چیٹ '{ عنوان} حذف کریں؟ یہ کارروائی منسوخ نہیں کی جاسکتی ہے۔",
+  "chat.delete_yes": "ہاں، حذف کریں",
+  "chat.delete_no": "منسوخ کرنا",
+  "chat.deleted": "چیٹ کامیابی سے حذف کر دیا گیا.",
+  "chat.rename": "نام تبدیل کرنا",
+  "chat.new_chat": "نیا چیٹ"
 }

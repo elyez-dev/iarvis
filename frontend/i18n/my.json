@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "စကားပြောဆို",
+  "settings.delete_memory": "မှတ်ဉာဏ်ကို ဖျက်ပစ်ပါ",
+  "settings.delete_memory_title": "မှတ်ဉာဏ်ကို ဖျက်ပစ်ပါ",
+  "settings.delete_memory_confirm": "အကူအညီရဲ့ မှတ်ဉာဏ်အားလုံးကို ဖျက်ချင်တာ သေချာလား။ ဒါက စကားပြောမှတ်တမ်း၊ RAG သိုလှောင်ထားတဲ့ ဒေတာနဲ့ အသိပညာဂရပ်တွေ ပါဝင်ပါတယ်။ ဆက်လုပ်ချင်လား။",
+  "settings.delete_memory_yes": "ဟုတ်တယ်",
+  "settings.delete_memory_no": "မဟုတ်ဘူး။",
+  "settings.delete_memory_success": "မှတ်ဉာဏ်အားလုံး အောင်မြင်စွာ ဖျက်ပစ်ထားတယ်။",
+  "settings.delete_memory_error": "မှတ်ဉာဏ်ကို ဖျက်ခြင်းအမှား: {အမှား}",
+  "chat.delete": "စကားပြောကို ဖျက်ပစ်ပါ",
+  "chat.delete_confirm": "\"{title}\" ကို ဖျက်ပါ",
+  "chat.delete_yes": "ဟုတ်တယ်၊ ဖျက်ပစ်ပါ။",
+  "chat.delete_no": "ဖျက်သိမ်းခြင်း",
+  "chat.deleted": "စကားပြောဆိုမှု အောင်မြင်စွာ ဖျက်သိမ်းခံရတယ်။",
+  "chat.rename": "အမည်ပြောင်းခြင်း",
+  "chat.new_chat": "Chat အသစ်"
 }

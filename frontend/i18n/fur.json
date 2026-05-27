@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Cjale cun",
+  "settings.delete_memory": "Scjariâ la memorie",
+  "settings.delete_memory_title": "Scjariâ la memorie",
+  "settings.delete_memory_confirm": "Tu sês sigûr di volê scancelade dute la memorie dal assistent? Chest al cjape dentri la storie des conversazions, i dâts memorizâts di RAG e i grafics di cognossince. Tu vuelis continuâ?",
+  "settings.delete_memory_yes": "Sì, al è stât",
+  "settings.delete_memory_no": "No, no, no",
+  "settings.delete_memory_success": "Dutis lis memoris a son stadis eliminadis cun sucès.",
+  "settings.delete_memory_error": "Erôr di scancelâ la memorie: {erôr}",
+  "chat.delete": "Sborse il discors",
+  "chat.delete_confirm": "Scjampâ il discors '{titol}'? Cheste azion no pues jessi revocade.",
+  "chat.delete_yes": "Sì, scancelade",
+  "chat.delete_no": "Cancelâ",
+  "chat.deleted": "Il chat al è stât eliminât cun sucès.",
+  "chat.rename": "Rinasimâ",
+  "chat.new_chat": "Nûf chat"
 }

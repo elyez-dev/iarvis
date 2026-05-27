@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Jọ̀rọ̀ pẹ̀lú",
+  "settings.delete_memory": "Máa Fi Ẹ̀mí Rántí",
+  "settings.delete_memory_title": "Máa Fi Ẹ̀mí Rántí",
+  "settings.delete_memory_confirm": "Ṣé o ti rí i dájú pé o fẹ́ pa gbogbo ìrántí olùrànlọ́wọ́ náà run? Èyí kan ìtàn ìjíròrò, àwọn data tí a pa mọ́ nínú RAG àti àwọn àwòrán ìmọ̀. Ṣé o fẹ́ tẹ̀ síwájú?",
+  "settings.delete_memory_yes": "Bẹ́ẹ̀ ni",
+  "settings.delete_memory_no": "Kò sí",
+  "settings.delete_memory_success": "Gbogbo ohun tó ń rántí ni wọ́n ti pa run.",
+  "settings.delete_memory_error": "Àṣìṣe tó ń mú kí ìrántí kúrò: {ìṣòro}",
+  "chat.delete": "Fún ìjíròrò náà",
+  "chat.delete_confirm": "Ṣàtúnṣe ìjíròrò '{title}'?",
+  "chat.delete_yes": "Bẹ́ẹ̀ ni, yọ ọ́ kúrò",
+  "chat.delete_no": "Fìdíò",
+  "chat.deleted": "A ti yọ ìjíròrò náà kúrò lọ́nà tó ṣàṣeyọrí.",
+  "chat.rename": "Tún orúkọ rẹ̀ pa dà",
+  "chat.new_chat": "Ìjíròrò tuntun"
 }

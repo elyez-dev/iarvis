@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Rozprávajte sa s",
+  "settings.delete_memory": "Vymazať pamäť",
+  "settings.delete_memory_title": "Vymazať pamäť",
+  "settings.delete_memory_confirm": "Ste si istý, že chcete odstrániť všetku pamäť asistentky?",
+  "settings.delete_memory_yes": "Áno, áno.",
+  "settings.delete_memory_no": "Nie, nie.",
+  "settings.delete_memory_success": "Všetky spomienky boli úspešne vymazané.",
+  "settings.delete_memory_error": "Chyb odstránenia pamäte: {error}",
+  "chat.delete": "Zmazať rozhovor",
+  "chat.delete_confirm": "Vymazať rozhovor '{title}'? Tento krok nemôže byť zrušený.",
+  "chat.delete_yes": "Áno, vymazať",
+  "chat.delete_no": "Zrušiť",
+  "chat.deleted": "Čat bol úspešne odstránený.",
+  "chat.rename": "Premenovanie mena",
+  "chat.new_chat": "Nový chat"
 }

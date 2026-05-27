@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Dumbiskanani na",
+  "settings.delete_memory": "Kuŵaleka Kukumbuka",
+  "settings.delete_memory_title": "Kuŵaleka Kukumbuka",
+  "settings.delete_memory_confirm": "Kasi mukukhumba kufumiska vyose ivyo wakulemba, nga ni nkhani za mu Baibolo, nkhani za mu Baibolo, na vinyake ivyo vikusangika mu Baibolo?",
+  "settings.delete_memory_yes": "Enya",
+  "settings.delete_memory_no": "Yayi",
+  "settings.delete_memory_success": "Vinthu vyose ivyo tikukumbuka vyaŵa kuti vyapoka yayi.",
+  "settings.delete_memory_error": "Kulakwiska kukumbukira: {photo}",
+  "chat.delete": "Fumura chati",
+  "chat.delete_confirm": "Mulimose umo mungachitira, mungamazga yayi.",
+  "chat.delete_yes": "Enya, ghana",
+  "chat.delete_no": "Kulekeska",
+  "chat.deleted": "Mauthenga ghakachotsedwa makora.",
+  "chat.rename": "Zina linyake",
+  "chat.new_chat": "Kuchezga na ŵanthu"
 }

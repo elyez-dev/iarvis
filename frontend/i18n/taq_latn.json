@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Ad eqqil s",
+  "settings.delete_memory": "Ikfa tanfust",
+  "settings.delete_memory_title": "Ikfa tanfust",
+  "settings.delete_memory_confirm": "Awen eqqal alwaq wa id eqqalan data tan n RAG d alɣisab n musnat",
+  "settings.delete_memory_yes": "Eqqal",
+  "settings.delete_memory_no": "War t-illa",
+  "settings.delete_memory_success": "Akayad fuk eqqal as eɣrawan",
+  "settings.delete_memory_error": "Alɣisab n efes n akayad: {alɣisab}",
+  "chat.delete": "Ikf- id chat",
+  "chat.delete_confirm": "\"Ijjit n chat\"?",
+  "chat.delete_yes": "Eqqal, efes",
+  "chat.delete_no": "Ajjaraw",
+  "chat.deleted": "Chat eɣrawan s alxidmat",
+  "chat.rename": "Ismawan wi yadnen",
+  "chat.new_chat": "Chat eynaynen"
 }

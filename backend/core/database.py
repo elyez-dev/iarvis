@@ -28,4 +28,22 @@ async def init_database():
             CREATE INDEX IF NOT EXISTS idx_chat_messages_session
             ON chat_messages(session_id, id)
         """)
-    logger.info("chat_messages table ready")
+        await conn.execute("""
+            CREATE TABLE IF NOT EXISTS chats (
+                session_id VARCHAR(255) PRIMARY KEY,
+                title VARCHAR(255) NOT NULL DEFAULT 'New Chat',
+                created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+            )
+        """)
+        await conn.execute("""
+            INSERT INTO chats (session_id, title)
+            SELECT
+                cm.session_id,
+                LEFT(cm.content, 40) || CASE WHEN LENGTH(cm.content) > 40 THEN '...' ELSE '' END
+            FROM chat_messages cm
+            WHERE cm.id IN (
+                SELECT MIN(id) FROM chat_messages GROUP BY session_id
+            )
+            ON CONFLICT (session_id) DO NOTHING
+        """)
+    logger.info("Database tables ready")

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "گفتوگۆ لەگەڵ",
+  "settings.delete_memory": "بیرەوەری سڕێنەوە",
+  "settings.delete_memory_title": "بیرەوەری سڕێنەوە",
+  "settings.delete_memory_confirm": "ئایا دڵنیایت کە دەتەوێت هەموو بیرەوەرییەکانی یاریدەدەرەکەت بشۆرێنیت؟ ئەمە مێژووی گفتوگۆ و زانیارییەکانی RAG و گرافی زانیارییەکان دەگرێتەوە.",
+  "settings.delete_memory_yes": "بەڵێ",
+  "settings.delete_memory_no": "نەخێر",
+  "settings.delete_memory_success": "هەموو بیرەوەرییەکان بە سەرکەوتوویی سڕدران.",
+  "settings.delete_memory_error": "هەڵەی سڕینەوەی بیرەوەری: { هەڵە}",
+  "chat.delete": "سڕینەوەی گفتوگۆ",
+  "chat.delete_confirm": "سڕینەوەی چیت {تایتل}؟ ئەم کردەوەیە ناتوانرێت هەڵوەشێنرێتەوە.",
+  "chat.delete_yes": "بەڵێ، سڕێنەوە",
+  "chat.delete_no": "هەڵوەشاندنەوە",
+  "chat.deleted": "چیتەکە شکسترا بە سەرکەوتوویی.",
+  "chat.rename": "ناوگۆڕان",
+  "chat.new_chat": "چیتی نوێ"
 }

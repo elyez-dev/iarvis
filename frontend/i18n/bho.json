@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "साथे बातचीत",
+  "settings.delete_memory": "स्मृति के हटावे",
+  "settings.delete_memory_title": "स्मृति के हटावे",
+  "settings.delete_memory_confirm": "का आप सुनिश्चित बानी कि आप सहायक के सब स्मृति के हटावल चाहत बानी? एहमें बातचीत इतिहास, RAG संग्रहीत डेटा आउर ज्ञान ग्राफ शामिल बा. का आप आगे बढ़ल चाहत बानी?",
+  "settings.delete_memory_yes": "हाँ, एगो",
+  "settings.delete_memory_no": "नाहीं",
+  "settings.delete_memory_success": "सब स्मृति सफलतापूर्वक मिटा दिहल गइल बा.",
+  "settings.delete_memory_error": "स्मृति हटावल में त्रुटि: {त्रुटि}",
+  "chat.delete": "चैट हटावल जाय",
+  "chat.delete_confirm": "चैट '{title}' हटाईं? इ क्रिया के निरस्त ना कइल जा सकेला.",
+  "chat.delete_yes": "हाँ, हटावे",
+  "chat.delete_no": "रद्द कइल जाय",
+  "chat.deleted": "चैट सफलतापूर्वक हटा दिहल गइल.",
+  "chat.rename": "नाम बदलें",
+  "chat.new_chat": "नया चैट"
 }

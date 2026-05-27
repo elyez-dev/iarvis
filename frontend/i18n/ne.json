@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "कुराकानी",
+  "settings.delete_memory": "मेमोरी मेटाउनुहोस्",
+  "settings.delete_memory_title": "मेमोरी मेटाउनुहोस्",
+  "settings.delete_memory_confirm": "के तपाई निश्चित हुनुहुन्छ कि तपाई सहायकको सबै मेमोरी मेटाउन चाहनुहुन्छ? यसमा कुराकानी इतिहास, RAG भण्डारण गरिएको डाटा र ज्ञान ग्राफहरू समावेश छन्. के तपाई जारी राख्न चाहानुहुन्छ?",
+  "settings.delete_memory_yes": "हो",
+  "settings.delete_memory_no": "होइन",
+  "settings.delete_memory_success": "सबै मेमोरी सफलतापूर्वक मेटाइएको छ।",
+  "settings.delete_memory_error": "मेमोरी मेटाउने त्रुटि: {त्रुटि}",
+  "chat.delete": "च्याट मेटाउनुहोस्",
+  "chat.delete_confirm": "'{title}' च्याट हटाउनुहोस्? यो कार्य रद्द गर्न सकिँदैन।",
+  "chat.delete_yes": "हो, हटाउनुहोस्",
+  "chat.delete_no": "रद्द गर्नु",
+  "chat.deleted": "च्याट सफलतापूर्वक हटाइएको छ।",
+  "chat.rename": "नाम परिवर्तन",
+  "chat.new_chat": "नयाँ च्याट"
 }

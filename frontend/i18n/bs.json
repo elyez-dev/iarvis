@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Čatajte sa",
+  "settings.delete_memory": "Izbrišite pamćenje",
+  "settings.delete_memory_title": "Izbrišite pamćenje",
+  "settings.delete_memory_confirm": "Da li ste sigurni da želite da izbrišete sve memorije asistentka? Ovo uključuje istoriju razgovora, RAG pohranjene podatke i grafe znanja.",
+  "settings.delete_memory_yes": "Da, da.",
+  "settings.delete_memory_no": "Ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne",
+  "settings.delete_memory_success": "Sve pamćenje je uspješno izbrisano.",
+  "settings.delete_memory_error": "Greška brisanja memorije: {greška}",
+  "chat.delete": "Izbrišite ćaskanje",
+  "chat.delete_confirm": "Ne može se poništiti.",
+  "chat.delete_yes": "Da, izbrišite",
+  "chat.delete_no": "Otkazivanje",
+  "chat.deleted": "Čat je uspešno izbrisan.",
+  "chat.rename": "Preimenovanje",
+  "chat.new_chat": "Novi Čat"
 }

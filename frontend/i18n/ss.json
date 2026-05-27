@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chats kanye",
+  "settings.delete_memory": "Cedza Inkumbulo",
+  "settings.delete_memory_title": "Cedza Inkumbulo",
+  "settings.delete_memory_confirm": "Ucinisile yini kutsi ufuna kususa yonkhe imemori yemuntfu losita? Loku kufaka ekhatsi umlandvo wekukhuluma, idatha letigcinwe ku-RAG kanye nemagrafu elwati.",
+  "settings.delete_memory_yes": "Yebo",
+  "settings.delete_memory_no": "Cha, angikakufuni.",
+  "settings.delete_memory_success": "Tonkhe tinkumbulo tiyasuswa.",
+  "settings.delete_memory_error": "Liphutsa lekucitsa inkumbulo: {phutsa}",
+  "chat.delete": "Cima ingcociswano",
+  "chat.delete_confirm": "Cima incoko '{title}'? Lento angeke ichitfwe.",
+  "chat.delete_yes": "Yebo, susa",
+  "chat.delete_no": "Kuyekela",
+  "chat.deleted": "Incwadzi ye-chate icishiwe ngemphumelelo.",
+  "chat.rename": "Kubita kabusha",
+  "chat.new_chat": "Incwadzi lensha"
 }

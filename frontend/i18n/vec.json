@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chat con",
+  "settings.delete_memory": "Elimina ła memoria",
+  "settings.delete_memory_title": "Elimina ła memoria",
+  "settings.delete_memory_confirm": "Seto pì robe so Storia de conversazion, dati memorizzati RAG e grafichi de conosensa?",
+  "settings.delete_memory_yes": "Sì sì",
+  "settings.delete_memory_no": "No ghe xe",
+  "settings.delete_memory_success": "Tutte le memorie xe state cancellate con successo.",
+  "settings.delete_memory_error": "Erore de cancelamento de memoria: {eror}",
+  "chat.delete": "Sbaraxare ła discusion",
+  "chat.delete_confirm": "Sbaraxare el chat '{title}'? Sta azion no se pol revocar.",
+  "chat.delete_yes": "Sì, cancello",
+  "chat.delete_no": "Cancellar",
+  "chat.deleted": "El chat el xe stà canbià con successo.",
+  "chat.rename": "Renome",
+  "chat.new_chat": "Nuovo Chat"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Vulavula na",
+  "settings.delete_memory": "Susa Xitsundzuxo",
+  "settings.delete_memory_title": "Susa Xitsundzuxo",
+  "settings.delete_memory_confirm": "Xana wa tiyiseka leswaku u lava ku sula MHAKA hinkwayo ya mupfuni? Leswi swi katsa matimu ya mabulo, rungula leri hlayisiweke ra RAG ni ti-graph ta vutivi. Xana wa swi lava ku ya emahlweni?",
+  "settings.delete_memory_yes": "Ina, a swi tano.",
+  "settings.delete_memory_no": "A swi tano.",
+  "settings.delete_memory_success": "Ku susiwe rungula hinkwaro hi ndlela leyi humelelaka.",
+  "settings.delete_memory_error": "Xiphiqo xo susa memori: {xihoxo}",
+  "chat.delete": "Susa bulo",
+  "chat.delete_confirm": "Ku susa xingheniso lexi nge '{title}'?",
+  "chat.delete_yes": "Ina, susa",
+  "chat.delete_no": "Ku Tsema",
+  "chat.deleted": "Ku hlanguriwa ka bulo hi ndlela leyi humelelaka.",
+  "chat.rename": "Ku Cinca Mavito",
+  "chat.new_chat": "Ku Vulavula Hi Swilo Leswintshwa"
 }

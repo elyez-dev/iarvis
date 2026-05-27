@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chats amb",
+  "settings.delete_memory": "Eliminar la memòria",
+  "settings.delete_memory_title": "Eliminar la memòria",
+  "settings.delete_memory_confirm": "Se vòls suprimir tota la memòria de l'assistent? Aquò inclutz l'istòria de conversacion, los dados amagats en RAG e los grafics de coneissença. Volètz continuar?",
+  "settings.delete_memory_yes": "Òc!",
+  "settings.delete_memory_no": "Pas de",
+  "settings.delete_memory_success": "Totas las memòrias son estadas suprimidas amb succès.",
+  "settings.delete_memory_error": "Error de suppression de memòria: {error}",
+  "chat.delete": "Eliminar lo chat",
+  "chat.delete_confirm": "Eliminar lo chat '{title}'? Aquesta accion pòt pas èsser annulada.",
+  "chat.delete_yes": "Si, suprimir",
+  "chat.delete_no": "Cancellar",
+  "chat.deleted": "Lo chat es suprimit amb succès.",
+  "chat.rename": "Renomenar",
+  "chat.new_chat": "Novèla chat"
 }

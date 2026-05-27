@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "- Falar com",
+  "settings.delete_memory": "Eliminar a memória",
+  "settings.delete_memory_title": "Eliminar a memória",
+  "settings.delete_memory_confirm": "Você tem certeza de que quer excluir toda a memória do assistente? Isso inclui histórico de conversação, dados armazenados em RAG e gráficos de conhecimento.",
+  "settings.delete_memory_yes": "Sim, sim.",
+  "settings.delete_memory_no": "Não, não.",
+  "settings.delete_memory_success": "Toda a memória foi excluída com sucesso.",
+  "settings.delete_memory_error": "Erro na exclusão da memória: {erro}",
+  "chat.delete": "Excluir o chat",
+  "chat.delete_confirm": "Eliminar o chat '{title}'? Esta ação não pode ser desfeita.",
+  "chat.delete_yes": "Sim, excluir",
+  "chat.delete_no": "Cancelar",
+  "chat.deleted": "O chat foi excluído com sucesso.",
+  "chat.rename": "Renomeamento",
+  "chat.new_chat": "Novo chat"
 }

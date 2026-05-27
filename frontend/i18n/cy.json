@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Cats gyda",
+  "settings.delete_memory": "Dileu'r Cof",
+  "settings.delete_memory_title": "Dileu'r Cof",
+  "settings.delete_memory_confirm": "Ydych chi'n siŵr eich bod am ddileu pob cof y cynorthwyydd? Mae hyn yn cynnwys hanes trafodaeth, data storio RAG a graffiau gwybodaeth. A ydych chi am barhau?",
+  "settings.delete_memory_yes": "Y mae hynny'n wir",
+  "settings.delete_memory_no": "Nid yw",
+  "settings.delete_memory_success": "Mae'r holl gofyd wedi cael ei ddileu'n llwyddiannus.",
+  "settings.delete_memory_error": "Ychwanegwch y ddolen ar gyfer y ddolen",
+  "chat.delete": "Dileu sgwrs",
+  "chat.delete_confirm": "Dileu sgwrs '{title}'? Ni ellir newid y gweithred hon.",
+  "chat.delete_yes": "Oes, dileu",
+  "chat.delete_no": "Canclu",
+  "chat.deleted": "Chwydwyd y sgwrs yn llwyddiannus.",
+  "chat.rename": "Ath-drin enw",
+  "chat.new_chat": "Cats newydd"
 }

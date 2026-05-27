@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Кабар айтуу",
+  "settings.delete_memory": "Эстутумду өчүрүү",
+  "settings.delete_memory_title": "Эстутумду өчүрүү",
+  "settings.delete_memory_confirm": "Сиз жардамчынын бардык эс тутумун өчүрүүнү каалайсызбы? Бул сүйлөшүү тарыхын, RAG сакталган маалыматтарды жана билим графикаларын камтыйт. Сиз улантууну каалайсызбы?",
+  "settings.delete_memory_yes": "Ооба, ошондой",
+  "settings.delete_memory_no": "Жок",
+  "settings.delete_memory_success": "Эстутумдун баары ийгиликтүү өчүрүлгөн.",
+  "settings.delete_memory_error": "Эстутумду өчүрүү катасы: {сүрөт}",
+  "chat.delete": "Чатты өчүрүү",
+  "chat.delete_confirm": "Бул иш-аракет жокко чыгарылбайт.",
+  "chat.delete_yes": "Ооба, жок кылыңыз",
+  "chat.delete_no": "Жок кылуу",
+  "chat.deleted": "Чат ийгиликтүү өчүрүлгөн.",
+  "chat.rename": "Ысым өзгөртүү",
+  "chat.new_chat": "Жаңы чат"
 }

@@ -65,7 +65,53 @@ st.markdown(
 
         /* NARANJITA: tool */
         div[data-testid="stVerticalBlock"]:has(> div[data-testid="stElementContainer"] .bg-tool) {
-            background-color: #fff4e6 !important; 
+            background-color: #fff4e6 !important;
+        }
+
+        div[data-testid="stElementContainer"]:has([data-hook="delete-memory"]) + div[data-testid="stElementContainer"] button[data-testid="stBaseButton-secondary"] {
+            border-color: #dc3545 !important;
+            color: #dc3545 !important;
+            background-color: transparent !important;
+            transition: all 0.3s ease !important;
+        }
+
+        div[data-testid="stElementContainer"]:has([data-hook="delete-memory"]) + div[data-testid="stElementContainer"] button[data-testid="stBaseButton-secondary"]:hover {
+            background-color: #dc35451a !important;
+            border-color: #b02a37 !important;
+            color: #b02a37 !important;
+        }
+
+        /* --- 7. Arreglo Definitivo: Alineación Text Input y Botones de Edición --- */
+
+        /* 1. Seleccionamos toda la fila horizontal que contiene el input de texto "_" */
+        div[data-testid="stHorizontalBlock"]:has(input[aria-label="_"]) {
+            align-items: center !important; /* Centrado vertical general */
+        }
+
+        /* 2. El Label Fantasma: Lo matamos de verdad (Streamlit a veces necesita display:none en el contenedor padre del label) */
+        div[data-testid="stHorizontalBlock"]:has(input[aria-label="_"]) label[data-testid="stWidgetLabel"] {
+            display: none !important;
+        }
+
+        /* 3. La clave: Forzar la altura de todos los VerticalBlocks (las columnas individuales) dentro de esa fila */
+        div[data-testid="stHorizontalBlock"]:has(input[aria-label="_"]) > div[data-testid="stColumn"] > div[data-testid="stVerticalBlock"] {
+            display: flex !important;
+            justify-content: center !important;
+            height: 100% !important; 
+            gap: 0 !important; /* Quitamos cualquier espacio vertical inyectado */
+        }
+
+        /* 4. Neutralizamos el impacto visual del Tooltip (El causante de que la X se desalinee respecto al check) */
+        div[data-testid="stHorizontalBlock"]:has(input[aria-label="_"]) div[data-testid="stTooltipIcon"] {
+            display: block !important;
+            position: static !important;
+            height: auto !important;
+        }
+
+        /* 5. Aseguramos que los contenedores de los botones no tengan margen inferior extra */
+        div[data-testid="stHorizontalBlock"]:has(input[aria-label="_"]) div[data-testid="stElementContainer"] {
+            margin: 0 !important;
+            padding: 0 !important;
         }
     </style>
     """,
@@ -124,6 +170,65 @@ def _load_lang_names():
         return {}
 
 
+# ── delete memory dialog ─────────────────────────────────────────────────
+
+@st.dialog(_t("settings.delete_memory"))
+def _delete_memory_dialog():
+    ts = st.session_state.get("_delete_ts", 0)
+    remaining = max(0, 5 - int(time.time() - ts))
+
+    st.error(_t("settings.delete_memory_confirm"))
+
+    yes_label = _t("settings.delete_memory_yes")
+    no_label = _t("settings.delete_memory_no")
+
+    @st.fragment(run_every="1s")
+    def _yes_button():
+        ts2 = st.session_state.get("_delete_ts", 0)
+        rem = max(0, 5 - int(time.time() - ts2))
+        label = yes_label if rem == 0 else f"{yes_label} ({rem})"
+        disabled = rem > 0
+        if st.button(label, key="delete_yes", disabled=disabled, use_container_width=True, type="primary"):
+            st.session_state.delete_confirmed = True
+            st.session_state.pop("_delete_ts", None)
+            st.rerun()
+
+    col_yes, col_no = st.columns(2)
+    with col_yes:
+        _yes_button()
+    with col_no:
+        if st.button(no_label, key="delete_no", use_container_width=True):
+            st.session_state.pop("_delete_ts", None)
+            st.rerun()
+
+@st.dialog(_t("chat.delete"))
+def _delete_chat_dialog():
+    chat_id = st.session_state.delete_chat_id
+    title = st.session_state.delete_chat_title or ""
+    st.markdown(_t("chat.delete_confirm", title=title))
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button(_t("chat.delete_yes"), use_container_width=True, type="primary"):
+            data, err = _api("DELETE", f"/frontend/chats/{chat_id}", timeout=10)
+            if data:
+                if st.session_state.chat_id == chat_id:
+                    st.session_state.chat_id = None
+                    st.session_state.messages = []
+                    st.session_state.notifications = []
+                    st.session_state._polling_active = False
+                st.session_state.delete_chat_id = None
+                st.session_state.delete_chat_title = None
+                st.toast(_t("chat.deleted"), icon="🗑️")
+                st.rerun()
+            else:
+                st.error(err or "Unknown error")
+    with col2:
+        if st.button(_t("chat.delete_no"), use_container_width=True):
+            st.session_state.delete_chat_id = None
+            st.session_state.delete_chat_title = None
+            st.rerun()
+
+
 # ── session state init ──────────────────────────────────────────────────────
 
 if "chat_id" not in st.session_state:
@@ -145,6 +250,29 @@ if "_sending" not in st.session_state:
     st.session_state._sending = False
 if "_pending_prompt" not in st.session_state:
     st.session_state._pending_prompt = None
+if "delete_confirmed" not in st.session_state:
+    st.session_state.delete_confirmed = False
+if "delete_chat_id" not in st.session_state:
+    st.session_state.delete_chat_id = None
+if "delete_chat_title" not in st.session_state:
+    st.session_state.delete_chat_title = None
+if "editing_chat" not in st.session_state:
+    st.session_state.editing_chat = None
+
+if st.session_state.delete_confirmed:
+    data, err = _api("DELETE", "/frontend/memory", timeout=30)
+    st.session_state.delete_confirmed = False
+    if data:
+        st.session_state.chat_id = None
+        st.session_state.messages = []
+        st.session_state.chats = []
+        st.session_state.notifications = []
+        st.session_state._polling_active = False
+        st.toast(_t("settings.delete_memory_success"), icon="🗑️")
+    else:
+        st.toast(_t("settings.delete_memory_error", error=err or "unknown"), icon="❌")
+    time.sleep(1)
+    st.rerun()
 
 # When language changes, update widget states so selectbox previews
 # match the new translations (Streamlit stores the label text, not
@@ -226,6 +354,12 @@ with st.sidebar:
             _save_setting("theme", new_theme)
             st.rerun()
 
+        st.html('<span data-hook="delete-memory" style="display:none"></span>')
+
+        if st.button(_t("settings.delete_memory"), use_container_width=True):
+            st.session_state._delete_ts = time.time()
+            _delete_memory_dialog()
+
     st.divider()
 
     if st.button(_t("chat.new"), use_container_width=True):
@@ -246,15 +380,62 @@ with st.sidebar:
 
     for chat in st.session_state.chats:
         active = chat["id"] == st.session_state.chat_id
-        label = f"{'●' if active else '○'} {chat['title']}"
-        if st.button(label, key=f"chat_{chat['id']}", use_container_width=True):
-            if st.session_state.chat_id != chat["id"]:
-                st.session_state.chat_id = chat["id"]
-                st.session_state.notifications = []
-                st.session_state._polling_active = False
-                hist, _ = _api("GET", f"/frontend/chats/{chat['id']}/history")
-                st.session_state.messages = hist["messages"] if hist else []
-            st.rerun()
+        editing = st.session_state.editing_chat == chat["id"]
+
+        with st.container(border=True):
+            if editing:
+                # 1. Añadimos gap="small" y ajustamos proporciones
+                col_text, c_save, c_cancel = st.columns([0.76, 0.12, 0.12], vertical_alignment="bottom", gap="small")
+                
+                with col_text:
+                    new_title = st.text_input(
+                        "_",
+                        value=chat["title"],
+                        key=f"rename_{chat['id']}",
+                        label_visibility="collapsed",
+                        max_chars=255,
+                    )
+                with c_save:
+                    # Este tiene tooltip
+                    if st.button("", icon=":material/check:", key=f"save_{chat['id']}", help=_t("chat.rename")):
+                        data, err = _api("PUT", f"/frontend/chats/{chat['id']}", {"title": new_title})
+                        if data:
+                            st.session_state.editing_chat = None
+                            st.rerun()
+                        elif err:
+                            st.toast(str(err))
+                with c_cancel:
+                    # ¡AÑADIMOS EL TOOLTIP AQUÍ! (puedes crear la traducción "chat.cancel" o poner un texto temporal)
+                    if st.button("", icon=":material/close:", key=f"cancel_{chat['id']}", help=_t("chat.delete_no")):
+                        st.session_state.editing_chat = None
+                        st.rerun()
+            else:
+                # 1. gap="small" para que los botones de la derecha queden más juntitos y estéticos
+                col_title, row_edit, row_delete = st.columns([0.76, 0.12, 0.12], vertical_alignment="center", gap="small")
+                
+                with col_title:
+                    label = f"{'●' if active else '○'} {chat['title']}"
+                    # El título SÍ mantiene use_container_width=True para empujar los iconos a la derecha
+                    if st.button(label, key=f"chat_{chat['id']}", use_container_width=True):
+                        st.session_state.editing_chat = None
+                        if st.session_state.chat_id != chat["id"]:
+                            st.session_state.chat_id = chat["id"]
+                            st.session_state.notifications = []
+                            st.session_state._polling_active = False
+                            hist, _ = _api("GET", f"/frontend/chats/{chat['id']}/history")
+                            st.session_state.messages = hist["messages"] if hist else []
+                        st.rerun()
+                        
+                with row_edit:
+                    if st.button("", icon=":material/edit:", key=f"edit_{chat['id']}", help=_t("chat.rename")):
+                        st.session_state.editing_chat = chat["id"]
+                        st.rerun()
+                        
+                with row_delete:
+                    if st.button("", icon=":material/delete:", key=f"del_{chat['id']}", help=_t("chat.delete")):
+                        st.session_state.delete_chat_id = chat["id"]
+                        st.session_state.delete_chat_title = chat["title"]
+                        _delete_chat_dialog()
 
     if not st.session_state.chats and st.session_state.chat_id is None:
         st.caption(_t("chat.empty"))
@@ -262,7 +443,7 @@ with st.sidebar:
 
 # ── main chat area ─────────────────────────────────────────────────────────
 
-st.title(st.session_state.settings.get("Assistant_name", DEFAULTS["Assistant_name"]))
+st.title(f"{_t('chat.title')} {st.session_state.settings.get('Assistant_name', DEFAULTS['Assistant_name'])}")
 
 # ── messages ─────────────────────────────────────────────────────────────────
 
@@ -313,8 +494,8 @@ else:
                         }
                         for ad in action_details
                     ]
-                    st.session_state._polling_active = True
-                    st.session_state._poll_start = time.time()
+                st.session_state._polling_active = True
+                st.session_state._poll_start = time.time()
             else:
                 st.error(err or _t("chat.error_response"))
             st.session_state._sending = False

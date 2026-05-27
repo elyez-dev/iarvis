@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Μιλήστε με",
+  "settings.delete_memory": "Διαγράψτε τη μνήμη",
+  "settings.delete_memory_title": "Διαγράψτε τη μνήμη",
+  "settings.delete_memory_confirm": "Είσαι σίγουρος ότι θέλεις να διαγράψεις όλη τη μνήμη του βοηθού; Αυτό περιλαμβάνει ιστορικό συνομιλιών, τα δεδομένα που αποθηκεύονται στο RAG και τα γραφικά γνώσεων.",
+  "settings.delete_memory_yes": "Ναι, ναι.",
+  "settings.delete_memory_no": "Όχι, όχι.",
+  "settings.delete_memory_success": "Όλη η μνήμη έχει διαγραφεί με επιτυχία.",
+  "settings.delete_memory_error": "Λάθος διαγραφής μνήμης: {λάθος}",
+  "chat.delete": "Διαγράψτε το chat",
+  "chat.delete_confirm": "Διαγράψτε το \"{title}\"; Αυτή η ενέργεια δεν μπορεί να ανακληθεί.",
+  "chat.delete_yes": "Ναι, διαγράψτε",
+  "chat.delete_no": "Ακύρωση",
+  "chat.deleted": "Η συνομιλία διαγράφηκε με επιτυχία.",
+  "chat.rename": "Μετανόηση",
+  "chat.new_chat": "Νέα κουβέντα"
 }

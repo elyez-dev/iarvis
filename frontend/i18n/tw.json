@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Wo ne no mmɔ nkɔmmɔ",
+  "settings.delete_memory": "Sɛe Nkaedi",
+  "settings.delete_memory_title": "Sɛe Nkaedi",
+  "settings.delete_memory_confirm": "W'ani gye ho sɛ wopɛ sɛ wuyi wo boafo no nkae nyinaa fi hɔ?",
+  "settings.delete_memory_yes": "Yiw",
+  "settings.delete_memory_no": "Ɛnte saa",
+  "settings.delete_memory_success": "Wɔapopa nkae nyinaa.",
+  "settings.delete_memory_error": "Mfomso a wɔde yi nkae: {mpomso}",
+  "chat.delete": "Yi nkɔmmɔbɔ no fi hɔ",
+  "chat.delete_confirm": "Sɛ woamfa asɛmfua '{title}' no amfi nkɔmmɔbɔ no mu a, worentumi mmua no.",
+  "chat.delete_yes": "Yiw, yi",
+  "chat.delete_no": "Sɛe",
+  "chat.deleted": "Wɔyii chat no fii hɔ.",
+  "chat.rename": "Wɔsan frɛ no",
+  "chat.new_chat": "Chat Foforo"
 }

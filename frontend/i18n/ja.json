@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "話す",
+  "settings.delete_memory": "記憶を消す",
+  "settings.delete_memory_title": "記憶を消す",
+  "settings.delete_memory_confirm": "助手メモリをすべて削除したいか? これは会話史,RAGのデータと知識グラフを含む. 継続したいですか?",
+  "settings.delete_memory_yes": "本当",
+  "settings.delete_memory_no": "違う",
+  "settings.delete_memory_success": "記憶は全て削除されました.",
+  "settings.delete_memory_error": "記憶を削除するエラー: {エラー}",
+  "chat.delete": "チャットを削除する",
+  "chat.delete_confirm": "チャット\"{タイトル}\"を削除する? このアクションはキャンセルできません.",
+  "chat.delete_yes": "削除する",
+  "chat.delete_no": "キャンセル",
+  "chat.deleted": "チャットが成功して削除されました.",
+  "chat.rename": "名前変更",
+  "chat.new_chat": "新しいチャット"
 }

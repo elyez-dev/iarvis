@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Jupamp parltʼañäni",
+  "settings.delete_memory": "Amt'añanak chhaqtayaña",
+  "settings.delete_memory_title": "Amt'añanak chhaqtayaña",
+  "settings.delete_memory_confirm": "¿Taqpach yanapt'irin amtatapar q'al chhaqtayañ munapxtati?",
+  "settings.delete_memory_yes": "Jïsa",
+  "settings.delete_memory_no": "Janis ukhamäkchi",
+  "settings.delete_memory_success": "Taqi amtanakax chhaqtayatänwa.",
+  "settings.delete_memory_error": "Jan walt'añanak apsuñ amtawi: {k'ullk'u}",
+  "chat.delete": "Chʼaxwañanak chhaqtayaña",
+  "chat.delete_confirm": "'{title}' ch'axwañ chhaqtayaña?",
+  "chat.delete_yes": "Jïsa, chhaqtayañäni",
+  "chat.delete_no": "Q'alpun apsuta",
+  "chat.deleted": "Chuymax wali sum chhaqtayatänwa.",
+  "chat.rename": "Suyt'añatak",
+  "chat.new_chat": "Machaq parlayasiña"
 }

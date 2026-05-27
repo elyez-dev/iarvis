@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "צ'אט עם",
+  "settings.delete_memory": "למחוק זיכרון",
+  "settings.delete_memory_title": "למחוק זיכרון",
+  "settings.delete_memory_confirm": "האם אתה בטוח שאתה רוצה למחוק את כל הזיכרון של העוזר? זה כולל היסטוריה של שיחות, נתונים מאוחסנים RAG וגרפים של ידע. אתה רוצה להמשיך?",
+  "settings.delete_memory_yes": "כן, כן.",
+  "settings.delete_memory_no": "לא, לא.",
+  "settings.delete_memory_success": "כל הזיכרון נמחק בהצלחה.",
+  "settings.delete_memory_error": "טעות למחוק זיכרון: {אשמה}",
+  "chat.delete": "למחוק את הצ'אט",
+  "chat.delete_confirm": "למחוק את הצ'אט '{title}? פעולה זו לא יכולה להיות מבולשת.",
+  "chat.delete_yes": "כן, למחוק",
+  "chat.delete_no": "ביטול",
+  "chat.deleted": "הצ'אט נמחק בהצלחה.",
+  "chat.rename": "שמה מחדש",
+  "chat.new_chat": "שיחת טלפון חדשה"
 }

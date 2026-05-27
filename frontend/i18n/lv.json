@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Apsauc ar",
+  "settings.delete_memory": "Izmazgājiet atmiņu",
+  "settings.delete_memory_title": "Izmazgājiet atmiņu",
+  "settings.delete_memory_confirm": "Vai esat pārliecināts, ka vēlaties izdzirt visu asistenta atmiņu?",
+  "settings.delete_memory_yes": "Jā, tā ir.",
+  "settings.delete_memory_no": "Ne, ne.",
+  "settings.delete_memory_success": "Visas atmiņas ir izdzēstas.",
+  "settings.delete_memory_error": "Mēneju izmazgāšanas kļūda: {kāda}",
+  "chat.delete": "Izmazgājiet diskuse",
+  "chat.delete_confirm": "Izmazgājiet sarunu \"{title}\"?",
+  "chat.delete_yes": "Jā, izdzēst",
+  "chat.delete_no": "Atcelt",
+  "chat.deleted": "Čats ir izdzēsts.",
+  "chat.rename": "Pārnākums",
+  "chat.new_chat": "Jaunā kleita"
 }

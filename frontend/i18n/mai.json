@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "संग चैट",
+  "settings.delete_memory": "स्मृति मेटाउ",
+  "settings.delete_memory_title": "स्मृति मेटाउ",
+  "settings.delete_memory_confirm": "की अहाँ निश्चित छी जे अहाँ सहायकक सभटा मेमोरी मेटाबय चाहैत छी? ईमे वार्तालाप इतिहास, आरएजी संभलल डाटा आ ज्ञान ग्राफ सेहो शामिल अछि. की अहाँ आगाँ बढ़ब चाहैत छी?",
+  "settings.delete_memory_yes": "हाँ, हाँ",
+  "settings.delete_memory_no": "नहि",
+  "settings.delete_memory_success": "सभटा स्मृति सफलतापूर्वक मिट गेल अछि।",
+  "settings.delete_memory_error": "मेमोरी मेटाबऽ मे त्रुटिः {त्रुटि}",
+  "chat.delete": "चैट मेटाब",
+  "chat.delete_confirm": "'{ शीर्षक}' चैट हटाउ? ई क्रिया निरसन नहि कएल जा सकैत अछि।",
+  "chat.delete_yes": "हँ, हटाउ",
+  "chat.delete_no": "रद्द करू",
+  "chat.deleted": "चैट सफलतापूर्वक हटाएल गेल।",
+  "chat.rename": "नाम बदलल",
+  "chat.new_chat": "नव चैट"
 }

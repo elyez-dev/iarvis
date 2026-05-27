@@ -223,5 +223,20 @@
     "zh_tw": "Cina (Tradisional)",
     "ms": "Melayu",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Meutamah ngon",
+  "settings.delete_memory": "Peupuih ingatan",
+  "settings.delete_memory_title": "Peupuih ingatan",
+  "settings.delete_memory_confirm": "Peu kheueh gata yakin bahwa gata keuneuk tapeupuih banmandum memori asisten? Nyoe teumasok riwayat peundangkalan, data RAG nyang disimpan dan grafik pengetahuan. Peu kheueh gata keuneuk lanjut?",
+  "settings.delete_memory_yes": "Ya, nyan",
+  "settings.delete_memory_no": "Hana",
+  "settings.delete_memory_success": "Seumantong memori ka geupeupuih deungon meuhase.",
+  "settings.delete_memory_error": "Kasalahan peupusôh memori: {kasalahan}",
+  "chat.delete": "Peupuih chat",
+  "chat.delete_confirm": "Hapus chat '{title}'? tindakan nyoe hana jeut diulang.",
+  "chat.delete_yes": "Ya, peupeusampôh",
+  "chat.delete_no": "Batalkan",
+  "chat.deleted": "Chat dihapus meuhase.",
+  "chat.rename": "Geubintéh nan",
+  "chat.new_chat": "Meutamah baro"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Пагутарыць з",
+  "settings.delete_memory": "Знішце памяць",
+  "settings.delete_memory_title": "Знішце памяць",
+  "settings.delete_memory_confirm": "Ці ўпэўнены, што вы хочаце выдаліць усю памяць асістэнта? Гэта ўключае ў сябе гісторыю размоў, RAG захоўваюцца дадзеныя і графікі ведаў.",
+  "settings.delete_memory_yes": "Так, так.",
+  "settings.delete_memory_no": "Не, не.",
+  "settings.delete_memory_success": "Усе памяці былі паспяхова выдаленыя.",
+  "settings.delete_memory_error": "Памылка выдалення памяці: {error}",
+  "chat.delete": "Выміраць чаты",
+  "chat.delete_confirm": "Знішчыць чата \"{title}\"? Гэта дзеянне не можа быць адменена.",
+  "chat.delete_yes": "Так, выдаліць",
+  "chat.delete_no": "Адмяніць",
+  "chat.deleted": "Чат удалося выдаліць.",
+  "chat.rename": "Перазвучыць",
+  "chat.new_chat": "Новы Чат"
 }

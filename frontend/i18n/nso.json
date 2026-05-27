@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Boledišana le",
+  "settings.delete_memory": "Phumola Monagano",
+  "settings.delete_memory_title": "Phumola Monagano",
+  "settings.delete_memory_confirm": "Na o kgodišegile gore o nyaka go hlakola MEMORY KA moka ya mothwalwa? Se se akaretša histori ya poledišano, data yeo e bolokilwego RAG le dipalopalo tša tsebo. Na o nyaka go tšwela pele?",
+  "settings.delete_memory_yes": "Ee",
+  "settings.delete_memory_no": "Aowa",
+  "settings.delete_memory_success": "Go phumolwe ka katlego mo go feletšego.",
+  "settings.delete_memory_error": "Phoso ya go phumola memori: {phoso}",
+  "chat.delete": "Fenya poledišano",
+  "chat.delete_confirm": "Tlosa poledišano '{title}'?",
+  "chat.delete_yes": "Ee, hlakola",
+  "chat.delete_no": "Go tloša",
+  "chat.deleted": "Go hlatswiwa ga kanegelo go atlegile.",
+  "chat.rename": "Go fetoša leina",
+  "chat.new_chat": "Go Boledišana le Batho ba Bangwe"
 }

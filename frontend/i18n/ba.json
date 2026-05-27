@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Сөйләшеү",
+  "settings.delete_memory": "Хәтерҙе һүндереү",
+  "settings.delete_memory_title": "Хәтерҙе һүндереү",
+  "settings.delete_memory_confirm": "Был арала аралашыу тарихы, RAG һаҡланған мәғлүмәттәр һәм белем графикаһы инә.",
+  "settings.delete_memory_yes": "Эйе, шулай",
+  "settings.delete_memory_no": "Юҡ, юҡ",
+  "settings.delete_memory_success": "Бөтә иҫтәлек уңышлы һүндерелгән.",
+  "settings.delete_memory_error": "Хәтерҙе һүндереүҙә хата: {хата}",
+  "chat.delete": "Чатты һүндереү",
+  "chat.delete_confirm": "\"{title}\" ч-ты һүндерергә? Был эште кире ҡағырға мөмкин түгел.",
+  "chat.delete_yes": "Эйе, һүндерергә",
+  "chat.delete_no": "Алып ташлау",
+  "chat.deleted": "Чат уңышлы алып ташланды.",
+  "chat.rename": "Исемде үҙгәртергә",
+  "chat.new_chat": "Яңы чат"
 }

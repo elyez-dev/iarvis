@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Jya uganira na",
+  "settings.delete_memory": "Gukuraho ibyo wibuka",
+  "settings.delete_memory_title": "Gukuraho ibyo wibuka",
+  "settings.delete_memory_confirm": "Ese uremeza ko ushaka gusiba ibyo wizera byose? Ibyo bikubiyemo amateka y'ibiganiro, amakuru yabaga abitswe muri RAG n'ibishushanyo by'ubumenyi.",
+  "settings.delete_memory_yes": "Yego",
+  "settings.delete_memory_no": "Oya",
+  "settings.delete_memory_success": "Ibyacu byose byavuyeho.",
+  "settings.delete_memory_error": "Ikosa ryo gusiba urwibutso: {ikosa}",
+  "chat.delete": "Guhanagura ikiganiro",
+  "chat.delete_confirm": "Gukuraho ikiganiro '{title}'?",
+  "chat.delete_yes": "Yego, gusiba",
+  "chat.delete_no": "Gucika intege",
+  "chat.deleted": "Ikiganiro cyahise gihanagurwa.",
+  "chat.rename": "Guhindura izina",
+  "chat.new_chat": "Ikiganiro gishya"
 }

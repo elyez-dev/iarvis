@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Caith leis",
+  "settings.delete_memory": "Criosadh cuimhne",
+  "settings.delete_memory_title": "Criosadh cuimhne",
+  "settings.delete_memory_confirm": "An bhfuil tú cinnte gur mhaith leat a scriosadh ar fad ar mheabhrúchán an cúntóir?",
+  "settings.delete_memory_yes": "Tá sé.",
+  "settings.delete_memory_no": "Ní raibh.",
+  "settings.delete_memory_success": "Tá gach cuimhne curtha scriosadh go rathúil.",
+  "settings.delete_memory_error": "Meall a scriosadh meall: {dear}",
+  "chat.delete": "Scriosadh comhrá",
+  "chat.delete_confirm": "Ní féidir an gníomh seo a dhéanamh ar ais.",
+  "chat.delete_yes": "Sea, scriosadh",
+  "chat.delete_no": "Cinntí",
+  "chat.deleted": "Scriosadh comhrá go rathúil.",
+  "chat.rename": "Athbhreathnú",
+  "chat.new_chat": "Nua comhrá"
 }

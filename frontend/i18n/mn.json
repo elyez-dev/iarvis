@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "- Та нар",
+  "settings.delete_memory": "Хэтгэлгээ устгах",
+  "settings.delete_memory_title": "Хэтгэлгээ устгах",
+  "settings.delete_memory_confirm": "Та туслахын бүх дурсамжийг устгахыг хүсч байна уу? Энэ нь ярианы түүх, RAG хадгалан хадгалан хадгалан хадгалан үлдсэн өгөгдлийг, мэдлэгийн графикүүдийг багтааж байна уу. Та үргэлжлүүлэхийг хүсч байна уу?",
+  "settings.delete_memory_yes": "Тийм ээ.",
+  "settings.delete_memory_no": "Үгүй ээ.",
+  "settings.delete_memory_success": "Бүх дурсамжийг амжилттай устгасан.",
+  "settings.delete_memory_error": "Хөөврийн алдаа: {хэлэлцүүлэг}",
+  "chat.delete": "Хэлэлцүүлгийг устгах",
+  "chat.delete_confirm": "Энэ үйлдлийг сэргээж чадахгүй.",
+  "chat.delete_yes": "Тийм ээ, устгах",
+  "chat.delete_no": "Халдах",
+  "chat.deleted": "Чат амжилттай устгагдсан.",
+  "chat.rename": "Нэргээ хураах",
+  "chat.new_chat": "Шинэ чат"
 }

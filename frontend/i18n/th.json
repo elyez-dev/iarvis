@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "แทงกับ",
+  "settings.delete_memory": "กดความจํา",
+  "settings.delete_memory_title": "กดความจํา",
+  "settings.delete_memory_confirm": "คุณแน่ใจนะว่าคุณต้องการลบความจําของผู้ช่วยทั้งหมด? ทั้งประวัติการพูดคุย, ข้อมูลที่เก็บไว้ใน RAG และกราฟความรู้",
+  "settings.delete_memory_yes": "ใช่",
+  "settings.delete_memory_no": "ไม่",
+  "settings.delete_memory_success": "ความทรงจําทั้งหมดถูกลบได้สําเร็จ",
+  "settings.delete_memory_error": "ความผิดพลาดในการลบความจํา: {ความผิดพลาด}",
+  "chat.delete": "กดจอ",
+  "chat.delete_confirm": "ลบจอ '{title}'? การกระทํานี้ไม่สามารถยกเลิกได้",
+  "chat.delete_yes": "ใช่ ยกเลิก",
+  "chat.delete_no": "ยกเลิก",
+  "chat.deleted": "แชทถูกลบสําเร็จ",
+  "chat.rename": "ชื่อใหม่",
+  "chat.new_chat": "คลิปใหม่"
 }

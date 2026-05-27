@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Berbicara dengan",
+  "settings.delete_memory": "Hapus ingatan",
+  "settings.delete_memory_title": "Hapus ingatan",
+  "settings.delete_memory_confirm": "Apakah Anda yakin ingin menghapus semua memori asisten? Ini termasuk riwayat percakapan, data yang disimpan RAG dan grafik pengetahuan. Apakah Anda ingin melanjutkan?",
+  "settings.delete_memory_yes": "Ya, aku tahu.",
+  "settings.delete_memory_no": "Tidak, tidak.",
+  "settings.delete_memory_success": "Semua memori telah berhasil dihapus.",
+  "settings.delete_memory_error": "Kesalahan menghapus memori: {error}",
+  "chat.delete": "Hapus obrolan",
+  "chat.delete_confirm": "Hapus chat '{title}'? Tindakan ini tidak dapat dibalikkan.",
+  "chat.delete_yes": "Ya, hapus",
+  "chat.delete_no": "Batalkan",
+  "chat.deleted": "Chat dihapus dengan sukses.",
+  "chat.rename": "Nama baru",
+  "chat.new_chat": "Chat baru"
 }

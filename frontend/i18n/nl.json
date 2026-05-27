@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Gesprek met",
+  "settings.delete_memory": "Het geheugen verwijderen",
+  "settings.delete_memory_title": "Het geheugen verwijderen",
+  "settings.delete_memory_confirm": "Wilt u het geheugen van de assistent wissen? Dit omvat gespreksgeschiedenis, RAG opgeslagen gegevens en kennisgrafieken.",
+  "settings.delete_memory_yes": "- Ja, dat is het.",
+  "settings.delete_memory_no": "- Nee, dat is niet zo.",
+  "settings.delete_memory_success": "Alle geheugen is met succes verwijderd.",
+  "settings.delete_memory_error": "Fout bij het verwijderen van geheugen: {fout}",
+  "chat.delete": "Chat verwijderen",
+  "chat.delete_confirm": "Deze actie kan niet worden ingetrokken.",
+  "chat.delete_yes": "Ja, verwijderen",
+  "chat.delete_no": "Afzeggen",
+  "chat.deleted": "Chat is met succes verwijderd.",
+  "chat.rename": "Veranderen",
+  "chat.new_chat": "Nieuwe chat"
 }

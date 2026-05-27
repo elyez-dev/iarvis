@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Men bilen gürrüňdeşlik",
+  "settings.delete_memory": "Ýadyňyzdamy?",
+  "settings.delete_memory_title": "Ýadyňyzdamy?",
+  "settings.delete_memory_confirm": "Siz kömekçiniň ähli ýatgysyny silmek isleýändigiňizden ynamlymyňyz? Bu gürrüň taryhyny, RAG-da saklanan maglumaty we bilimi grafiklerini içer.",
+  "settings.delete_memory_yes": "Hawa",
+  "settings.delete_memory_no": "Ýok",
+  "settings.delete_memory_success": "Ähli ýatlamalar üstünlikli silindi.",
+  "settings.delete_memory_error": "Ýadyny silmekde hata: {hady}",
+  "chat.delete": "Çatlary sil",
+  "chat.delete_confirm": "Çat '{title}'i sil? Bu hereket üýtgedilmez.",
+  "chat.delete_yes": "Hawa, sil",
+  "chat.delete_no": "Ýokaryla",
+  "chat.deleted": "Çat üstünlikli silindi.",
+  "chat.rename": "Ady üýtget",
+  "chat.new_chat": "Täze Çat"
 }

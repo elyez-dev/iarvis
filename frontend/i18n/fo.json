@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Spældu við",
+  "settings.delete_memory": "Sláa minnini",
+  "settings.delete_memory_title": "Sláa minnini",
+  "settings.delete_memory_confirm": "Ert tú vísur í, at tú ynskir at strika ALLA minni hjá hjálparfólkinum? Hetta fevnir um samrøðuhistoria, RAG goymdar data og kunningartøl.",
+  "settings.delete_memory_yes": "Ja, tað er tað.",
+  "settings.delete_memory_no": "Nei, tað er ikki",
+  "settings.delete_memory_success": "Alt minni er avlýst.",
+  "settings.delete_memory_error": "Broyting av minni: {broyting}",
+  "chat.delete": "Slakað av samrøðuni",
+  "chat.delete_confirm": "Skilji samrøðuna \"{title}\"? Hesin gerningur kann ikki verða avlýstur.",
+  "chat.delete_yes": "Ja, tað er burtur.",
+  "chat.delete_no": "Avlýs",
+  "chat.deleted": "Spjallurin er avlýstur við góðum úrslitum.",
+  "chat.rename": "Umnýti navn",
+  "chat.new_chat": "Nýggj spjall"
 }

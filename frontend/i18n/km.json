@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "និយាយ ជាមួយ",
+  "settings.delete_memory": "លុប ចម្លង",
+  "settings.delete_memory_title": "លុប ចម្លង",
+  "settings.delete_memory_confirm": "តើ អ្នក ពិត ជា ចង់ លុប ចោល គ្រប់ រូបភាព នៃ ជំនួយការ នេះ រួម មាន ប្រវត្តិ នៃ ការ សន្ទនា ទិន្នន័យ ស្តុក RAG និង ទិន្នន័យ ចំណេះដឹង តើ អ្នក ចង់ បន្ត ទៀត ឬ ទេ?",
+  "settings.delete_memory_yes": "មែន",
+  "settings.delete_memory_no": "មិន មែន ទេ",
+  "settings.delete_memory_success": "ការ ចងចាំ ទាំងអស់ ត្រូវបាន លុបចោល ដោយ ជោគជ័យ ។",
+  "settings.delete_memory_error": "ការបំបាត់ Memory Error: {errore}",
+  "chat.delete": "លុប ចរចា",
+  "chat.delete_confirm": "លុប ចរចា {title}? ការធ្វើ នេះមិនអាចធ្វើឡើងវិញបាន។",
+  "chat.delete_yes": "មែន ហើយ លុបចោល",
+  "chat.delete_no": "លុបចោល",
+  "chat.deleted": "ការ ចរចា បាន លុប ចោល ដោយ ជោគជ័យ។",
+  "chat.rename": "ផ្លាស់ប្តូរឈ្មោះ",
+  "chat.new_chat": "Chat ថ្មី"
 }

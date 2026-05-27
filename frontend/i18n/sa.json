@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "चात्रे",
+  "settings.delete_memory": "स्मृतिं मिटय",
+  "settings.delete_memory_title": "स्मृतिं मिटय",
+  "settings.delete_memory_confirm": "कापिपि संस्मृतिः, आरएजी संचयितानि डेटा, ज्ञानसूचीः सम्मिलितानि सन्ति।",
+  "settings.delete_memory_yes": "इति",
+  "settings.delete_memory_no": "न",
+  "settings.delete_memory_success": "सर्वस्मृतिः सफलतापूर्वकम् निष्कासितः।",
+  "settings.delete_memory_error": "स्मृतिः मिटानाम् त्रुटिः {त्रुटि}",
+  "chat.delete": "वार्तालापः निष्क्रियः",
+  "chat.delete_confirm": "'{title}' इति चातस्य हटणं?",
+  "chat.delete_yes": "अतोऽहम्, इति",
+  "chat.delete_no": "रद्द",
+  "chat.deleted": "चातः सफलतापूर्वकम् निष्क्रियः अभवत् ।",
+  "chat.rename": "पुनर्नाम",
+  "chat.new_chat": "नवः चातः"
 }

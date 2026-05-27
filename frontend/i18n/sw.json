@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chat na",
+  "settings.delete_memory": "Futa Kumbukumbu",
+  "settings.delete_memory_title": "Futa Kumbukumbu",
+  "settings.delete_memory_confirm": "Je, una uhakika unataka kufuta kumbukumbu yote ya msaidizi? Hii ni pamoja na historia ya mazungumzo, data RAG kuhifadhiwa na grafu ya maarifa. Je, unataka kuendelea?",
+  "settings.delete_memory_yes": "Ndiyo",
+  "settings.delete_memory_no": "Hapana",
+  "settings.delete_memory_success": "Kumbukumbu zote zimefutwa kwa mafanikio.",
+  "settings.delete_memory_error": "Kosa kufuta kumbukumbu: {kosa}",
+  "chat.delete": "Futa mazungumzo",
+  "chat.delete_confirm": "Futa mazungumzo '{title}'? Hatua hii haiwezi kufutwa.",
+  "chat.delete_yes": "Ndiyo, kufuta",
+  "chat.delete_no": "Kufuta",
+  "chat.deleted": "Gumzo ilifutwa kwa mafanikio.",
+  "chat.rename": "Jina jipya",
+  "chat.new_chat": "Chat mpya"
 }

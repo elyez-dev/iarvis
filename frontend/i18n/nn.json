@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Sjak med",
+  "settings.delete_memory": "Ta bort minnesetinga",
+  "settings.delete_memory_title": "Ta bort minnesetinga",
+  "settings.delete_memory_confirm": "Er du sikker på du vil sletta ALle minner til assistenten? Dette inkluderer samtalehistorie, RAG lagra data og kunnskap grafer. Vil du fortsette?",
+  "settings.delete_memory_yes": "Ja, det er det.",
+  "settings.delete_memory_no": "Nei, ikkje sant.",
+  "settings.delete_memory_success": "Alle minner er slettet med suksess.",
+  "settings.delete_memory_error": "Feil ved å sletta minne: {feil}",
+  "chat.delete": "Ta av chatten",
+  "chat.delete_confirm": "Slette chat '{title}'? Denne handlingen kan ikkje bli reversert.",
+  "chat.delete_yes": "Ja, slepp",
+  "chat.delete_no": "Avbryt",
+  "chat.deleted": "Chat blei slettet med suksess.",
+  "chat.rename": "Omnavn",
+  "chat.new_chat": "Ny Chat"
 }

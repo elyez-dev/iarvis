@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Beszélgetni",
+  "settings.delete_memory": "Törölje a memóriát",
+  "settings.delete_memory_title": "Törölje a memóriát",
+  "settings.delete_memory_confirm": "Biztos vagy benne, hogy törölni akarod az asszisztens összes memóriáját? Ez magában foglalja a beszélgetés történelmét, a RAG-tárgyolt adatokat és a tudás grafikonokat.",
+  "settings.delete_memory_yes": "Igen, igen.",
+  "settings.delete_memory_no": "Nem, nem.",
+  "settings.delete_memory_success": "Minden memóriát sikeresen törölték.",
+  "settings.delete_memory_error": "Helyes törlés: {fehér}",
+  "chat.delete": "Törölje a csevegést",
+  "chat.delete_confirm": "A csevegés nem lehet visszavonni.",
+  "chat.delete_yes": "Igen, törölje",
+  "chat.delete_no": "Törölni",
+  "chat.deleted": "A csevegés sikeresen törölték.",
+  "chat.rename": "Nevet cserélni",
+  "chat.new_chat": "Új csevegés"
 }

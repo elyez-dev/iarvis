@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Разговаряй с",
+  "settings.delete_memory": "Изтрий паметта",
+  "settings.delete_memory_title": "Изтрий паметта",
+  "settings.delete_memory_confirm": "Сигурен ли си, че искаш да изтриеш цялата памет на асистента? Това включва историята на разговора, RAG съхранявани данни и знания графика.",
+  "settings.delete_memory_yes": "Да, да.",
+  "settings.delete_memory_no": "Не, не.",
+  "settings.delete_memory_success": "Всички спомени са били изтрити успешно.",
+  "settings.delete_memory_error": "Изтриване на паметта с грешка: {error}",
+  "chat.delete": "Изтриване на чат",
+  "chat.delete_confirm": "Изтриване на чат \"{title}\"?",
+  "chat.delete_yes": "Да, изтрийте.",
+  "chat.delete_no": "Отмени",
+  "chat.deleted": "Чатът е изтрит успешно.",
+  "chat.rename": "Преименуване",
+  "chat.new_chat": "Нов чат"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "ঐগা ৱারী শানবিয়ু",
+  "settings.delete_memory": "মেমোরি লৌথোকপা",
+  "settings.delete_memory_title": "মেমোরি লৌথোকপা",
+  "settings.delete_memory_confirm": "অদোম্না এসিস্তেন্তকী মেমোরি পুম্নমক মুৎপা পাম্বিবরা? মসিদা ৱারী শানবগী পুৱারী, RAGদা থম্লবা দেতা অমসুং লৌশিংগী গ্রাফশিং য়াওরি। অদোম মখা চত্থবা পাম্বিবরা?",
+  "settings.delete_memory_yes": "হেক হেক",
+  "settings.delete_memory_no": "নত্তে",
+  "settings.delete_memory_success": "মেমোরি পুম্নমক মায় পাক্না মুৎখ্রে।",
+  "settings.delete_memory_error": "মেমোরি লৌথোকপগী অশোয়বা: {error}",
+  "chat.delete": "চাত মুত্থোকপা",
+  "chat.delete_confirm": "চাত '{title}' মুত্থৎপা? মসিগী থবক অসি লৌথোকপা য়াদে।",
+  "chat.delete_yes": "হেক, লৌথোকপা",
+  "chat.delete_no": "লৌথোকপা",
+  "chat.deleted": "চাত অসি মায় পাক্না মুৎখ্রে।",
+  "chat.rename": "মমিং হোংদোকপা",
+  "chat.new_chat": "অনৌবা চাত"
 }

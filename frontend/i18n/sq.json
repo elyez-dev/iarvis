@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Të bisedojmë me",
+  "settings.delete_memory": "Fshij kujtesën",
+  "settings.delete_memory_title": "Fshij kujtesën",
+  "settings.delete_memory_confirm": "A jeni të sigurt që dëshironi të fshini të gjitha kujtesën e asistentit? Kjo përfshin historinë e bisedës, të dhënat e ruajtura RAG dhe grafinë e njohurive.",
+  "settings.delete_memory_yes": "Po, po.",
+  "settings.delete_memory_no": "Jo, jo.",
+  "settings.delete_memory_success": "Të gjitha kujtesa janë fshirë me sukses.",
+  "settings.delete_memory_error": "gabim për fshirjen e kujtesës: { gabim}",
+  "chat.delete": "Fshije bisedën",
+  "chat.delete_confirm": "Shkarko bisedën '{title}'? Ky veprim nuk mund të bëhet.",
+  "chat.delete_yes": "Po, fshij",
+  "chat.delete_no": "Kanclojnë",
+  "chat.deleted": "Çati u fshi me sukses.",
+  "chat.rename": "Emri i ri",
+  "chat.new_chat": "Chat i ri"
 }

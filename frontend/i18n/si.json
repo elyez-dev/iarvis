@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "කතා කරන්න",
+  "settings.delete_memory": "මතකය මකා දමන්න",
+  "settings.delete_memory_title": "මතකය මකා දමන්න",
+  "settings.delete_memory_confirm": "ඔයාට විශ්වාසද ඔයාට ඕනේ උපදේශකයාගේ මතකය මකා දැමීමට? මේ අතර සංවාද ඉතිහාසය, RAG ගබඩා කර ඇති දත්ත සහ දැනුම ග් රැෆික් ඇතුළත්. ඔයාට දිගටම කරගෙන යන්න ඕනද?",
+  "settings.delete_memory_yes": "ඔව්",
+  "settings.delete_memory_no": "නෑ නෑ",
+  "settings.delete_memory_success": "සියලු මතකයන් සාර්ථකව මකා දමන ලදී.",
+  "settings.delete_memory_error": "මතකය මකා දැමීමේ වැරැද්ද: {පරහසුව}",
+  "chat.delete": "චැට් එක මකන්න",
+  "chat.delete_confirm": "චැට් '{title}' Delete කරන්න? මේ ක් රියාව අවලංගු කරන්න බැහැ.",
+  "chat.delete_yes": "ඔව්, මකන්න",
+  "chat.delete_no": "අවලංගු කරන්න",
+  "chat.deleted": "චැට් එක සාර්ථකව මකාදැමුණා.",
+  "chat.rename": "නම වෙනස් කරන්න",
+  "chat.new_chat": "නව චැට්"
 }

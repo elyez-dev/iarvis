@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Mit ihm reden.",
+  "settings.delete_memory": "Löschen Sie das Gedächtnis",
+  "settings.delete_memory_title": "Löschen Sie das Gedächtnis",
+  "settings.delete_memory_confirm": "Sind Sie sicher, dass Sie ALLE Speicher des Assistenten löschen möchten? Dazu gehören Gesprächshistorie, RAG gespeicherte Daten und Wissensdiagramme.",
+  "settings.delete_memory_yes": "- Ja.",
+  "settings.delete_memory_no": "- Nein.",
+  "settings.delete_memory_success": "Alle Erinnerungen wurden erfolgreich gelöscht.",
+  "settings.delete_memory_error": "Fehler beim Löschen von Speicher: {fehler}",
+  "chat.delete": "Schalten Sie den Chat",
+  "chat.delete_confirm": "Löschen Sie Chat \"{title}\"?",
+  "chat.delete_yes": "Ja, löschen",
+  "chat.delete_no": "Abrechnen",
+  "chat.deleted": "Der Chat wurde erfolgreich gelöscht.",
+  "chat.rename": "Umbenennen",
+  "chat.new_chat": "Neuer Chat"
 }

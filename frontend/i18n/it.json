@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "- Con chi parla",
+  "settings.delete_memory": "Cancellare la memoria",
+  "settings.delete_memory_title": "Cancellare la memoria",
+  "settings.delete_memory_confirm": "Sei sicuro di voler cancellare TUTTA la memoria dell'assistente? Questo include la storia della conversazione, i dati memorizzati RAG e i grafici di conoscenza.",
+  "settings.delete_memory_yes": "- Sì, sì.",
+  "settings.delete_memory_no": "- No, no.",
+  "settings.delete_memory_success": "Tutta la memoria è stata cancellata con successo.",
+  "settings.delete_memory_error": "Errore di cancellazione della memoria: {errore}",
+  "chat.delete": "Elimina la chat",
+  "chat.delete_confirm": "Cancellare il chat '{title}'?",
+  "chat.delete_yes": "Sì, cancellazione",
+  "chat.delete_no": "Cancellare",
+  "chat.deleted": "Il chat è stato cancellato con successo.",
+  "chat.rename": "Rinasimare",
+  "chat.new_chat": "Nuovo chat"
 }

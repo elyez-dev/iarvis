@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chatta med",
+  "settings.delete_memory": "Ta bort minnet",
+  "settings.delete_memory_title": "Ta bort minnet",
+  "settings.delete_memory_confirm": "Är du säker på att du vill radera assistentens minne?",
+  "settings.delete_memory_yes": "- Ja, det är det.",
+  "settings.delete_memory_no": "- Nej, det gör jag inte.",
+  "settings.delete_memory_success": "Allt minne har raderats framgångsrikt.",
+  "settings.delete_memory_error": "Felet i minnesläckningen: {fel}",
+  "chat.delete": "Ta bort chatt",
+  "chat.delete_confirm": "Ta bort chatt '{title}'?",
+  "chat.delete_yes": "Ja, radera",
+  "chat.delete_no": "Avbokning",
+  "chat.deleted": "Chatten raderades framgångsrikt.",
+  "chat.rename": "Förändra namn",
+  "chat.new_chat": "Ny Chat"
 }

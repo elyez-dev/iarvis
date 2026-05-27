@@ -809,6 +809,81 @@ class GraphService:
         logger.debug("_build_upsert_parts: built %d nquads | first 300 chars=%s", len(nquads), nquads_str[:300])
         return query_block, nquads_str
 
+    # =====================================================================
+    # Infrastructure / deletion
+    # =====================================================================
+
+    async def delete_all(self) -> str:
+        """Wipe all data in the dgraph instance.
+
+        Tries `drop_all` first (resets schema + data). If the standalone
+        server rejects the operation, falls back to a DQL delete of all
+        Entity nodes + their edges.
+
+        After wiping, re-applies the base scalar predicates so the schema
+        is ready for subsequent store operations. Clears the in-memory
+        predicate caches.
+
+        Returns an error message string (empty on success).
+        """
+        errors: list[str] = []
+
+        # 1) Drop all data
+        try:
+            self._client.alter(pydgraph.Operation(drop_all=True))
+            logger.info("GraphService.delete_all: drop_all OK")
+        except Exception as exc:
+            logger.warning(
+                "GraphService.delete_all: drop_all failed (%s), falling back to DQL delete",
+                exc,
+            )
+            try:
+                def _do_dql_delete():
+                    txn = self._client.txn()
+                    try:
+                        query = "{\n  all as var(func: type(Entity))\n}"
+                        mutation = pydgraph.Mutation(del_nquads="uid(all) * * .")
+                        req = pydgraph.Request(
+                            query=query, mutations=[mutation], commit_now=True
+                        )
+                        txn.do_request(req)
+                    finally:
+                        txn.discard()
+
+                await asyncio.to_thread(_do_dql_delete)
+                logger.info("GraphService.delete_all: DQL fallback delete OK")
+            except Exception as exc2:
+                msg = f"DQL fallback delete failed: {exc2}"
+                logger.error("GraphService.delete_all: %s", msg)
+                errors.append(msg)
+
+        # 2) Re-apply base scalar predicates (idempotent)
+        base_schema = (
+            "name: string @index(exact,term,fulltext,trigram) .\n"
+            "type: string @index(exact) .\n"
+            "source_docs: [string] .\n"
+            "\n"
+            "type Entity {\n"
+            "  name\n"
+            "  type\n"
+            "  source_docs\n"
+            "}\n"
+        )
+        try:
+            self._client.alter(pydgraph.Operation(schema=base_schema))
+            logger.info("GraphService.delete_all: base schema re-applied")
+        except Exception as exc:
+            msg = f"Base schema re-apply failed: {exc}"
+            logger.error("GraphService.delete_all: %s", msg)
+            errors.append(msg)
+
+        # 3) Clear in-memory predicate caches so they get refreshed on next access
+        self._declared_predicates = {"name", "type", "source_docs", "dgraph.type"}
+        self._relation_predicates = set()
+        self._predicates_last_refreshed = 0.0
+
+        return "\n".join(errors)
+
     def close(self) -> None:
         try:
             self._stub.close()

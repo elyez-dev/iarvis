@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Խոսեք",
+  "settings.delete_memory": "Հիշողությունը ջնջել",
+  "settings.delete_memory_title": "Հիշողությունը ջնջել",
+  "settings.delete_memory_confirm": "Համոզված եք, որ ցանկանում եք ջնջել օգնականի բոլոր հիշողությունները: Սա ներառում է զրույցի պատմությունը, RAG- ի պահված տվյալները եւ գիտելիքների գրաֆները: Ցանկանում եք շարունակել:",
+  "settings.delete_memory_yes": "Այո, այո",
+  "settings.delete_memory_no": "Ոչ, ոչ",
+  "settings.delete_memory_success": "Բոլոր հիշողությունները հաջողությամբ ջնջվել են:",
+  "settings.delete_memory_error": "Հիշողություն ջնջելու սխալ. {խփոթ}",
+  "chat.delete": "Սեղմել զրույցը",
+  "chat.delete_confirm": "Սեղմեք զրույցը '{title}? Այս գործողությունը չի կարող չեղարկվել:",
+  "chat.delete_yes": "Այո, ջնջել",
+  "chat.delete_no": "Արգելել",
+  "chat.deleted": "Չատը հաջողությամբ ջնջվել է:",
+  "chat.rename": "Վերանվանեք",
+  "chat.new_chat": "Նոր զրույց"
 }

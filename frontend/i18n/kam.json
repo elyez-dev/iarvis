@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Ndũkavulane nake",
+  "settings.delete_memory": "Ĩvathana na Kĩlilikano",
+  "settings.delete_memory_title": "Ĩvathana na Kĩlilikano",
+  "settings.delete_memory_confirm": "We nĩwĩsĩ nesa kana nũkwenda kũvetanga maũndũ onthe ala assistant ũlilikanaa? Maũndũ asu nĩ ta ngewa sya tene, ũvoo ũla ũtũmĩawa kũalyũla ũvoo wa RAG, na maũndũ ala ũkwĩmanyĩsya. We no wende kũendeea?",
+  "settings.delete_memory_yes": "Ĩĩ, nĩ w'o.",
+  "settings.delete_memory_no": "Aiee, ti w'o.",
+  "settings.delete_memory_success": "Maũndũ onthe ala ũlilikene nĩmanangĩtwe.",
+  "settings.delete_memory_error": "Kĩvathũkany'o kya kũvetanga maũndũ: {vĩtumi}",
+  "chat.delete": "Ĩveta kũea ngewa",
+  "chat.delete_confirm": "Ndũkesa kũvĩndũa ũndũ ũsu.",
+  "chat.delete_yes": "Ĩĩ, nĩvatonyeka",
+  "chat.delete_no": "Kũvetanga",
+  "chat.deleted": "Kĩsese kya kũea ngewa nĩkyesie kũvetwa.",
+  "chat.rename": "Ĩsyĩtwa yĩngĩ",
+  "chat.new_chat": "Kũea ngewa na andũ"
 }

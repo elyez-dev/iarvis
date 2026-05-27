@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "తో చాట్",
+  "settings.delete_memory": "మెమరీని తొలగించు",
+  "settings.delete_memory_title": "మెమరీని తొలగించు",
+  "settings.delete_memory_confirm": "మీరు అసిస్టెంట్ యొక్క అన్ని మెమరీని తొలగించాలనుకుంటున్నారా? ఇందులో సంభాషణ చరిత్ర, RAG నిల్వ చేసిన డేటా మరియు జ్ఞాన గ్రాఫ్లు ఉన్నాయి. మీరు కొనసాగించాలనుకుంటున్నారా?",
+  "settings.delete_memory_yes": "అవును",
+  "settings.delete_memory_no": "లేదు",
+  "settings.delete_memory_success": "అన్ని జ్ఞాపకాలను విజయవంతంగా తొలగించబడింది.",
+  "settings.delete_memory_error": "మెమరీని తొలగించడంలో లోపంః {error}",
+  "chat.delete": "చాట్ను తొలగించు",
+  "chat.delete_confirm": "చాట్ '{title}' ను తొలగించు? ఈ చర్యను తిరస్కరించలేము.",
+  "chat.delete_yes": "అవును, తొలగించండి",
+  "chat.delete_no": "రద్దు",
+  "chat.deleted": "చాట్ విజయవంతంగా తొలగించబడింది.",
+  "chat.rename": "పేరు మార్చు",
+  "chat.new_chat": "కొత్త చాట్"
 }

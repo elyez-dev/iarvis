@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Waxtaan ak",
+  "settings.delete_memory": "Déggal ci xët yi",
+  "settings.delete_memory_title": "Déggal ci xët yi",
+  "settings.delete_memory_confirm": "Ndax nga bëgg a fàtte FARAX ci xët wuy taxawal bi?",
+  "settings.delete_memory_yes": "Waaw",
+  "settings.delete_memory_no": "Duñu ko",
+  "settings.delete_memory_success": "Fekk la ñu di dëddu.",
+  "settings.delete_memory_error": "Fëgg di jël xët: {fëgg}",
+  "chat.delete": "Déggal waxtu",
+  "chat.delete_confirm": "Déggal waxtu '{title}'?",
+  "chat.delete_yes": "Waaw, di jël",
+  "chat.delete_no": "Di dëddu",
+  "chat.deleted": "Xët yi ñu di sàmme ci.",
+  "chat.rename": "Diin-ngir",
+  "chat.new_chat": "Xët bu bees"
 }

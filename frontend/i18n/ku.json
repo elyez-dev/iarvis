@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Bi",
+  "settings.delete_memory": "Bîr û Nivisê jê bikin",
+  "settings.delete_memory_title": "Bîr û Nivisê jê bikin",
+  "settings.delete_memory_confirm": "Hûn ji bo ku hûn ji bo ku hûn ji hemû bîranîna alîkarê ji holê rakin? Ev di nav de dîroka hevpeyvînê, daneyên li RAG veşartin û grafên zanînê. Hûn dixwazin berdewam bikin?",
+  "settings.delete_memory_yes": "- Erê",
+  "settings.delete_memory_no": "Ne, ne",
+  "settings.delete_memory_success": "Hemû bîranîn bi serketî hatine hiştin.",
+  "settings.delete_memory_error": "Xelet ji bo jêkirina bîranînê: {error}",
+  "chat.delete": "Çata ji dest bixe",
+  "chat.delete_confirm": "Çata '{title} ji holê rakin? Ev çalakiyê nikare bê kirin.",
+  "chat.delete_yes": "Erê, jêbirin",
+  "chat.delete_no": "Berxwedana",
+  "chat.deleted": "Çata bi serketî hate betalkirin.",
+  "chat.rename": "Navê din",
+  "chat.new_chat": "Çata nû"
 }

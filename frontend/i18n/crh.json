@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Oçraşuvnen",
+  "settings.delete_memory": "Hatıralarnı silmek",
+  "settings.delete_memory_title": "Hatıralarnı silmek",
+  "settings.delete_memory_confirm": "Assistentniñ bütün hatırasını silmek istegenine eminmisiñ? Bu, subet tarihını, RAG-da saqlanğan malümatnı ve bilgi grafiklerini o cümleden.",
+  "settings.delete_memory_yes": "Evet, öyle",
+  "settings.delete_memory_no": "Yoq, yoq",
+  "settings.delete_memory_success": "Bütün hatıra muvafaqiyetnen silindi.",
+  "settings.delete_memory_error": "Hatıra silüv hatası: {hatası}",
+  "chat.delete": "Çatnı sil",
+  "chat.delete_confirm": "Çat '{title}'ni silmek? Bu areket lâğu etilmez.",
+  "chat.delete_yes": "Evet, silmek",
+  "chat.delete_no": "lâğu etilmek",
+  "chat.deleted": "Çat muvafaqiyetnen silindi.",
+  "chat.rename": "Adını deñiştir",
+  "chat.new_chat": "Yañı çat"
 }

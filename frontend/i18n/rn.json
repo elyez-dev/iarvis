@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Nuganire na",
+  "settings.delete_memory": "Gukuramwo ubuhinga bwo kwibuka",
+  "settings.delete_memory_title": "Gukuramwo ubuhinga bwo kwibuka",
+  "settings.delete_memory_confirm": "Woba uzi neza ko ushaka gusiba ububiko bwose bw'umufasha? Ivyo birimwo kahise k'ibiganiro, amakuru ya RAG n'ibicapo vy'ubumenyi. Woba wipfuza kubandanya?",
+  "settings.delete_memory_yes": "Ego",
+  "settings.delete_memory_no": "Oya",
+  "settings.delete_memory_success": "Ibuka ry'ibintu vyose vyarazimanganye.",
+  "settings.delete_memory_error": "Ikosa mu guhanagura ububutsa: {ikosa}",
+  "chat.delete": "Guhanagura ikiganiro",
+  "chat.delete_confirm": "Niwirinde kuvuga '{title}'? Ico gikorwa ntigishobora guhindurwa.",
+  "chat.delete_yes": "Egome, niwirinde",
+  "chat.delete_no": "Guhanagura",
+  "chat.deleted": "Ikiganiro caciye gihagarikwa neza.",
+  "chat.rename": "Guhindura izina",
+  "chat.new_chat": "Ikiganiro gishasha"
 }

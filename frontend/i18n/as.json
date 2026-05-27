@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "সৈতে চ্যাট কৰক",
+  "settings.delete_memory": "স্মৃতি বিলোপ কৰক",
+  "settings.delete_memory_title": "স্মৃতি বিলোপ কৰক",
+  "settings.delete_memory_confirm": "আপুনি নিশ্চিত যে আপুনি সহায়কৰ সকলো স্মৃতি মুছিব বিচাৰে? ইয়াত কথোপকথনৰ ইতিহাস, RAG সংৰক্ষিত তথ্য আৰু জ্ঞান গ্ৰাফো অন্তৰ্ভুক্ত আছে। আপুনি আগুৱাই যাব বিচাৰে নেকি?",
+  "settings.delete_memory_yes": "হয়",
+  "settings.delete_memory_no": "নহয়",
+  "settings.delete_memory_success": "সকলো স্মৃতি সফলতাৰে মুছ কৰা হৈছে।",
+  "settings.delete_memory_error": "মেমৰি বিলোপ কৰা ভুলঃ {error}",
+  "chat.delete": "চ্যাট বিলোপ কৰক",
+  "chat.delete_confirm": "'{title}' চ্যাটটো বিলোপ কৰক? এই কাৰ্য্যটো বাতিল কৰিব নোৱাৰি।",
+  "chat.delete_yes": "হয়, বিলোপ কৰক",
+  "chat.delete_no": "বাতিল কৰক",
+  "chat.deleted": "চ্যাট সফলতাৰে বিলোপ কৰা হৈছে।",
+  "chat.rename": "নাম সলনি কৰা",
+  "chat.new_chat": "নতুন চ্যাট"
 }

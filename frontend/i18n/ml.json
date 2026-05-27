@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "ചാറ്റ് ചെയ്യൂ",
+  "settings.delete_memory": "മെമ്മറി ഇല്ലാതാക്കുക",
+  "settings.delete_memory_title": "മെമ്മറി ഇല്ലാതാക്കുക",
+  "settings.delete_memory_confirm": "അസിസ്റ്റന്റിന്റെ എല്ലാ മെമ്മറിയും നീക്കം ചെയ്യണമെന്ന് ഉറപ്പുണ്ടോ? ഇതിലേക്ക് സംഭാഷണ ചരിത്രം, RAG സംഭരിച്ചിരിക്കുന്ന ഡാറ്റ, അറിവ് ഗ്രാഫുകൾ എന്നിവ ഉൾപ്പെടുന്നു. തുടരണോ?",
+  "settings.delete_memory_yes": "അതെ",
+  "settings.delete_memory_no": "ഇല്ല",
+  "settings.delete_memory_success": "എല്ലാ മെമ്മറിയും വിജയകരമായി ഇല്ലാതാക്കി.",
+  "settings.delete_memory_error": "മെമ്മറി ഇല്ലാതാക്കുന്നതിൽ പിശക്ഃ {പിശക്}",
+  "chat.delete": "ചാറ്റ് ഇല്ലാതാക്കുക",
+  "chat.delete_confirm": "ചാറ്റ് '{title} നീക്കം ചെയ്യുക? ഈ നടപടി മാറ്റാനാവില്ല.",
+  "chat.delete_yes": "അതെ, ഇല്ലാതാക്കുക",
+  "chat.delete_no": "റദ്ദാക്കുക",
+  "chat.deleted": "ചാറ്റ് വിജയകരമായി ഇല്ലാതാക്കി.",
+  "chat.rename": "പുനർനാമകരണം",
+  "chat.new_chat": "പുതിയ ചാറ്റ്"
 }

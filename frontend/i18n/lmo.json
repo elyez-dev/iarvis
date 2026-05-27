@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chats cun",
+  "settings.delete_memory": "Scarica la memoria",
+  "settings.delete_memory_title": "Scarica la memoria",
+  "settings.delete_memory_confirm": "Te sèi sigur de voeur scanzà TUTTA la memoria del assistent?",
+  "settings.delete_memory_yes": "Sì sì sì",
+  "settings.delete_memory_no": "No, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no",
+  "settings.delete_memory_success": "Tut i memòri hinn staa cancellaa.",
+  "settings.delete_memory_error": "Eror de cancelament de memoria: {errore}",
+  "chat.delete": "Scarica la chiacchierata",
+  "chat.delete_confirm": "Scarica '{title}? Questa azion no se pò fà annulla.",
+  "chat.delete_yes": "Sì, cancel",
+  "chat.delete_no": "Cancelà",
+  "chat.deleted": "La chat l'è scansada con successo.",
+  "chat.rename": "Rinasenì",
+  "chat.new_chat": "Nuovo Chat"
 }

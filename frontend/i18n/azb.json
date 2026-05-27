@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "باهادا چت",
+  "settings.delete_memory": "خاطیره لری سئلک",
+  "settings.delete_memory_title": "خاطیره لری سئلک",
+  "settings.delete_memory_confirm": "آيا مطمئني که مي خواي تمام حافظه اسيستنت رو حذف کني؟ اين شامل تاريخچه مکالمه، داده هاي ذخیره شده RAG و گراف هاي دانش است.",
+  "settings.delete_memory_yes": "بلي",
+  "settings.delete_memory_no": "نه",
+  "settings.delete_memory_success": "بوتون خاطیره لری اوغورلا سئلئنئب.",
+  "settings.delete_memory_error": "خاطیره لری حذف ائدن خاتمه: {خاطره}",
+  "chat.delete": "چیتی سئل",
+  "chat.delete_confirm": "چیت \"{ عنوان} \" نی حذف ائدیرسن؟ بو عملین رد ائدیلمه سی مومکون دئییل.",
+  "chat.delete_yes": "بلي، حذف کن",
+  "chat.delete_no": "لغو",
+  "chat.deleted": "چت اوغورلو حذف ائدیلدی.",
+  "chat.rename": "آدینی دَییشدیر",
+  "chat.new_chat": "نوین چت"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Kambiranani ndi",
+  "settings.delete_memory": "Chotsani Chikumbutso",
+  "settings.delete_memory_title": "Chotsani Chikumbutso",
+  "settings.delete_memory_confirm": "Kodi mukutsimikiza kuti mukufuna kuchotsa kukumbukira kwa wothandizira? Izi zikuphatikizapo mbiri ya zokambirana, deta yosungidwa RAG ndi ziwonetsero za chidziwitso. Kodi mukufuna kupitiriza?",
+  "settings.delete_memory_yes": "Inde",
+  "settings.delete_memory_no": "Ayi, ndi zoona.",
+  "settings.delete_memory_success": "Chikumbutso chonsecho chafafanizidwa bwinobwino.",
+  "settings.delete_memory_error": "Kulakwitsa pochotsa kukumbukira: {zolakwa}",
+  "chat.delete": "Chotsani nkhani",
+  "chat.delete_confirm": "Chotsani nkhaniyo '{title}'?",
+  "chat.delete_yes": "Inde, fufuzani",
+  "chat.delete_no": "Kuletsa",
+  "chat.deleted": "Macheza anachotsedwa bwinobwino.",
+  "chat.rename": "Dzina Latsopano",
+  "chat.new_chat": "Macheza atsopano"
 }

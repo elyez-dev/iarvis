@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Cchjattate cù",
+  "settings.delete_memory": "Cancella a memoria",
+  "settings.delete_memory_title": "Cancella a memoria",
+  "settings.delete_memory_confirm": "S'è sicuru ca vulete cancellari TUTTA la memoria di l'assistenti? Chistu include storia di cunversazioni, dati archiviati RAG e grafichi di cunniscenza. Vulete cuntinuà?",
+  "settings.delete_memory_yes": "Si, si, si, si",
+  "settings.delete_memory_no": "No, nun",
+  "settings.delete_memory_success": "Tutte e memurie sò state cancellate cù successu.",
+  "settings.delete_memory_error": "Erru di cancellazione di memoria: {errore}",
+  "chat.delete": "Scaricare u chat",
+  "chat.delete_confirm": "Cancellari '{titolo}? Stazzioni nun si po' fari.",
+  "chat.delete_yes": "Si, scaricari",
+  "chat.delete_no": "Annullari",
+  "chat.deleted": "U chat hè statu cancellatu cù successu.",
+  "chat.rename": "Rinnumari",
+  "chat.new_chat": "Nuovu Chat"
 }

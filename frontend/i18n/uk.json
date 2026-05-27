@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Поговорить з",
+  "settings.delete_memory": "Збийте пам'ять",
+  "settings.delete_memory_title": "Збийте пам'ять",
+  "settings.delete_memory_confirm": "Чи ви впевнені, що хочете видалити всю пам'ять асістента? Це включає історію розмов, дані, що зберігаються в RAG та графіки знань.",
+  "settings.delete_memory_yes": "Так, це правда.",
+  "settings.delete_memory_no": "Ні, не.",
+  "settings.delete_memory_success": "Усі пам'ятки були успішно видалені.",
+  "settings.delete_memory_error": "Помилка з видалення пам'яті: {помилка}",
+  "chat.delete": "Знімайте чат",
+  "chat.delete_confirm": "Знімайте чат \"{заголовок}\"?",
+  "chat.delete_yes": "Так, видалити",
+  "chat.delete_no": "Відкласти",
+  "chat.deleted": "Чат удалено успішно.",
+  "chat.rename": "Перейменування",
+  "chat.new_chat": "Новий чат"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Бо сӯҳбат",
+  "settings.delete_memory": "Хотираро нест кунед",
+  "settings.delete_memory_title": "Хотираро нест кунед",
+  "settings.delete_memory_confirm": "Оё шумо боварӣ доред, ки шумо мехоҳед, ки ҳамаи хотираи ёрдамчии нест кунед? Ин дар бар мегирад, таърихи сӯҳбат, маълумоти захирашуда RAG ва графҳои дониш. Оё шумо мехоҳед, ки идома диҳед?",
+  "settings.delete_memory_yes": "Бале",
+  "settings.delete_memory_no": "Не, на.",
+  "settings.delete_memory_success": "Ҳамаи хотираҳо муваффақ карда шуданд.",
+  "settings.delete_memory_error": "Хатои нест кардани хотира: {хато}",
+  "chat.delete": "Чатро нест кунед",
+  "chat.delete_confirm": "Чати \"{title}\" -ро нест кунед? Ин амалиро бекор кардан мумкин нест.",
+  "chat.delete_yes": "Бале, нест кунед",
+  "chat.delete_no": "Таълиф кардан",
+  "chat.deleted": "Чат бомуваффақият нест карда шуд.",
+  "chat.rename": "Истифодаи ном",
+  "chat.new_chat": "Чатҳои нав"
 }

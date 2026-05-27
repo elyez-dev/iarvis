@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Bua le",
+  "settings.delete_memory": "Tlosa Khopotso",
+  "settings.delete_memory_title": "Tlosa Khopotso",
+  "settings.delete_memory_confirm": "Na u na le bonnete ba hore u batla ho hlakola memori eohle ea mothusi? Sena se kenyelletsa histori ea moqoqo, lintlha tse bolokiloeng RAG le li-graph tsa tsebo. Na u batla ho tsoela pele?",
+  "settings.delete_memory_yes": "E, ke 'nete",
+  "settings.delete_memory_no": "Che, ha ho joalo.",
+  "settings.delete_memory_success": "Ho hlakotsoe mohopolo oohle ka katleho.",
+  "settings.delete_memory_error": "Phoso ea ho hlakola memori: {phoso}",
+  "chat.delete": "Tlosa moqoqo",
+  "chat.delete_confirm": "Tlosa moqoqo '{title}'? Ketso ena e ke ke ea etsetsoa.",
+  "chat.delete_yes": "E, hlakola",
+  "chat.delete_no": "Ho hlakola",
+  "chat.deleted": "Puisano e ile ea tlosoa ka katleho.",
+  "chat.rename": "Lebitso le lecha",
+  "chat.new_chat": "Puisano e Ncha"
 }

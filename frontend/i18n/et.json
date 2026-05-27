@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Räägi temaga",
+  "settings.delete_memory": "Pöörake mälu",
+  "settings.delete_memory_title": "Pöörake mälu",
+  "settings.delete_memory_confirm": "Kas sa tahad kustutada assistendi mälu, sealhulgas vestlushistoriat, RAG-i salvestatud andmeid ja teadmiste graafikuid?",
+  "settings.delete_memory_yes": "Jah, ma olen.",
+  "settings.delete_memory_no": "Ei, ei.",
+  "settings.delete_memory_success": "Kõik mälu on edukalt kustutatud.",
+  "settings.delete_memory_error": "Mälumuse kustutamise viga: {vig)",
+  "chat.delete": "Katka lõhke",
+  "chat.delete_confirm": "Kas sa ei saa seda teha?",
+  "chat.delete_yes": "Jah, kustutada",
+  "chat.delete_no": "Kannuleerumine",
+  "chat.deleted": "Rääkimine kustutati edukalt.",
+  "chat.rename": "Ühenda nimi",
+  "chat.new_chat": "Uus kleit"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Eñe'ẽvẽ",
+  "settings.delete_memory": "Emoĩ memória",
+  "settings.delete_memory_title": "Emoĩ memória",
+  "settings.delete_memory_confirm": "¿Reikuaasépa reiporavoha opaite mba'e remimombe'u rembiguái remimombe'u?",
+  "settings.delete_memory_yes": "Ha'e niko",
+  "settings.delete_memory_no": "Ndaipóri",
+  "settings.delete_memory_success": "Opaite mandu'a ojeipe'a porã.",
+  "settings.delete_memory_error": "Mba'evai ñemomarandu ñemomarandu: {error}",
+  "chat.delete": "Emoĩmo'ã ñemongeta",
+  "chat.delete_confirm": "Emoĩta '{titulo}' ñomongeta?",
+  "chat.delete_yes": "Añete, emboja'o",
+  "chat.delete_no": "Ñemomombyry",
+  "chat.deleted": "Chat oñemboguejy porã.",
+  "chat.rename": "Oñembohéra",
+  "chat.new_chat": "Ñomongeta pyahu"
 }

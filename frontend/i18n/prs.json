@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "با اون ها صحبت کن",
+  "settings.delete_memory": "حافظه ها را حذف کنید",
+  "settings.delete_memory_title": "حافظه ها را حذف کنید",
+  "settings.delete_memory_confirm": "آیا مطمئنی می خوای همه ی حافظه دستیار رو حذف کنی؟ این شامل تاریخچه مکالمه ها، داده های ذخیره شده RAG و نمودار های دانش میخوای ادامه بدی؟",
+  "settings.delete_memory_yes": "بله ، می خواهم",
+  "settings.delete_memory_no": "نه نه نه نه نه",
+  "settings.delete_memory_success": "تمام حافظه ها با موفقیت حذف شده اند",
+  "settings.delete_memory_error": "خطا حذف حافظه: {خطای}",
+  "chat.delete": "مکالمه ها را حذف کنید",
+  "chat.delete_confirm": "حذف چت { عنوان}؟ این عمل نمی تواند رد شود.",
+  "chat.delete_yes": "بله، حذف می شود",
+  "chat.delete_no": "لغو کردن",
+  "chat.deleted": "چت با موفقیت حذف شد",
+  "chat.rename": "تغییر نام",
+  "chat.new_chat": "چت جدید"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Zuela ni",
+  "settings.delete_memory": "Jimbulula o Ibanzelu",
+  "settings.delete_memory_title": "Jimbulula o Ibanzelu",
+  "settings.delete_memory_confirm": "O kuila ua mesena kusukula o ima ioso ia kexile mu lembalala o múkuatekexi uê?",
+  "settings.delete_memory_yes": "Kiene muene",
+  "settings.delete_memory_no": "Kana, ki kiene",
+  "settings.delete_memory_success": "O ima ioso ia bhiti a i katula kiambote.",
+  "settings.delete_memory_error": "O kijimbuete kiki ki tena ku tu kuatekesa ku tendela kiambote o maka enhá.",
+  "chat.delete": "Katula o kijimbuete",
+  "chat.delete_confirm": "O kijimbuete kiki, ki tena ku ki lungulula.",
+  "chat.delete_yes": "Kiene, katula-ku",
+  "chat.delete_no": "Kufuta",
+  "chat.deleted": "O mutelembe ua kafuetele a u katula kiambote.",
+  "chat.rename": "Dijina diéngi",
+  "chat.new_chat": "Milongi ia Ubhe"
 }

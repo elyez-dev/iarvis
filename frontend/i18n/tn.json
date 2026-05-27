@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Bua le",
+  "settings.delete_memory": "Tlosa Mogopolo",
+  "settings.delete_memory_title": "Tlosa Mogopolo",
+  "settings.delete_memory_confirm": "A o tlhomamisegile gore o batla go phimola KAKANYO yotlhe ya mothusi? Seno se akaretsa hisitori ya dipuisano, tshedimosetso e e bolokilweng mo RAG le dipalo tsa kitso. A o batla go tswelela?",
+  "settings.delete_memory_yes": "Ee, ke a go rata.",
+  "settings.delete_memory_no": "Nnyaa",
+  "settings.delete_memory_success": "Go ile ga phimolwa megopolo yotlhe ka katlego.",
+  "settings.delete_memory_error": "Phoso ya go phimola memori: {phoso}",
+  "chat.delete": "Tlosa puisano",
+  "chat.delete_confirm": "Tlosa motlotlo '{title}'?",
+  "chat.delete_yes": "Ee, tlosa",
+  "chat.delete_no": "Go Tlosa",
+  "chat.deleted": "Puisano e tlositswe ka katlego.",
+  "chat.rename": "Go fetolwa leina",
+  "chat.new_chat": "Puisano e Ntšha"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "د",
+  "settings.delete_memory": "د حافظې له منځه وړل",
+  "settings.delete_memory_title": "د حافظې له منځه وړل",
+  "settings.delete_memory_confirm": "ایا تاسو ډاډه یاست چې د مرستیال ټول حافظه غواړئ حذف کړئ؟ دا د خبرو اترو تاریخ، د RAG ذخیره شوي معلومات او د پوهې ګرافونه شامل دي. ایا تاسو غواړئ دوام ورکړئ؟",
+  "settings.delete_memory_yes": "هو، په دې اړه",
+  "settings.delete_memory_no": "نه نه",
+  "settings.delete_memory_success": "ټولې حافظې په بریالیتوب سره حذف شوي دي.",
+  "settings.delete_memory_error": "د حافظې له مینځه وړلو خطا: {غلط}",
+  "chat.delete": "د خبرو اترو حذف کول",
+  "chat.delete_confirm": "د '{ عنوان}' چیټ حذف کړئ؟ دا عمل نشي کولی بېرته ترسره شي.",
+  "chat.delete_yes": "هو، له منځه وړل",
+  "chat.delete_no": "د تادیې لغوه کول",
+  "chat.deleted": "چیټ په بریالیتوب سره حذف شو.",
+  "chat.rename": "د نوم بدلول",
+  "chat.new_chat": "د نوي خبرو اترو"
 }

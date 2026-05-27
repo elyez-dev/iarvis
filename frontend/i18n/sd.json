@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "سان چيٽ",
+  "settings.delete_memory": "يادگيري کي ختم ڪريو",
+  "settings.delete_memory_title": "يادگيري کي ختم ڪريو",
+  "settings.delete_memory_confirm": "ڇا توهان پڪ آهيو ته توهان اسسٽنٽ جي سموري ميموري کي ختم ڪرڻ چاهيو ٿا؟ هن ۾ گفتگو جي تاريخ، RAG ذخيرو ڪيل ڊيٽا ۽ علم گراف شامل آهن. ڇا توهان جاري رکڻ چاهيندا؟",
+  "settings.delete_memory_yes": "ها",
+  "settings.delete_memory_no": "نه نه",
+  "settings.delete_memory_success": "سڀ يادگيري ڪاميابي سان ختم ٿي وئي آهي.",
+  "settings.delete_memory_error": "غلطي کي حذف ڪرڻ جي يادگيري: {errore}",
+  "chat.delete": "چيٽ کي ختم ڪريو",
+  "chat.delete_confirm": "چيٽ کي ختم ڪريو '{ عنوان}؟ هي عمل رد نه ٿو ڪري سگهجي.",
+  "chat.delete_yes": "ها، حذف ڪريو",
+  "chat.delete_no": "منسوخ ڪرڻ",
+  "chat.deleted": "چيٽ ڪاميابي سان ختم ٿي وئي.",
+  "chat.rename": "نالو تبديل ڪريو",
+  "chat.new_chat": "نئين چيٽ"
 }

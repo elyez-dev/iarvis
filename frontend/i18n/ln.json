@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Sololá na",
+  "settings.delete_memory": "Koboma makanisi",
+  "settings.delete_memory_title": "Koboma makanisi",
+  "settings.delete_memory_confirm": "Ozali na motema ya solo ete olingi kolongola makambo nyonso oyo assistant abosanaka te?",
+  "settings.delete_memory_yes": "Ɛɛ",
+  "settings.delete_memory_no": "Te, ezali bongo te",
+  "settings.delete_memory_success": "Babimisi makambo nyonso oyo ezali na makanisi na yo.",
+  "settings.delete_memory_error": "Libunga ya kolongola makanisi: {error}",
+  "chat.delete": "Koboma lisolo",
+  "chat.delete_confirm": "Kolongola lisolo '{title}'?",
+  "chat.delete_yes": "Ɛɛ, kolongola yango",
+  "chat.delete_no": "Koboma",
+  "chat.deleted": "Bafungolaki lisolo yango na esengo.",
+  "chat.rename": "Kombo na ye",
+  "chat.new_chat": "Lisolo ya sika"
 }

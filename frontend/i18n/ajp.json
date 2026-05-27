@@ -223,5 +223,20 @@
     "zh_tw": "الصينية (تدريجية)",
     "ms": "مالايية",
     "zu": "زولوي"
-  }
+  },
+  "chat.title": "دردشة مع",
+  "settings.delete_memory": "حط ذاكرة",
+  "settings.delete_memory_title": "حط ذاكرة",
+  "settings.delete_memory_confirm": "هل انت متأكد انك بتحب تخلص كل ذاكرة المساعد؟ هذا يشمل تاريخ المحادثة، البيانات المخزنة في RAG و الرسوم البيانية المعرفة. هل تريد مواصلة؟",
+  "settings.delete_memory_yes": "بلى",
+  "settings.delete_memory_no": "لا، لا",
+  "settings.delete_memory_success": "تم حذف كل الذاكرة بنجاح.",
+  "settings.delete_memory_error": "خطأ في حذف الذاكرة: {خطأ}",
+  "chat.delete": "حذف دردشة",
+  "chat.delete_confirm": "ابعد دردشة \"{ عنوان}؟ هذا الإجراء لا يمكن إبطاله.",
+  "chat.delete_yes": "بلى، حذف",
+  "chat.delete_no": "إلغاء",
+  "chat.deleted": "تم حذف المحادثة بنجاح.",
+  "chat.rename": "إعادة الاسم",
+  "chat.new_chat": "دردشة جديدة"
 }

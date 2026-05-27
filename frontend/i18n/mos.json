@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Ges-y ne",
+  "settings.delete_memory": "Yɩl-y y yĩn-kãsemsã",
+  "settings.delete_memory_title": "Yɩl-y y yĩn-kãsemsã",
+  "settings.delete_memory_confirm": "Yãmb sɩd dat n yẽesa sõssã sẽn be bũmb ning fãa pʋgẽ wã, tɩ rẽ naag ne sõssã sẽn zĩnd wakat fãa, RAG sẽn talld sõssã la bãngrã sẽn be b zugã. Yãmb dat n ket n maanda woto bɩ?",
+  "settings.delete_memory_yes": "A yaa woto.",
+  "settings.delete_memory_no": "A pa le be ye.",
+  "settings.delete_memory_success": "B sẽn da pa mi bũmb nins fãa wã paama tõoge.",
+  "settings.delete_memory_error": "Yʋsg sẽn yiisd b yĩn-kãsemsã: {flaw}",
+  "chat.delete": "Yãk-y n yiis sõsgã",
+  "chat.delete_confirm": "Yãk-y n yiis sõssã \"{title}\"?",
+  "chat.delete_yes": "Yaa woto, bɩ y yiis-a",
+  "chat.delete_no": "Yãk-y n da wa ye",
+  "chat.deleted": "B sẽn yiis sõssã tõogame.",
+  "chat.rename": "B pʋd-a lame t'a yʋʋr",
+  "chat.new_chat": "Sõsg a ye"
 }

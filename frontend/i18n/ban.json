@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Ngobrol sareng",
+  "settings.delete_memory": "Ngusap Memori",
+  "settings.delete_memory_title": "Ngusap Memori",
+  "settings.delete_memory_confirm": "Napi semeton yakin jagi mupus SAMAH ingetan asisten? Puniki rumasuk sejarah pawarah, data RAG sané kasimpen miwah grafik pengetahuan. Napi semeton meled nglanturang?",
+  "settings.delete_memory_yes": "Inggih",
+  "settings.delete_memory_no": "Nénten",
+  "settings.delete_memory_success": "Sami pamineh sampun kasuksman kapuputang.",
+  "settings.delete_memory_error": "Kasalahan ngahapus memori: {kasalahan}",
+  "chat.delete": "Ngusap obrolan",
+  "chat.delete_confirm": "Puputang obrolan '{title}'? Tindakan puniki nenten prasida kauwah.",
+  "chat.delete_yes": "Inggih, puputang",
+  "chat.delete_no": "Ngabatel",
+  "chat.deleted": "Chat kahapus antuk kasuksman.",
+  "chat.rename": "Ngaran malih",
+  "chat.new_chat": "Maos anyar"
 }

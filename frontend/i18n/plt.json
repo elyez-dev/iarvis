@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Miresaha amin'ny",
+  "settings.delete_memory": "Fahatsiarovana",
+  "settings.delete_memory_title": "Fahatsiarovana",
+  "settings.delete_memory_confirm": "Azo antoka ve fa te hamafa ny fahatsiarovana rehetra an'ny mpanampy ianao?",
+  "settings.delete_memory_yes": "Eny",
+  "settings.delete_memory_no": "Tsy izany",
+  "settings.delete_memory_success": "Voafafa soa aman-tsara ny fahatsiarovana rehetra.",
+  "settings.delete_memory_error": "Hadisoana famafana ny fitadidiana: {hadisoana}",
+  "chat.delete": "Esory ny resaka",
+  "chat.delete_confirm": "Tsy azo atao ny manova ity hetsika ity.",
+  "chat.delete_yes": "Eny, esory",
+  "chat.delete_no": "Fanamarinana",
+  "chat.deleted": "Voafafa soa aman-tsara ny chat.",
+  "chat.rename": "Famerenana anarana",
+  "chat.new_chat": "Vaovao Chat"
 }

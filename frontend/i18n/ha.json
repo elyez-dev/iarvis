@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Tattaunawa da",
+  "settings.delete_memory": "Ka Share Memory",
+  "settings.delete_memory_title": "Ka Share Memory",
+  "settings.delete_memory_confirm": "Shin kun tabbata kuna son share duk ƙwaƙwalwar mai taimakawa? Wannan ya haɗa da tarihin tattaunawa, bayanan da aka adana RAG da zane-zane na ilimi. Kuna son ci gaba?",
+  "settings.delete_memory_yes": "Haka ne",
+  "settings.delete_memory_no": "A'a",
+  "settings.delete_memory_success": "An share dukan ƙwaƙwalwar ajiya da nasara.",
+  "settings.delete_memory_error": "Kuskuren share ƙwaƙwalwar ajiya: {kuskure}",
+  "chat.delete": "Ka share hira",
+  "chat.delete_confirm": "Ka share hira '{title}'? Wannan mataki ba za a iya undo.",
+  "chat.delete_yes": "Haka ne, ka share",
+  "chat.delete_no": "Ka soke",
+  "chat.deleted": "An share hira da nasara.",
+  "chat.rename": "Sake Sunan",
+  "chat.new_chat": "Sabuwar hira"
 }

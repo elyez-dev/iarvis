@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Dzeɖoɖo kple",
+  "settings.delete_memory": "Ðe Ŋkuɖodzia ɖa",
+  "settings.delete_memory_title": "Ðe Ŋkuɖodzia ɖa",
+  "settings.delete_memory_confirm": "Ðe nèka ɖe edzi be yeadi be yeatsrɔ̃ kpeɖeŋutɔ la ƒe ŋkuɖodzinya Kɔkɔeawo? Esia lɔ dzrewɔwɔ ƒe ŋutinya, RAG-nya siwo woɖadzra ɖo kple sidzedze ƒe nɔnɔmetatawo ɖe eme. Ðe nàdi be yeayi edzi?",
+  "settings.delete_memory_yes": "Ɛ̃, nenemae wòle",
+  "settings.delete_memory_no": "Ao, menye nenemae o",
+  "settings.delete_memory_success": "Woɖe ŋkuɖodzinya katã ɖa.",
+  "settings.delete_memory_error": "Tɔtrɔ si wowɔ le ŋkuɖodzia me: {kpeɖodziyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔyɔ",
+  "chat.delete": "Ðe dzeɖoɖo ɖa",
+  "chat.delete_confirm": "Ðe nuƒoƒo '{title}' ɖa?",
+  "chat.delete_yes": "Ɛ̃, miɖe wo ɖa",
+  "chat.delete_no": "Ðe asi le eŋu",
+  "chat.deleted": "Woɖe dzeɖoɖo ɖa dzidzedzetɔe.",
+  "chat.rename": "Ŋkɔ si woɖɔ",
+  "chat.new_chat": "Dzeɖoɖo Yeye"
 }

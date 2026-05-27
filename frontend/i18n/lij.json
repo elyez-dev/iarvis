@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chatâ con",
+  "settings.delete_memory": "Sborda a memöia",
+  "settings.delete_memory_title": "Sborda a memöia",
+  "settings.delete_memory_confirm": "Ti ti veu scangiâ tutte e memöie do assistente?",
+  "settings.delete_memory_yes": "Sì, sì",
+  "settings.delete_memory_no": "No, no, no",
+  "settings.delete_memory_success": "Tî tò mémòri son stæti scciàti con successo.",
+  "settings.delete_memory_error": "Erô de scribbâ a memöia: {erô}",
+  "chat.delete": "Sborra o chat",
+  "chat.delete_confirm": "Sborda a çitatte '{title}'? Sta açion a no se peu fâ.",
+  "chat.delete_yes": "Sì, scì, scì",
+  "chat.delete_no": "Cancelâ",
+  "chat.deleted": "O chat o l'é stæto scangiou con successo.",
+  "chat.rename": "Renòmme",
+  "chat.new_chat": "Nûve chat"
 }

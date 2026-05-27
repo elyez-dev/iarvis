@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Сөйлесу",
+  "settings.delete_memory": "Естуді өшіру",
+  "settings.delete_memory_title": "Естуді өшіру",
+  "settings.delete_memory_confirm": "Сіз көмекшінің барлық есте сақтауын өшіргіңіз келе ме? Бұл әңгіме тарихы, RAG сақталған деректер және білім графикаларын қамтиды. Сіз жалғастырасыз ба?",
+  "settings.delete_memory_yes": "Иә, солай",
+  "settings.delete_memory_no": "Жоқ, жоқ",
+  "settings.delete_memory_success": "Барлық естеліктер сәтті өшірілді.",
+  "settings.delete_memory_error": "Жадыны өшіру қатесі: { қате}",
+  "chat.delete": "Әңгімелерді өшіру",
+  "chat.delete_confirm": "Бұл әрекетті қайтарып алу мүмкін емес.",
+  "chat.delete_yes": "Иә, өшіріңіз",
+  "chat.delete_no": "Алып тастау",
+  "chat.deleted": "Шат сәтті өшірілді.",
+  "chat.rename": "Атауын өзгерту",
+  "chat.new_chat": "Жаңа әңгіме"
 }

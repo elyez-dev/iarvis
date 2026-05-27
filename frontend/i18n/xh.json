@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Ncokola",
+  "settings.delete_memory": "Ukucima Imemori",
+  "settings.delete_memory_title": "Ukucima Imemori",
+  "settings.delete_memory_confirm": "Ngaba uqinisekile ukuba ufuna ukucima yonke imemori yomncedisi? Oku kuquka imbali yeencoko, idatha egcinwe kwi-RAG kunye nemizobo yolwazi. Ngaba uyafuna ukuqhubeka?",
+  "settings.delete_memory_yes": "Ewe",
+  "settings.delete_memory_no": "Hayi",
+  "settings.delete_memory_success": "Yonke imemori isusiwe ngempumelelo.",
+  "settings.delete_memory_error": "Impazamo ekucimiweni kwememori: {impazamo}",
+  "chat.delete": "Cima incoko",
+  "chat.delete_confirm": "Cima incoko '{isihloko}?",
+  "chat.delete_yes": "Ewe, susa",
+  "chat.delete_no": "Ukucinywa",
+  "chat.deleted": "Incoko icinywe ngempumelelo.",
+  "chat.rename": "Ukuguqula igama",
+  "chat.new_chat": "Incoko entsha"
 }

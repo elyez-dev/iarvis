@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "ಚಾಟ್",
+  "settings.delete_memory": "ನೆನಪುಗಳನ್ನು ಅಳಿಸಿ",
+  "settings.delete_memory_title": "ನೆನಪುಗಳನ್ನು ಅಳಿಸಿ",
+  "settings.delete_memory_confirm": "ನೀವು ಸಹಾಯಕನ ಎಲ್ಲಾ ಮೆಮೊರಿ ಅಳಿಸಲು ಬಯಸುವಿರಾ ಖಚಿತವಾಗಿ? ಇದು ಸಂಭಾಷಣೆ ಇತಿಹಾಸ, RAG ಸಂಗ್ರಹಿಸಿದ ಡೇಟಾ ಮತ್ತು ಜ್ಞಾನ ಗ್ರಾಫ್ಗಳನ್ನು ಒಳಗೊಂಡಿದೆ. ನೀವು ಮುಂದುವರಿಸಲು ಬಯಸುವಿರಾ?",
+  "settings.delete_memory_yes": "ಹೌದು",
+  "settings.delete_memory_no": "ಇಲ್ಲ",
+  "settings.delete_memory_success": "ಎಲ್ಲಾ ಮೆಮೊರಿಗಳನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಅಳಿಸಲಾಗಿದೆ.",
+  "settings.delete_memory_error": "ಮೆಮೊರಿ ಅಳಿಸುವಲ್ಲಿ ದೋಷಃ {ದೋಷ}",
+  "chat.delete": "ಚಾಟ್ ಅನ್ನು ಅಳಿಸಿ",
+  "chat.delete_confirm": "ಚಾಟ್ '{title}' ಅನ್ನು ಅಳಿಸಿ? ಈ ಕ್ರಿಯೆಯನ್ನು ರದ್ದುಗೊಳಿಸಲಾಗುವುದಿಲ್ಲ.",
+  "chat.delete_yes": "ಹೌದು, ಅಳಿಸಿ",
+  "chat.delete_no": "ರದ್ದು",
+  "chat.deleted": "ಚಾಟ್ ಅನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಅಳಿಸಲಾಗಿದೆ.",
+  "chat.rename": "ಮರುನಾಮಕರಣ",
+  "chat.new_chat": "ಹೊಸ ಚಾಟ್"
 }

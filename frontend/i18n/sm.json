@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Talanoa ma",
+  "settings.delete_memory": "Aveese le Manatua",
+  "settings.delete_memory_title": "Aveese le Manatua",
+  "settings.delete_memory_confirm": "Pe e te mautinoa e te manaʻo e aveese uma manatua o le fesoasoani? E aofia ai talafaasolopito talanoaga, RAG teuina faamatalaga ma faamatalaga o le malamalama. Pe e te manao e faaauau?",
+  "settings.delete_memory_yes": "Ioe",
+  "settings.delete_memory_no": "Leai se mea e fai",
+  "settings.delete_memory_success": "Ua aveesea ma le manuia uma o le manatua.",
+  "settings.delete_memory_error": "Faaletonu o le aveesea manatua: {faaletonu}",
+  "chat.delete": "Aveese le talatalanoaga",
+  "chat.delete_confirm": "E lē mafai ona toe faia lenei gaoioiga.",
+  "chat.delete_yes": "Ioe, ia soloiesea",
+  "chat.delete_no": "Faʻaleaogaina",
+  "chat.deleted": "Na faatoʻilaloina le talatalanoaga.",
+  "chat.rename": "Toe faaigoaina",
+  "chat.new_chat": "Talanoaga fou"
 }

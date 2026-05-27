@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Hkaw tsun shaga",
+  "settings.delete_memory": "Myit Dum Hkrum Ai Lam Ni Hpe Shut Ya U",
+  "settings.delete_memory_title": "Myit Dum Hkrum Ai Lam Ni Hpe Shut Ya U",
+  "settings.delete_memory_confirm": "Dai hta ga shaga ai labau, RAG kaw mara da ai data hte chye chyang ai sumla ni lawm ai. matut galaw mayu ai kun?",
+  "settings.delete_memory_yes": "Rai nga ai",
+  "settings.delete_memory_no": "N galaw ai",
+  "settings.delete_memory_success": "Myit dum lam yawng hpe awng dang ai hku sha kabai kau ya ai.",
+  "settings.delete_memory_error": "Myitkyina hpe mara dat ai lam: {law}",
+  "chat.delete": "Ga shaga ai lam hpe raw kau u",
+  "chat.delete_confirm": "Ndai lam hpe n mai galaw ai.",
+  "chat.delete_yes": "Rai, raw kau u",
+  "chat.delete_no": "Galaw kau",
+  "chat.deleted": "Ga shagawp hpe awng dang ai hku pat kau ai.",
+  "chat.rename": "mying galai",
+  "chat.new_chat": "Ga shaga ai lam nnan"
 }

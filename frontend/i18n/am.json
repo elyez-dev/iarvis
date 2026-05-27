@@ -223,5 +223,20 @@
     "zh_tw": "የቻይናኛ (የተለመደ)",
     "ms": "ማሌያኛ",
     "zu": "ሱሉ"
-  }
+  },
+  "chat.title": "ጋር ውይይት",
+  "settings.delete_memory": "ትውስታን አስወግድ",
+  "settings.delete_memory_title": "ትውስታን አስወግድ",
+  "settings.delete_memory_confirm": "አንተ ረዳት ትውስታ ሁሉንም መሰረዝ እንደሚፈልጉ እርግጠኛ ነህ? ይህ ውይይት ታሪክ, RAG የተከማቸ ውሂብ እና እውቀት ግራፎች ያካትታል. መቀጠል ይፈልጋሉ?",
+  "settings.delete_memory_yes": "አዎ",
+  "settings.delete_memory_no": "አይደለም",
+  "settings.delete_memory_success": "ሁሉም ትውስታ በተሳካ ሁኔታ ተሰርዟል።",
+  "settings.delete_memory_error": "ስህተት በማስወገድ ማህደረ ትውስታ: {ስህተት}",
+  "chat.delete": "ውይይቱን መሰረዝ",
+  "chat.delete_confirm": "ይህ እርምጃ ሊስተጓጎል አይችልም።",
+  "chat.delete_yes": "አዎ፣ አጥፍ",
+  "chat.delete_no": "መሰረዝ",
+  "chat.deleted": "ውይይቱ በተሳካ ሁኔታ ተሰርዟል።",
+  "chat.rename": "ስማቸውን መለወጥ",
+  "chat.new_chat": "አዲስ ቻት"
 }

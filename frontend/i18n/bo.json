@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "གྲོལ་གླེང་།",
+  "settings.delete_memory": "དྲན་ཐོ།",
+  "settings.delete_memory_title": "དྲན་ཐོ།",
+  "settings.delete_memory_confirm": "ཁྱེད་ཚོས་རོགས་པ་དེའི་དྲན་རྟེན་ཚང་མ་ཕྱིར་འབུད་འདོད་ཡོད་པ་རེད་དམ། འདི་ལ་ཁ་བརྡར་གི་ལོ་རྒྱུས་དང་། RAG ནང་གསེས་བྱས་པའི་ཡིག་ཆ་དང་ཤེས་ཡོན་ཡིག་གཟུགས་བཅས་ཡོད། ཁྱེད་ཚོས་མུ་མཐུད་ཞུ་འདོད་དམ།",
+  "settings.delete_memory_yes": "ཡིན་ནམ།",
+  "settings.delete_memory_no": "མིན།",
+  "settings.delete_memory_success": "དྲན་ཐོ། ཚང་མ་སེལ་འཐུ་གྲུབ་འདུག",
+  "settings.delete_memory_error": "དྲན་ཐོ། བརྗོད་ཐབས།",
+  "chat.delete": "གྲོས་གླེང་སེལ་འཐུ་",
+  "chat.delete_confirm": "འབོལ་གཏམ་ \\\\\"{title\\\\\" ཞེས་པ་དེ་སོར་གཏོང་དགོས། འདི་བྱ་བ་དེ་ཕྱིར་འབུད་མི་ཐུབ་བམ།",
+  "chat.delete_yes": "ཡིན་ནམ། ཕྱིར་འབུད་",
+  "chat.delete_no": "ཆ་འཇོག་བྱ་",
+  "chat.deleted": "གྲོལ་གླེང་དེ་སེལ་འཐུ་གྲུབ་འདུག",
+  "chat.rename": "མིང་བསྒྱུར་བ།",
+  "chat.new_chat": "གྲོས་གླེང་གསར་འགྱུར།"
 }

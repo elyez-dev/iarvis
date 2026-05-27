@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Yogera ne",
+  "settings.delete_memory": "Ggyamu Ebirowoozo",
+  "settings.delete_memory_title": "Ggyamu Ebirowoozo",
+  "settings.delete_memory_confirm": "Oli mukakafu nti oyagala okuggyawo byonna by'omusawo by'ojjukira? Kino kizingiramu ebyafaayo by'okukubaganya ebirowoozo, obubaka obwesigamiziddwa ku RAG n'ebifaananyi by'okumanya. Oyagala okweyongera?",
+  "settings.delete_memory_yes": "Yee",
+  "settings.delete_memory_no": "Nedda",
+  "settings.delete_memory_success": "Ebiri mu birowoozo byonna byaggibwa.",
+  "settings.delete_memory_error": "Ekibi eky'okuggyawo obukakafu: {ekibi}",
+  "chat.delete": "Ggyamu okuwuliziganya",
+  "chat.delete_confirm": "Ggyamu chati '{title}'? Ekikolwa kino tekisobola kuggyibwawo.",
+  "chat.delete_yes": "Yee, ggyamu",
+  "chat.delete_no": "Okuggyawo",
+  "chat.deleted": "Chat yaggibwawo bulungi.",
+  "chat.rename": "Y'addamu okuyitibwa",
+  "chat.new_chat": "Empuliziganya Enkadde"
 }

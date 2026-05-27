@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Puordūmoj ar",
+  "settings.delete_memory": "Izmaineit atminis",
+  "settings.delete_memory_title": "Izmaineit atminis",
+  "settings.delete_memory_confirm": "Voi tu esi pārliecināts, ka gribi izmaineit vysu asistenta atmiņu?",
+  "settings.delete_memory_yes": "Jā, tys ir.",
+  "settings.delete_memory_no": "Na, tys nav.",
+  "settings.delete_memory_success": "Vysys atminis ir izdzēvis.",
+  "settings.delete_memory_error": "Napīcīšama atminis atmaineišona: {paļdis}",
+  "chat.delete": "Izmaineit diskuseju",
+  "chat.delete_confirm": "Izmaiteit stuostu \"{title}\"?",
+  "chat.delete_yes": "Jā, izmazynuotu",
+  "chat.delete_no": "Atceļšona",
+  "chat.deleted": "Čats beja izdzēts.",
+  "chat.rename": "Izmaina",
+  "chat.new_chat": "Jauna stuovūkļa"
 }

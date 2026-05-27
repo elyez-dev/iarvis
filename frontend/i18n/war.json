@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Pag-istorya ha",
+  "settings.delete_memory": "Igo an Memory",
+  "settings.delete_memory_title": "Igo an Memory",
+  "settings.delete_memory_confirm": "Sigurado ka nga karuyag mo nga kuhaon an ngatanan nga memorya han asistent?",
+  "settings.delete_memory_yes": "Oo, amo ito",
+  "settings.delete_memory_no": "Diri",
+  "settings.delete_memory_success": "An ngatanan nga memorya gin-aalis nga malamposon.",
+  "settings.delete_memory_error": "Pag-e-e nga pamamalipad: {error}",
+  "chat.delete": "I-delete an chat",
+  "chat.delete_confirm": "I-delete an chat '{title}'? Diri ini mahihimo.",
+  "chat.delete_yes": "Oo, pag-iha",
+  "chat.delete_no": "Pag-abre",
+  "chat.deleted": "Maupay nga gin-aalis an chat.",
+  "chat.rename": "Pag-usab hin ngaran",
+  "chat.new_chat": "Bag-o nga Chat"
 }

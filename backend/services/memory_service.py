@@ -513,6 +513,29 @@ class MemoryService:
             f"Time context: {n8n_query.time_context.strip()}"
         )
 
+    async def delete_all_in_rag(self) -> str:
+        """Delete all points from the default Qdrant collection.
+
+        Drops the collection and resets the existence cache so the next
+        write operation recreates it automatically.
+
+        Returns an error message string (empty on success).
+        """
+        try:
+            await asyncio.to_thread(
+                self.qdrant_client.delete_collection,
+                collection_name=self.default_collection,
+            )
+            logger.info("MemoryService.delete_all_in_rag: collection %s dropped", self.default_collection)
+        except Exception as exc:
+            msg = f"Qdrant collection delete failed: {exc}"
+            logger.error("MemoryService.delete_all_in_rag: %s", msg)
+            return msg
+
+        self._collection_ready = False
+        self._collection_checked_at = 0.0
+        return ""
+
     def _serialize_results(self, matches: Sequence[Any]) -> List[Dict[str, Any]]:
         serialized: List[Dict[str, Any]] = []
         for match in matches:

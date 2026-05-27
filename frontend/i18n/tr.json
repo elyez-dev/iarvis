@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Konuş.",
+  "settings.delete_memory": "Hatıraları Sil",
+  "settings.delete_memory_title": "Hatıraları Sil",
+  "settings.delete_memory_confirm": "Yardımcının tüm hafızasını silmek istediğinden emin misin? Bu konuşma geçmişini, RAG'de saklanan verileri ve bilgi grafiklerini içerir.",
+  "settings.delete_memory_yes": "Evet.",
+  "settings.delete_memory_no": "Hayır, hayır.",
+  "settings.delete_memory_success": "Tüm hafızamız başarıyla silindi.",
+  "settings.delete_memory_error": "Hatalı bellek silme hatası: {hatalı}",
+  "chat.delete": "Çat sil",
+  "chat.delete_confirm": "Bu eylem iptal edilemez.",
+  "chat.delete_yes": "Evet, sil.",
+  "chat.delete_no": "İptal",
+  "chat.deleted": "Çat başarıyla silindi.",
+  "chat.rename": "Adını değiştir",
+  "chat.new_chat": "Yeni sohbet"
 }

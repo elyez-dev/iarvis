@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Bua kuyukila ne",
+  "settings.delete_memory": "Ujimine meji",
+  "settings.delete_memory_title": "Ujimine meji",
+  "settings.delete_memory_confirm": "Udi mutuishibue ne: udi musue kushipa bintu bionso bia mu dibala dia muambuluishi anyi?",
+  "settings.delete_memory_yes": "Eyowa",
+  "settings.delete_memory_no": "Tòo",
+  "settings.delete_memory_success": "Badi bamubutule bimpe.",
+  "settings.delete_memory_error": "Tshilema tshia dijimina: {bulema}",
+  "chat.delete": "Pua kuakula",
+  "chat.delete_confirm": "Uvuaku mua kulekela kuenza bualu ebu to.",
+  "chat.delete_yes": "Eyowa, dijimina",
+  "chat.delete_no": "Kukumina",
+  "chat.deleted": "Bakumbusha muyuki ne diakalenga.",
+  "chat.rename": "Dijina dikwabo",
+  "chat.new_chat": "Tshia kuakula"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chat cun",
+  "settings.delete_memory": "Iscarrigare sa memòria",
+  "settings.delete_memory_title": "Iscarrigare sa memòria",
+  "settings.delete_memory_confirm": "Si cherides cancellare totu sa memòria de s'assistente? Custu incluet s'istòria de sa cunversatzione, sos datos archivados in RAG e sos graficos de sa connoschèntzia.",
+  "settings.delete_memory_yes": "Si, est beru",
+  "settings.delete_memory_no": "No est beru",
+  "settings.delete_memory_success": "Totu sa memòria est istada cancellada cun sutzessu.",
+  "settings.delete_memory_error": "Erru pro s'iscàrrigare memòria: {errore}",
+  "chat.delete": "Iscarrigare su chate",
+  "chat.delete_confirm": "Deletare su chate '{title}'? custa azione non podet èssere annullada.",
+  "chat.delete_yes": "Si, iscarrigare",
+  "chat.delete_no": "Annullare",
+  "chat.deleted": "Su chat est istadu cancelladu cun sutzessu.",
+  "chat.rename": "Cunservadu",
+  "chat.new_chat": "Cantu nou"
 }

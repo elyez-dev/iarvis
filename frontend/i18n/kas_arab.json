@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "کُن چِھ",
+  "settings.delete_memory": "میموری ہٹٲو",
+  "settings.delete_memory_title": "میموری ہٹٲو",
+  "settings.delete_memory_confirm": "کیا تم چِھ یقین زِ تم چِھ معاونچ ساری میموری حذف کرنٕچ خواہش تھاوان؟ اتھ منٛز چِھ گفتگو ہسٹری، RAG ذخیرہ شدہ ڈیٹا تہٕ علم گراف شٲمل۔ کیا تم چِھ مزید جاری رکھنإچ خواہش تھاوان؟",
+  "settings.delete_memory_yes": "ہاں، تہٕ",
+  "settings.delete_memory_no": "نہٕ",
+  "settings.delete_memory_success": "تمام میموری چِھ کامیابی سان حذف گٲمٕتۍ۔",
+  "settings.delete_memory_error": "غلطی ہٹانہٕ وٲل میموری: {error}",
+  "chat.delete": "چیٹ ہٹٲو",
+  "chat.delete_confirm": "چیٹ '{ عنوان} ہٹٲو؟ یہٕ عمل ہیکو نہٕ رد کرتھ۔",
+  "chat.delete_yes": "ہاں، حذف کرُن",
+  "chat.delete_no": "منسوخ کرُن",
+  "chat.deleted": "چیٹ چُھ کامیابی سان حذف کرنہٕ آمُت۔",
+  "chat.rename": "ناو تبدیل",
+  "chat.new_chat": "نٔوِچ چیٹ"
 }

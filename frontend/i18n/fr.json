@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Parlez avec",
+  "settings.delete_memory": "Supprimer la mémoire",
+  "settings.delete_memory_title": "Supprimer la mémoire",
+  "settings.delete_memory_confirm": "Vous êtes sûr de vouloir supprimer TOUT le souvenir de l'assistant? Cela inclut l'historique de conversation, les données stockées en RAG et les graphiques de connaissances. Vous voulez continuer?",
+  "settings.delete_memory_yes": "Oui, c'est vrai.",
+  "settings.delete_memory_no": "Je ne veux pas.",
+  "settings.delete_memory_success": "Toutes les mémoires ont été effacées avec succès.",
+  "settings.delete_memory_error": "Erreur de suppression de la mémoire: {erreur}",
+  "chat.delete": "Supprimer le chat",
+  "chat.delete_confirm": "Supprimer le chat \"{titre}\"? Cette action ne peut pas être annulée.",
+  "chat.delete_yes": "Oui, supprimer",
+  "chat.delete_no": "Annuler",
+  "chat.deleted": "Le chat a été supprimé avec succès.",
+  "chat.rename": "Rénommé",
+  "chat.new_chat": "Nouveau chat"
 }

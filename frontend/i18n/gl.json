@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Conversación con",
+  "settings.delete_memory": "Eliminar a memoria",
+  "settings.delete_memory_title": "Eliminar a memoria",
+  "settings.delete_memory_confirm": "Está seguro de que quere borrar toda a memoria do asistente? Isto inclúe historial de conversacións, datos almacenados RAG e gráficos de coñecemento.",
+  "settings.delete_memory_yes": "- Si, é.",
+  "settings.delete_memory_no": "Non, non.",
+  "settings.delete_memory_success": "Toda a memoria foi borrada con éxito.",
+  "settings.delete_memory_error": "Erro de borrado de memoria: {erro}",
+  "chat.delete": "Eliminar o chat",
+  "chat.delete_confirm": "Eliminar chat '{title}'? Esta acción non se pode desactivar.",
+  "chat.delete_yes": "Si, borrar",
+  "chat.delete_no": "Cancelación",
+  "chat.deleted": "O chat eliminado con éxito.",
+  "chat.rename": "Renomear",
+  "chat.new_chat": "Novo chat"
 }

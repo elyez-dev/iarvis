@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "ਨਾਲ ਗੱਲਬਾਤ",
+  "settings.delete_memory": "ਯਾਦਦਾਸ਼ਤ ਨੂੰ ਮਿਟਾਓ",
+  "settings.delete_memory_title": "ਯਾਦਦਾਸ਼ਤ ਨੂੰ ਮਿਟਾਓ",
+  "settings.delete_memory_confirm": "ਕੀ ਤੁਸੀਂ ਯਕੀਨਨ ਸਹਾਇਕ ਦੀ ਸਾਰੀ ਮੈਮੋਰੀ ਨੂੰ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ? ਇਸ ਵਿੱਚ ਗੱਲਬਾਤ ਦਾ ਇਤਿਹਾਸ, RAG ਸਟੋਰ ਕੀਤੇ ਡੇਟਾ ਅਤੇ ਗਿਆਨ ਗ੍ਰਾਫ ਸ਼ਾਮਲ ਹਨ. ਕੀ ਤੁਸੀਂ ਜਾਰੀ ਰੱਖਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+  "settings.delete_memory_yes": "ਹਾਂ",
+  "settings.delete_memory_no": "ਨਹੀਂ",
+  "settings.delete_memory_success": "ਸਾਰੀ ਯਾਦ ਨੂੰ ਸਫਲਤਾਪੂਰਵਕ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।",
+  "settings.delete_memory_error": "ਮੈਮੋਰੀ ਨੂੰ ਹਟਾਉਣ ਵਿੱਚ ਗਲਤੀ: {ਗਲਤੀ}",
+  "chat.delete": "ਚੈਟ ਨੂੰ ਮਿਟਾਓ",
+  "chat.delete_confirm": "ਚੈਟ '{ ਸਿਰਲੇਖ} ਨੂੰ ਹਟਾਓ? ਇਹ ਕਾਰਵਾਈ ਨੂੰ ਵਾਪਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ.",
+  "chat.delete_yes": "ਹਾਂ, ਹਟਾਓ",
+  "chat.delete_no": "ਰੱਦ ਕਰਨਾ",
+  "chat.deleted": "ਗੱਲਬਾਤ ਸਫਲਤਾਪੂਰਵਕ ਹਟਾ ਦਿੱਤੀ ਗਈ.",
+  "chat.rename": "ਨਾਮ ਬਦਲੋ",
+  "chat.new_chat": "ਨਵੀਂ ਗੱਲਬਾਤ"
 }

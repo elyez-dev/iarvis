@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "- ମୁଁ ତୁମ ସହ କଥା ହେବି ।",
+  "settings.delete_memory": "ସ୍ମୃତିକୁ ଲିଭାଇ ଦିଅନ୍ତୁ",
+  "settings.delete_memory_title": "ସ୍ମୃତିକୁ ଲିଭାଇ ଦିଅନ୍ତୁ",
+  "settings.delete_memory_confirm": "ଆପଣ ନିଶ୍ଚିତ କି ଆପଣ ଆସିଷ୍ଟାଣ୍ଟଙ୍କ ସମସ୍ତ ସ୍ମୃତିସ୍ଥାନକୁ ସଫା କରିବାକୁ ଚାହୁଁଛନ୍ତି? ଏଥିରେ କଥାବାର୍ତ୍ତା ଇତିହାସ, RAG ଷ୍ଟୋର ହୋଇଥିବା ତଥ୍ୟ ଏବଂ ଜ୍ଞାନ ଗ୍ରାଫ ସାମିଲ ଅଛି । ଆପଣ ଆଗକୁ ବଢ଼ିବାକୁ ଚାହୁଁଛନ୍ତି କି?",
+  "settings.delete_memory_yes": "ହଁ",
+  "settings.delete_memory_no": "ନା, ସେମିତି ନୁହେଁ ।",
+  "settings.delete_memory_success": "ସମସ୍ତ ସ୍ମୃତି ସଫଳତାର ସହ ଲିଭାଇ ଦିଆଯାଇଛି ।",
+  "settings.delete_memory_error": "ସ୍ମରଣ ଶକ୍ତିକୁ ଲିଭାଇବାରେ ତ୍ରୁଟି: {ତ୍ରୁଟି}",
+  "chat.delete": "ଚାଟ୍ ଅପସାରଣ କରନ୍ତୁ",
+  "chat.delete_confirm": "ଚାଟ୍ '{title} ଡିଲିଟ୍ କରନ୍ତୁ? ଏହି କାର୍ଯ୍ୟକଳାପକୁ ଅପସାରଣ କରାଯାଇପାରିବ ନାହିଁ ।",
+  "chat.delete_yes": "ହଁ, ଲିଭାଇ ଦିଅନ୍ତୁ",
+  "chat.delete_no": "ବାତିଲ୍ କରିବା",
+  "chat.deleted": "ଚାଟ୍ ସଫଳତାର ସହ ଡିଲିଟ୍ ହୋଇଛି।",
+  "chat.rename": "ନାମ ପରିବର୍ତ୍ତନ",
+  "chat.new_chat": "ନୂଆ ଚାଟ୍"
 }

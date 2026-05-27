@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Mag-chat sa",
+  "settings.delete_memory": "I-delete ang Memory",
+  "settings.delete_memory_title": "I-delete ang Memory",
+  "settings.delete_memory_confirm": "Sigurado ka na gusto mong tanggalin ang lahat ng memorya ng assistant? Kasama dito ang kasaysayan ng pag-uusap, ang mga data na naka-save sa RAG at mga graph ng kaalaman. Gusto mo bang magpatuloy?",
+  "settings.delete_memory_yes": "Oo, oo",
+  "settings.delete_memory_no": "Hindi",
+  "settings.delete_memory_success": "Ang lahat ng memorya ay matagumpay na tinanggal.",
+  "settings.delete_memory_error": "Pag-alis ng memorya ng error: {error}",
+  "chat.delete": "I-delete ang chat",
+  "chat.delete_confirm": "I-delete ang chat '{title}'?",
+  "chat.delete_yes": "Oo, i-delete",
+  "chat.delete_no": "I-cancel",
+  "chat.deleted": "Ang chat ay matagumpay na tinanggal.",
+  "chat.rename": "Pagbabago ng pangalan",
+  "chat.new_chat": "Bagong Chat"
 }

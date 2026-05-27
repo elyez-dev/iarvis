@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Ngobrol lawan",
+  "settings.delete_memory": "Hapusakan ingatan",
+  "settings.delete_memory_title": "Hapusakan ingatan",
+  "settings.delete_memory_confirm": "apakah kau yakin kau mau menghapus semua memori asisten? ini termasuk sejarah percakapan, data yang disimpan RAG dan grafik pengetahuan. apakah kau ingin melanjutkan?",
+  "settings.delete_memory_yes": "Iya tuh",
+  "settings.delete_memory_no": "Kada",
+  "settings.delete_memory_success": "Sabarataan ingatan sudah dihapus.",
+  "settings.delete_memory_error": "Kasalahan penghapusan memori: {kasalahan}",
+  "chat.delete": "Hapusakan pacak",
+  "chat.delete_confirm": "Hapusakan chat '{title}'? Tindakan ngini kada kawa diulang.",
+  "chat.delete_yes": "Iya, hapus",
+  "chat.delete_no": "Batalkan",
+  "chat.deleted": "Chat dihapus dengan sukses.",
+  "chat.rename": "Ngaran hanyar",
+  "chat.new_chat": "Chat hanyar"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Rozmawiaj z",
+  "settings.delete_memory": "Wymaż pamiyńć",
+  "settings.delete_memory_title": "Wymaż pamiyńć",
+  "settings.delete_memory_confirm": "Je żeś sie nyn, iże chcesz wymazać wszyjsko pamiyńć asystenta? To wkludzi historyjo kōnferyncyje, dane przechowywane w RAG i grafy wiedzy.",
+  "settings.delete_memory_yes": "- Tak, to sie dzieje.",
+  "settings.delete_memory_no": "Niy, niy",
+  "settings.delete_memory_success": "Wszyjske pamiyńci były z powodzōńciym usuniywane.",
+  "settings.delete_memory_error": "Ôpłata ôbmycōnŏ pamiyńć: {płata}",
+  "chat.delete": "Wymaż kōmputer",
+  "chat.delete_confirm": "Uciōngnij czat '{title}'?",
+  "chat.delete_yes": "Tak, wymaż",
+  "chat.delete_no": "Zaneckować",
+  "chat.deleted": "Szczat wymaziyli.",
+  "chat.rename": "Przekŏzać nazwisko",
+  "chat.new_chat": "Nowy czat"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chats amb",
+  "settings.delete_memory": "Elimina la memòria",
+  "settings.delete_memory_title": "Elimina la memòria",
+  "settings.delete_memory_confirm": "És cert que vols eliminar TOT la memòria de l'assistent? Això inclou l'història de conversa, dades emmagatzemades RAG i gràfics de coneixement. Vols continuar?",
+  "settings.delete_memory_yes": "Sí, sí.",
+  "settings.delete_memory_no": "No, no.",
+  "settings.delete_memory_success": "Tot el record s'ha efetuat amb èxit.",
+  "settings.delete_memory_error": "Error de desliure memòria: {error}",
+  "chat.delete": "Eliminar el discurs",
+  "chat.delete_confirm": "Eliminar el discurs '{title}'? Aquesta acció no es pot revocar.",
+  "chat.delete_yes": "Sí, esborrar",
+  "chat.delete_no": "Cancel·lar",
+  "chat.deleted": "El chat s'ha eliminat amb èxit.",
+  "chat.rename": "Renomenar",
+  "chat.new_chat": "Nova conversa"
 }

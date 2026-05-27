@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Wuo gi",
+  "settings.delete_memory": "Golo Weche Manie Wiyi",
+  "settings.delete_memory_title": "Golo Weche Manie Wiyi",
+  "settings.delete_memory_confirm": "Be in gadier ni idwaro tieko weche duto ma jakonyno paro?",
+  "settings.delete_memory_yes": "Ee, ne en kamano",
+  "settings.delete_memory_no": "Ok en kamano",
+  "settings.delete_memory_success": "Weche duto ma ne waparo osepidh.",
+  "settings.delete_memory_error": "Ketho mar golo paro: {eror}",
+  "chat.delete": "Gonyo chat",
+  "chat.delete_confirm": "Golo chat '{title}?",
+  "chat.delete_yes": "Ee, golgi",
+  "chat.delete_no": "Golo",
+  "chat.deleted": "Ne ogol chat.",
+  "chat.rename": "Nying manyien",
+  "chat.new_chat": "Wuoyo e Wi Wach"
 }

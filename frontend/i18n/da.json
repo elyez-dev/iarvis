@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chat med",
+  "settings.delete_memory": "Slet hukommelse",
+  "settings.delete_memory_title": "Slet hukommelse",
+  "settings.delete_memory_confirm": "Er du sikker på, at du vil slette hele assistentens hukommelse? Dette omfatter samtalehistorie, RAG-lagrede data og videngrafer.",
+  "settings.delete_memory_yes": "- Ja, det er det.",
+  "settings.delete_memory_no": "- Nej, det er ikke det.",
+  "settings.delete_memory_success": "Alle hukommelser er slettet.",
+  "settings.delete_memory_error": "Fejl ved sletning af hukommelse: {fejl}",
+  "chat.delete": "Slet chat",
+  "chat.delete_confirm": "Slet chat '{title}'? Denne handling kan ikke afvikles.",
+  "chat.delete_yes": "Ja, slette",
+  "chat.delete_no": "Afbestilling",
+  "chat.deleted": "Chat slettet med succes.",
+  "chat.rename": "Omdøbt",
+  "chat.new_chat": "Ny chat"
 }

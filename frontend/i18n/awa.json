@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "साथ मा चैट",
+  "settings.delete_memory": "स्मृति का हटावल जाय",
+  "settings.delete_memory_title": "स्मृति का हटावल जाय",
+  "settings.delete_memory_confirm": "का आप सुनिश्चित अहैं कि आप सब का लॉगिन करे का चाहत हैं? ई अतिरिक्त सुविधाएँ परदान करत हैं।",
+  "settings.delete_memory_yes": "हाँ, ऊ",
+  "settings.delete_memory_no": "नाहीं",
+  "settings.delete_memory_success": "सब स्मृति सफलतापूर्वक मिटाई गई अहै।",
+  "settings.delete_memory_error": "त्रुटि का हटाने वाला मेमोरीः {errore}",
+  "chat.delete": "चैट हटावा जाय",
+  "chat.delete_confirm": "चैट '{title} हटाई जा सकत है? इ क्रिया कय निरस्त नहीं कइ सका जात है।",
+  "chat.delete_yes": "हाँ, हटाइ द्या",
+  "chat.delete_no": "रद्द करे",
+  "chat.deleted": "चैट सफलतापूर्वक हटाई गवा।",
+  "chat.rename": "नाम बदलना",
+  "chat.new_chat": "नया चैट"
 }

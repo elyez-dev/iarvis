@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Muhanjika nenyi",
+  "settings.delete_memory": "Kuhona Kuvuluka",
+  "settings.delete_memory_title": "Kuhona Kuvuluka",
+  "settings.delete_memory_confirm": "Kutala muli nakusaka kuhichisa vishina vyosena vyamukwafwe tahi?",
+  "settings.delete_memory_yes": "Iya",
+  "settings.delete_memory_no": "Chawiy",
+  "settings.delete_memory_success": "Yuma yeswe ya mu mbunge yahichile kanawa.",
+  "settings.delete_memory_error": "Kuhona kuhichisa chifwanyisa: {hoto}",
+  "chat.delete": "Kuhona chisoneka",
+  "chat.delete_confirm": "Kuhichisa chat '{title}'?",
+  "chat.delete_yes": "Iya, muhichile",
+  "chat.delete_no": "Kuhichisa",
+  "chat.deleted": "Chat yahichile kanawa.",
+  "chat.rename": "Kuvuluka cheka",
+  "chat.new_chat": "Chat Yipya"
 }

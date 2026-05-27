@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chat mat",
+  "settings.delete_memory": "D'Erënnerung läscht",
+  "settings.delete_memory_title": "D'Erënnerung läscht",
+  "settings.delete_memory_confirm": "Dir wëllt all d'Memorier vum Assistent läschen? Dat enthält Gespréichshistorik, RAG gespäichert Daten an Wëssensgrafiken. Wëllt Dir weidergoen?",
+  "settings.delete_memory_yes": "Jo, dat ass richteg.",
+  "settings.delete_memory_no": "Nee, net.",
+  "settings.delete_memory_success": "All Erënnerung gouf erfollegräich geläscht.",
+  "settings.delete_memory_error": "Feeler beim Löschen vu Gedächtnis: {feeler}",
+  "chat.delete": "Schreift Chat",
+  "chat.delete_confirm": "Dëse Schrëtt kann net ofgeschloss ginn.",
+  "chat.delete_yes": "Jo, läschen",
+  "chat.delete_no": "Annuléiert",
+  "chat.deleted": "Chat gouf erfollegräich geläscht.",
+  "chat.rename": "Neit Numm",
+  "chat.new_chat": "Neit Chat"
 }

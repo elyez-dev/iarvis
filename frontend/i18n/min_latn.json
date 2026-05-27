@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chat jo",
+  "settings.delete_memory": "Hapus ingek",
+  "settings.delete_memory_title": "Hapus ingek",
+  "settings.delete_memory_confirm": "Awak yakin awak nak hapus SADAAN ingek-ingek asisten? Iko tamasuak sajarah pacakatan, data RAG nan disimpan jo grafik pangatahuan. Awak nak manerus?",
+  "settings.delete_memory_yes": "Iyo",
+  "settings.delete_memory_no": "Indak",
+  "settings.delete_memory_success": "Kasadonyo ingatan alah dihapus sacaro kasiahan.",
+  "settings.delete_memory_error": "Kasalahan untuak mahapus memori: {kasalahan}",
+  "chat.delete": "Hapus chat",
+  "chat.delete_confirm": "Hapus chat '{title}'? Tindakan iko indak dapek diulang.",
+  "chat.delete_yes": "Iyo, hapus",
+  "chat.delete_no": "Batalkan",
+  "chat.deleted": "Chat dihapus sacaro sukses.",
+  "chat.rename": "Namo baru",
+  "chat.new_chat": "Chat baru"
 }

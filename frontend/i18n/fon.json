@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Dàn xá",
+  "settings.delete_memory": "Ðò nùɖé",
+  "settings.delete_memory_title": "Ðò nùɖé",
+  "settings.delete_memory_confirm": "A ɖeji ɖɔ a jló na hɔn nùɖíɖó mɛɖesunɔ tɔn ɔ bǐ sín nùɖé? Nǔ enɛ byɔ xóɖɔɖókpɔ́ sín hwenuxó, nùxwlé nùɖíɖó e è nɔ bló ɖ'ayǐ ɖò RAG kpo nùjlɛ́n nùjlɛ́jlɛ́ lɛ kpo. A jló na lɛ́ kpo wà nǔ gbɔn mɔ̌?",
+  "settings.delete_memory_yes": "Ɛɛn fɔ́n",
+  "settings.delete_memory_no": "É kún nyí mɔ̌ ó",
+  "settings.delete_memory_success": "È gblé nǔɖokponɔ lɛ bǐ sín nùxwixwe.",
+  "settings.delete_memory_error": "nùxwixwe nùxwixwe: {xlɛ́n}",
+  "chat.delete": "Zɛ́ xóxóxó",
+  "chat.delete_confirm": "Kún xóɖiɖɔ '{title}' => 'È hɛn ɔ è nǎ bló nùɖé dó nùɖé wu ǎ.'",
+  "chat.delete_yes": "Ɛɛn, è nǎ hɔn",
+  "chat.delete_no": "ÐáñÜãåé",
+  "chat.deleted": "È gblé xóɖiɖɔ ɔ kpo ɖesunɔ kpo.",
+  "chat.rename": "Tɔ́n sín nù nùɖé mɛ",
+  "chat.new_chat": "Xota yɔyɔ"
 }

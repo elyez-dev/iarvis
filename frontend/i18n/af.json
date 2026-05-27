@@ -223,5 +223,20 @@
     "zh_tw": "Chinese (tradisionele)",
     "ms": "Maleisiese",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Gesels met",
+  "settings.delete_memory": "Verwyder geheue",
+  "settings.delete_memory_title": "Verwyder geheue",
+  "settings.delete_memory_confirm": "Is jy seker jy wil AL die assistent se geheue te verwyder? Dit sluit in gesprek geskiedenis, RAG gestoor data en kennis grafieke. Wil jy voortgaan?",
+  "settings.delete_memory_yes": "Ja, ek weet.",
+  "settings.delete_memory_no": "Nee, ek het nie.",
+  "settings.delete_memory_success": "Alle geheue is suksesvol geskrap.",
+  "settings.delete_memory_error": "Fout verwydering geheue: {fout}",
+  "chat.delete": "Skakel gesels",
+  "chat.delete_confirm": "Skakel chat '{title}? Hierdie aksie kan nie ongedaan gemaak word.",
+  "chat.delete_yes": "Ja, verwyder",
+  "chat.delete_no": "Afskakel",
+  "chat.deleted": "Chat geskrap suksesvol.",
+  "chat.rename": "Hernoem",
+  "chat.new_chat": "Nuwe Chat"
 }

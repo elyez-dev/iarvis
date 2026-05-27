@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Mag-chat uban",
+  "settings.delete_memory": "Pagwagtang sa Memory",
+  "settings.delete_memory_title": "Pagwagtang sa Memory",
+  "settings.delete_memory_confirm": "Sigurado ka nga gusto nimong mapukan ang TIKTIK nga memorya sa asistent? Kini naglakip sa kasaysayan sa pag-istoryahanay, data nga gitipigan sa RAG ug mga graph sa kahibalo. Gusto ba nimo magpadayon?",
+  "settings.delete_memory_yes": "Oo",
+  "settings.delete_memory_no": "Dili",
+  "settings.delete_memory_success": "Ang tanang memorya malamposon nga giwagtang.",
+  "settings.delete_memory_error": "Sayup sa pagwagtang sa memorya: {sayup}",
+  "chat.delete": "Pagwagtang sa chat",
+  "chat.delete_confirm": "Dili mausab kining lihok.",
+  "chat.delete_yes": "Oo, i-delete",
+  "chat.delete_no": "Pagkansela",
+  "chat.deleted": "Ang chat giwagtang nga malamposon.",
+  "chat.rename": "Pag-usab sa ngalan",
+  "chat.new_chat": "Bag-ong Chat"
 }

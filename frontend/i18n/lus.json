@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "A thu sawi",
+  "settings.delete_memory": "Chhânna paih",
+  "settings.delete_memory_title": "Chhânna paih",
+  "settings.delete_memory_confirm": "Awihtu memory zawng zawng chu paih duh em ni? Hei hian biakna history, RAG data dah leh hriatna graph te a tel a ni. I chhunzawm duh em?",
+  "settings.delete_memory_yes": "A ni e",
+  "settings.delete_memory_no": "A ni lo",
+  "settings.delete_memory_success": "A hriatna zawng zawng chu tihchhiat a ni tawh.",
+  "settings.delete_memory_error": "Memory tihchhiatna: {error}",
+  "chat.delete": "Chat tihchhiat",
+  "chat.delete_confirm": "Chu thil chu tih theih loh a ni.",
+  "chat.delete_yes": "Ni e, tihchhiat",
+  "chat.delete_no": "Chhuahchhiat",
+  "chat.deleted": "Chat chu a tihchhiat hlawhtling hle a.",
+  "chat.rename": "A hming thlak",
+  "chat.new_chat": "Chat thar"
 }

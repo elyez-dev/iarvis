@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "שמועסן מיט",
+  "settings.delete_memory": "אויסמעקן זכּרון",
+  "settings.delete_memory_title": "אויסמעקן זכּרון",
+  "settings.delete_memory_confirm": "צי איר זענט זיכער איר ווילן צו ויסמעקן אַלע פון די אַסיסטענט ס זכּרון? דאָס כולל שמועס געשיכטע, RAG סטאָרד דאַטן און וויסן גראַפס. צי איר ווילן צו פאָרזעצן?",
+  "settings.delete_memory_yes": "יא",
+  "settings.delete_memory_no": "נישט",
+  "settings.delete_memory_success": "אַלע זכּרון איז הצלחה אויסגעמעקט.",
+  "settings.delete_memory_error": "טעות אויסמעשען זכּרון: {אבערה}",
+  "chat.delete": "אויסמעקן שמועס",
+  "chat.delete_confirm": "ויסמעקן שמועסן '{title}'? דעם קאַמף קענען ניט זיין ריווען.",
+  "chat.delete_yes": "יא, אויסמעקן",
+  "chat.delete_no": "קאנסעלירן",
+  "chat.deleted": "שמועס אויסגעמעקט הצלחה.",
+  "chat.rename": "איבערנעמען",
+  "chat.new_chat": "נייַ שמועסן"
 }

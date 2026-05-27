@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Spjallaðu við",
+  "settings.delete_memory": "Afslátt minni",
+  "settings.delete_memory_title": "Afslátt minni",
+  "settings.delete_memory_confirm": "Ertu viss um að þú vilt eyða öllum minni aðstoðarmannsins? Þetta felur í sér samtalshistoria, RAG geymd gögn og þekkingar grafur. Viltu halda áfram?",
+  "settings.delete_memory_yes": "Já, já.",
+  "settings.delete_memory_no": "Nei, ekki.",
+  "settings.delete_memory_success": "Allt minnið hefur verið eytt.",
+  "settings.delete_memory_error": "Áfalla við að eyða minni: {falla}",
+  "chat.delete": "Skildu spjall",
+  "chat.delete_confirm": "Skildu spjallinn \"{title}\"? Þessi aðgerð er ekki hægt að taka aftur.",
+  "chat.delete_yes": "Já, eyða",
+  "chat.delete_no": "Afsækja",
+  "chat.deleted": "Spjallinn er eytt með góðum árangri.",
+  "chat.rename": "Nýnefning",
+  "chat.new_chat": "Nýja spjall"
 }

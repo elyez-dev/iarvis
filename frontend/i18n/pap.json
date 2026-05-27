@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Cambia ku",
+  "settings.delete_memory": "Elimina memoria",
+  "settings.delete_memory_title": "Elimina memoria",
+  "settings.delete_memory_confirm": "Bo ta sigur ku bo ke kita tur e memoria di e asistente? Esaki ta inkluí historia di konbershon, dato di RAG i graf di konosementu. Bo ke sigui?",
+  "settings.delete_memory_yes": "Sí",
+  "settings.delete_memory_no": "No, no",
+  "settings.delete_memory_success": "Tur memoria a ser eliminá ku sueksito.",
+  "settings.delete_memory_error": "Eror di eliminacion di memoria: {error}",
+  "chat.delete": "Elimina e chats",
+  "chat.delete_confirm": "Ta trata di un kos ku no por keda desaktivá.",
+  "chat.delete_yes": "Si, kita",
+  "chat.delete_no": "Cancela",
+  "chat.deleted": "E chats a ser eliminá ku sueksito.",
+  "chat.rename": "Renomeá",
+  "chat.new_chat": "Chat nobo"
 }

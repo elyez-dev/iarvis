@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "زىيارەت قىل",
+  "settings.delete_memory": "خاتىرەنى ئۆچۈرۈڭ",
+  "settings.delete_memory_title": "خاتىرەنى ئۆچۈرۈڭ",
+  "settings.delete_memory_confirm": "سىز ياردەمچىنىڭ بارلىق خاتىرىسىنى ئۆچۈرمەكچى بولسىڭىزمۇ؟ بۇ سۆزلەرنىڭ تارىخى، RAG ساقلانغان ئۇچۇرلار ۋە بىلىم گىرافلىرى قاتارلىقلارنى ئۆز ئىچىگە ئالىدۇ. داۋاملاشتۇرۇشنى خالامسىز؟",
+  "settings.delete_memory_yes": "شۇنداق",
+  "settings.delete_memory_no": "ياق، ئۇ",
+  "settings.delete_memory_success": "بارلىق خاتىرە ئوڭۇشلۇق ئۆچۈرۈلدى.",
+  "settings.delete_memory_error": "خاتالىق ئۆچۈرۈش خاتالىقى: { خاتالىق}",
+  "chat.delete": "پاراڭلاشنى ئۆچۈرۈڭ",
+  "chat.delete_confirm": "\"{تاتۇر}\"نى ئۆچۈرۈڭ؟ بۇ ھەرىكەتنى بىكار قىلغىلى بولمايدۇ.",
+  "chat.delete_yes": "شۇنداق، ئۆچۈرۈڭ",
+  "chat.delete_no": "بىكار قىلىش",
+  "chat.deleted": "پاراڭ ئوڭۇشلۇق ئۆچۈرۈلدى.",
+  "chat.rename": "ئىسىم ئۆزگەرتىش",
+  "chat.new_chat": "يېڭى پاراڭ"
 }

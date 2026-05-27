@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Wɛ̈t cï kek",
+  "settings.delete_memory": "Pälkë kë tɔ̈ në tak",
+  "settings.delete_memory_title": "Pälkë kë tɔ̈ në tak",
+  "settings.delete_memory_confirm": "Ye yïn ye gam yïn awïc ba kë cï raan kony puɔ̈l?",
+  "settings.delete_memory_yes": "Aye aye",
+  "settings.delete_memory_no": "Acie tɛ̈de.",
+  "settings.delete_memory_success": "Käjuäc ëbën acï nyaai apath.",
+  "settings.delete_memory_error": "Käk cï nyaai në memory: {käk cï looi}",
+  "chat.delete": "Thɛ̈ɛ̈c jam",
+  "chat.delete_confirm": "Cïï kë cï looi lëu bï rot waar.",
+  "chat.delete_yes": "Ee yic, cuɛt wei",
+  "chat.delete_no": "Thɛ̈ɛ̈k",
+  "chat.deleted": "Wɛ̈t cï kɔc kɔ̈k bɛ̈n ya nyaai acï bɛ̈n ya nyaai.",
+  "chat.rename": "Yenic",
+  "chat.new_chat": "Wɛ̈t yam"
 }

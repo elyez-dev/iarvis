@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "IsiZulu"
-  }
+  },
+  "chat.title": "Xoxa naye",
+  "settings.delete_memory": "Susa Inkumbulo",
+  "settings.delete_memory_title": "Susa Inkumbulo",
+  "settings.delete_memory_confirm": "Ingabe uqinisekile ukuthi ufuna ukususa yonke imemori yomsizi? Lokhu kuhlanganisa umlando wengxoxo, idatha egcinwe ku-RAG namagrafu wolwazi. Ingabe ufuna ukuqhubeka?",
+  "settings.delete_memory_yes": "Yebo",
+  "settings.delete_memory_no": "Cha, angizange ngikubuze.",
+  "settings.delete_memory_success": "Yonke inkumbulo isusiwe ngempumelelo.",
+  "settings.delete_memory_error": "Iphutha lokususa inkumbulo: {iphutha}",
+  "chat.delete": "Susa ingxoxo",
+  "chat.delete_confirm": "Susa ingxoxo '{isihloko}'? Lesi senzo asikwazi ukuhoxiswa.",
+  "chat.delete_yes": "Yebo, susa",
+  "chat.delete_no": "Ukukhansela",
+  "chat.deleted": "Ingxoxo isusiwe ngempumelelo.",
+  "chat.rename": "Ukuqanjwa kabusha",
+  "chat.new_chat": "Ingxoxo entsha"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Ttmeslayemt d",
+  "settings.delete_memory": "Sseffɣet tameddurt",
+  "settings.delete_memory_title": "Sseffɣet tameddurt",
+  "settings.delete_memory_confirm": "Tiliḍ tḥeqqeḍ ad tfeǧǧeḍ akk tmeslayt n umεellem? D ayen yellan deg-s, amzun d amezruy n temsalt, iddaten i d-yeddun deg RAG d tmeslayt n tmusni. Tebɣiḍ ad tkemmleḍ?",
+  "settings.delete_memory_yes": "Yes yes yes",
+  "settings.delete_memory_no": "Ulac",
+  "settings.delete_memory_success": "Ttwaffɣen akk timettiwin s lfayda.",
+  "settings.delete_memory_error": "Amur n usemmiḍ: {amur}",
+  "chat.delete": "Sseffɣeḍ asmel",
+  "chat.delete_confirm": "Sseffɣeḍ usebter '{title}'?",
+  "chat.delete_yes": "Ih, ttfeǧǧ",
+  "chat.delete_no": "Ad t-tekkes",
+  "chat.deleted": "Tfeǧǧent-d ccɣel.",
+  "chat.rename": "Isem-nniḍen",
+  "chat.new_chat": "Ameslay amaynut"
 }

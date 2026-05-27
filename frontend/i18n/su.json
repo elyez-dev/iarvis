@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Ngobrol jeung",
+  "settings.delete_memory": "Ngahapus mémori",
+  "settings.delete_memory_title": "Ngahapus mémori",
+  "settings.delete_memory_confirm": "Anjeun yakin rék mupus sadaya memori asisten urang? Ieu kaasup sajarah paguneman, data RAG disimpen jeung grafik pangaweruh. Anjeun hoyong neruskeun?",
+  "settings.delete_memory_yes": "Enya",
+  "settings.delete_memory_no": "Teu aya",
+  "settings.delete_memory_success": "Sadaya mémori geus hasil dihapus.",
+  "settings.delete_memory_error": "Kasalahan mupus memori: {kasalahan}",
+  "chat.delete": "Hapus obrolan",
+  "chat.delete_confirm": "Hapus obrolan '{title}'? Laku ieu teu bisa dibalikkeun.",
+  "chat.delete_yes": "Enya, hapus",
+  "chat.delete_no": "Ngabatalkeun",
+  "chat.deleted": "Chat dihapus suksés.",
+  "chat.rename": "Ngarankeun deui",
+  "chat.new_chat": "Chat anyar"
 }

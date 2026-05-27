@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Chat ak",
+  "settings.delete_memory": "Efase memwa",
+  "settings.delete_memory_title": "Efase memwa",
+  "settings.delete_memory_confirm": "Èske w asire w ke ou vle efase tout memwa asistan an? Sa a gen ladan istwa konvèsasyon, done ki estoke RAG ak grafik konesans. Ou vle kontinye?",
+  "settings.delete_memory_yes": "Wi, se vre.",
+  "settings.delete_memory_no": "Pa gen okenn",
+  "settings.delete_memory_success": "Tout memwa yo te efase avèk siksè.",
+  "settings.delete_memory_error": "Erè efase memwa: {erè}",
+  "chat.delete": "Efase chat",
+  "chat.delete_confirm": "Efase chat '{title}'? aksyon sa a pa ka ranvèse.",
+  "chat.delete_yes": "Wi, efase",
+  "chat.delete_no": "Annule",
+  "chat.deleted": "Chat efase avèk siksè.",
+  "chat.rename": "Renome",
+  "chat.new_chat": "Nouvo Chat"
 }

@@ -223,5 +223,20 @@
     "zh_cn": "Chinese (Simplified)",
     "zh_tw": "Chinese (Traditional)",
     "zu": "Zulu"
-  }
+  },
+  "chat.title": "Sapela laye",
+  "settings.delete_memory": "Yuvula Oku Ivaluka Ovina",
+  "settings.delete_memory_title": "Yuvula Oku Ivaluka Ovina",
+  "settings.delete_memory_confirm": "Anga hẽ wa kũlĩha okuti o yongola oku imula ovina viosi vi kasi vovisimĩlo viukuakupindisa?",
+  "settings.delete_memory_yes": "Oco muẽle",
+  "settings.delete_memory_no": "Sio, ka va ci lingile.",
+  "settings.delete_memory_success": "Olomakina viosi via nyõleha.",
+  "settings.delete_memory_error": "Ocitangi coku imula o memória: {error}",
+  "chat.delete": "Yuvula oku sapela",
+  "chat.delete_confirm": "Oku mãlako ombangulo '{title}'?",
+  "chat.delete_yes": "Oco muẽle, a imũhe",
+  "chat.delete_no": "Oku liwekapo",
+  "chat.deleted": "Oku sapela kua imuha.",
+  "chat.rename": "Oku tukuiwa hati,",
+  "chat.new_chat": "Ohundo Yokaliye"
 }
