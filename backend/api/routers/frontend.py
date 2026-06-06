@@ -1,10 +1,8 @@
-import uuid
 import os
 import json
 
 from fastapi import APIRouter, HTTPException
 from schemas.chat import (
-    ActionDetail,
     ActionsResponse,
     ChatRequest,
     ChatResponse,
@@ -25,19 +23,12 @@ from services.action_log import ActionLog
 from services.settings_service import SettingsService
 from services.memory_deletion_service import MemoryDeletionService
 from services.translation_service import get_translator
-import psycopg
 
 router = APIRouter(
     tags=["frontend"]
 )
 
 service = chat_service.ChatService()
-
-POSTGRES_URL = os.getenv("POSTGRES_URL", "postgres://n8n_user:n8n_password@postgres:5432/chat_history")
-
-
-async def _pg_conn():
-    return await psycopg.AsyncConnection.connect(POSTGRES_URL, autocommit=True)
 
 
 @router.post(
@@ -59,31 +50,6 @@ async def chat(request: ChatRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-    if result.chat_id:
-        try:
-            async with await _pg_conn() as conn:
-                await conn.execute(
-                    "INSERT INTO chat_messages (session_id, role, content) VALUES (%s, %s, %s)",
-                    [result.chat_id, "user", request.message],
-                )
-                await conn.execute(
-                    "INSERT INTO chat_messages (session_id, role, content) VALUES (%s, %s, %s)",
-                    [result.chat_id, "assistant", result.response],
-                )
-                row = await conn.execute(
-                    "SELECT COUNT(*) FROM chat_messages WHERE session_id = %s",
-                    [result.chat_id],
-                )
-                count = (await row.fetchone())[0]
-                if count == 2:
-                    title = request.message[:40] + ("..." if len(request.message) > 40 else "")
-                    await conn.execute(
-                        "UPDATE chats SET title = %s WHERE session_id = %s AND title = 'New Chat'",
-                        [title, result.chat_id],
-                    )
-        except Exception:
-            pass
-
     return result
 
 
@@ -101,80 +67,42 @@ async def update_settings(body: SettingsUpdate):
 
 @router.get("/chats", response_model=ChatListResponse)
 async def list_chats():
-    async with await _pg_conn() as conn:
-        rows = await conn.execute("""
-            SELECT
-                ch.session_id,
-                ch.title,
-                COUNT(cm.id) as message_count
-            FROM chats ch
-            LEFT JOIN chat_messages cm ON cm.session_id = ch.session_id
-            GROUP BY ch.session_id, ch.title
-            ORDER BY ch.created_at DESC
-        """)
-        results = await rows.fetchall()
-
-    chats = [
-        ChatListItem(id=session_id, title=title, message_count=count)
-        for session_id, title, count in results
-    ]
-    return ChatListResponse(chats=chats)
+    chats = await service.list_chats()
+    return ChatListResponse(
+        chats=[
+            ChatListItem(id=c["id"], title=c["title"], message_count=c["message_count"])
+            for c in chats
+        ]
+    )
 
 
 @router.post("/chats", response_model=NewChatResponse)
 async def create_chat():
-    chat_id = str(uuid.uuid4())
-    async with await _pg_conn() as conn:
-        await conn.execute(
-            "INSERT INTO chats (session_id, title) VALUES (%s, %s) ON CONFLICT (session_id) DO NOTHING",
-            [chat_id, "New Chat"],
-        )
+    chat_id = await service.create_chat()
     return NewChatResponse(chat_id=chat_id)
 
 
 @router.get("/chats/{session_id}/history", response_model=ChatHistoryResponse)
 async def get_chat_history(session_id: str):
-    async with await _pg_conn() as conn:
-        rows = await conn.execute(
-            "SELECT role, content FROM chat_messages WHERE session_id = %s ORDER BY id",
-            [session_id],
-        )
-        results = await rows.fetchall()
-
-    messages = [
-        ChatHistoryMessage(role=role, content=content)
-        for role, content in results
-    ]
-
-    return ChatHistoryResponse(session_id=session_id, messages=messages)
+    messages = await service.get_chat_history(session_id)
+    return ChatHistoryResponse(
+        session_id=session_id,
+        messages=[
+            ChatHistoryMessage(role=m["role"], content=m["content"])
+            for m in messages
+        ],
+    )
 
 
 @router.put("/chats/{session_id}")
 async def update_chat_title(session_id: str, body: ChatUpdateRequest):
-    async with await _pg_conn() as conn:
-        await conn.execute(
-            "UPDATE chats SET title = %s WHERE session_id = %s",
-            [body.title, session_id],
-        )
-    return {"session_id": session_id, "title": body.title}
+    return await service.update_chat_title(session_id, body.title)
 
 
 @router.delete("/chats/{session_id}", response_model=ChatDeleteResponse)
 async def delete_chat(session_id: str):
-    async with await _pg_conn() as conn:
-        await conn.execute(
-            "DELETE FROM chat_messages WHERE session_id = %s",
-            [session_id],
-        )
-        await conn.execute(
-            "DELETE FROM n8n_chat_histories WHERE session_id = %s",
-            [session_id],
-        )
-        await conn.execute(
-            "DELETE FROM chats WHERE session_id = %s",
-            [session_id],
-        )
-    return ChatDeleteResponse(deleted=session_id, detail="Chat and all messages deleted")
+    result = await service.delete_chat(session_id)
+    return ChatDeleteResponse(deleted=result["deleted"], detail=result["detail"])
 
 
 @router.get("/actions/{chat_id}/pending", response_model=ActionsResponse)

@@ -665,10 +665,52 @@ class GraphService:
                 return f"{prefix}_{PREDICATE_NOUN_CANON[suffix]}"
         return p
 
-    async def _canonicalize_entity_name(self, name: str) -> str:
-        # Keep behavior: if user supplied qualifier, assume it's canonical
-        if "_" in name:
+    def _normalize_entity_suffix(self, name: str) -> str:
+        """Normalize the qualifier suffix of a qualified entity name.
+        e.g. Juan_bro -> Juan_brother, Maria_gramps -> Maria_grandfather."""
+        if "_" not in name:
             return name
+        prefix, _, suffix = name.partition("_")
+        if suffix in PREDICATE_NOUN_CANON:
+            return f"{prefix}_{PREDICATE_NOUN_CANON[suffix]}"
+        return name
+
+    async def _canonicalize_entity_name(self, name: str) -> str:
+        if "_" in name:
+            canonical = self._normalize_entity_suffix(name)
+            if canonical != name:
+                esc = canonical.replace('"', '\\"')
+                query = (
+                    '{ q(func: eq(name, "' + esc
+                    + '")) @filter(type(Entity)) { name } }'
+                )
+                def _do_query() -> Dict[str, Any]:
+                    res = self._client.txn(read_only=True).query(query)
+                    return json.loads(res.json)
+
+                try:
+                    data = await asyncio.to_thread(_do_query)
+                except Exception as exc:
+                    logger.warning(
+                        "Canonicalize suffix lookup failed for %r (->%r): %s",
+                        name, canonical, exc,
+                    )
+                else:
+                    matches = [r.get("name") for r in data.get("q", []) if r.get("name")]
+                    if canonical in matches:
+                        logger.info(
+                            "Canonicalize suffix: %r -> %r (existing node reused)",
+                            name, canonical,
+                        )
+                        return canonical
+                # Canonical form doesn't exist yet — create it
+                logger.info(
+                    "Canonicalize suffix: %r -> %r (no existing match, using canonical)",
+                    name, canonical,
+                )
+                return canonical
+            return canonical
+
         safe = re.escape(name)
         query = (
             "{ q(func: regexp(name, /^"
@@ -696,19 +738,64 @@ class GraphService:
         return name
 
     async def _batch_canonicalize_entity_names(self, names: List[str]) -> Dict[str, str]:
-        """Resolve multiple plain names in a single DQL query.
+        """Resolve multiple entity names in a single DQL query.
         Returns mapping original_name -> canonical_name (or original if unknown).
+        Normalizes qualifier suffixes (e.g. Juan_bro -> Juan_brother) before querying.
         """
-        # Names with underscore are assumed canonical already
-        result: Dict[str, str] = {n: n for n in names}
-        to_resolve = [n for n in names if "_" not in n]
+        # Step 1: normalize qualifier suffixes
+        result: Dict[str, str] = {}
+        suffix_normalized: Dict[str, str] = {}
+        for n in names:
+            result[n] = self._normalize_entity_suffix(n)
+            if result[n] != n:
+                suffix_normalized[n] = result[n]
+
+        # Step 2: for suffix-normalized names, check exact match in Dgraph
+        if suffix_normalized:
+            exact_query_lines = []
+            normal_map: Dict[int, str] = {}
+            for i, (orig, canonical) in enumerate(suffix_normalized.items()):
+                esc = canonical.replace('"', '\\"')
+                exact_query_lines.append(
+                    f'  e_{i}(func: eq(name, "{esc}")) @filter(type(Entity)) {{ name }}'
+                )
+                normal_map[i] = orig
+            exact_query = "{\n" + "\n".join(exact_query_lines) + "\n}"
+
+            def _do_exact() -> Dict[str, Any]:
+                res = self._client.txn(read_only=True).query(exact_query)
+                return json.loads(res.json)
+
+            try:
+                exact_data = await asyncio.to_thread(_do_exact)
+            except Exception as exc:
+                logger.warning("Batch canonicalize exact suffix query failed: %s", exc)
+            else:
+                for i, orig in normal_map.items():
+                    canonical = suffix_normalized[orig]
+                    matches = [r.get("name") for r in exact_data.get(f"e_{i}", []) if r.get("name")]
+                    if canonical in matches:
+                        logger.info(
+                            "Canonicalize batch suffix: %r -> %r (existing node reused)",
+                            orig, canonical,
+                        )
+                        result[orig] = canonical
+
+        # Step 3: resolve bare names (without underscore) via regex
+        to_resolve = [n for n in names if "_" not in self._normalize_entity_suffix(n)]
+        # dedupe while preserving order
+        seen: set[str] = set()
+        to_resolve = [n for n in to_resolve if not (n in seen or seen.add(n))]
+
         if not to_resolve:
             return result
 
         query_lines = []
         for i, n in enumerate(to_resolve):
-            esc = n.replace('"', '\\"')
-            query_lines.append(f'  q_{i}(func: regexp(name, /^{re.escape(n)}(_.*)?$/)) @filter(type(Entity)) {{ name }}')
+            query_lines.append(
+                f'  q_{i}(func: regexp(name, /^{re.escape(n)}(_.*)?$/)) '
+                f'@filter(type(Entity)) {{ name }}'
+            )
         query_block = "{\n" + "\n".join(query_lines) + "\n}"
 
         def _do_query() -> Dict[str, Any]:
@@ -718,21 +805,18 @@ class GraphService:
         try:
             data = await asyncio.to_thread(_do_query)
         except Exception as exc:
-            logger.warning("Batch canonicalize failed during DQL query: %s", exc)
+            logger.warning("Batch canonicalize failed during DQL regex query: %s", exc)
             return result
 
-        # data will contain results under 'q_0','q_1', ...
         for i, n in enumerate(to_resolve):
             query_name = f"q_{i}"
             matches = [r.get("name") for r in data.get(query_name, []) if r.get("name")]
             if not matches:
-                result[n] = n
+                pass
             elif n in matches:
-                result[n] = n
+                pass
             elif len(matches) == 1:
                 result[n] = matches[0]
-            else:
-                result[n] = n
         return result
 
     def _declare_predicate(self, predicate: str) -> None:

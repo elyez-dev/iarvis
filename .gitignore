@@ -512,3 +512,12 @@ qdrant-data/
 /CLAUDE.md
 dgraph-data/
 opencode.json
+
+# Documentación personal de desarrollo (no compartir en el repo)
+docs/
+
+# Test reports generados automaticamente
+backend/tests/reports/
+
+# User settings (generated at backend startup with defaults)
+backend/config/user_settings.json

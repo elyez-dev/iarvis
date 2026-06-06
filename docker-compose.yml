@@ -52,6 +52,10 @@ services:
       - "${BACKEND_PORT:-8000}:8000"
     volumes:
       - ./backend:/app
+      - huggingface_cache:/root/.cache/huggingface
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
     environment:
       - OLLAMA_URL=${OLLAMA_URL:-http://ollama:11434}
       - N8N_WEBHOOK_URL=${N8N_WEBHOOK_URL:-http://n8n:5678/webhook-test}
@@ -146,3 +150,6 @@ services:
 networks:
   iarvis_network:
     driver: bridge
+
+volumes:
+  huggingface_cache:

@@ -102,7 +102,13 @@ class ToolService:
                 error=validation_error,
             )
 
-        url = _build_tool_webhook_url(tool_def["webhook_path"])
+        # Absolute URLs (http:// or https://): call directly without n8n.
+        # Enables external webhooks (Slack, Zapier, etc.) and mock servers for testing.
+        webhook_path = tool_def["webhook_path"]
+        if webhook_path.startswith("http://") or webhook_path.startswith("https://"):
+            url = webhook_path
+        else:
+            url = _build_tool_webhook_url(webhook_path)
         logger.info("Executing tool %s: POST %s", tool_id, url)
 
         async with httpx.AsyncClient(timeout=120.0) as client:
