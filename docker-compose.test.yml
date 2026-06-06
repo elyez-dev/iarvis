@@ -1,0 +1,99 @@
+# Stack de test para E2E — bases de datos aisladas, volúmenes efímeros.
+# Se destruye con `docker compose -f docker-compose.test.yml down -v`.
+# Comparte ollama y n8n con producción (stateless), pero backend,
+# Qdrant, dgraph y Postgres son instancias separadas.
+#
+# Uso: scripts/run_e2e_tests.sh
+
+services:
+  postgres_test:
+    image: postgres:15
+    container_name: iarvis_postgres_test
+    restart: "no"
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: n8n_user
+      POSTGRES_PASSWORD: n8n_password
+      POSTGRES_DB: chat_history
+    volumes:
+      - postgres_test_data:/var/lib/postgresql/data
+    networks:
+      - iarvis_network
+
+  qdrant_test:
+    image: qdrant/qdrant:latest
+    container_name: iarvis_qdrant_test
+    restart: "no"
+    ports:
+      - "6334:6333"
+    volumes:
+      - qdrant_test_data:/qdrant/storage
+    networks:
+      - iarvis_network
+
+  dgraph_test:
+    image: dgraph/standalone:latest
+    container_name: iarvis_dgraph_test
+    restart: "no"
+    ports:
+      - "9081:9080"
+    volumes:
+      - dgraph_test_data:/dgraph
+    networks:
+      - iarvis_network
+
+  mock_tool:
+    image: python:3.11-slim
+    container_name: iarvis_mock_tool
+    restart: "no"
+    command: ["python", "/server.py"]
+    volumes:
+      - ./scripts/mock_tool_server.py:/server.py:ro
+    networks:
+      - iarvis_network
+
+  backend_test:
+    build: ./backend
+    container_name: iarvis_backend_test
+    restart: "no"
+    ports:
+      - "8000:8000"
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    environment:
+      QDRANT_URL: http://qdrant_test:6333
+      QDRANT_COLLECTION: long_term_memory
+      DGRAPH_GRPC_URL: dgraph_test:9080
+      POSTGRES_URL: postgres://n8n_user:n8n_password@postgres_test:5432/chat_history
+      N8N_WEBHOOK_URL: http://n8n:5678/webhook
+      OLLAMA_URL: http://ollama:11434
+      EMBEDDING_MODEL: nomic-embed-text:latest
+      RAG_SCORE_THRESHOLD: "${RAG_SCORE_THRESHOLD:-0.6}"
+      RAG_DEDUPE_THRESHOLD: "${RAG_DEDUPE_THRESHOLD:-0.95}"
+    volumes:
+      - huggingface_cache_test:/root/.cache/huggingface
+      - ./backend/tests/data/tools_registry_test.json:/app/config/tools_registry.json:ro
+    depends_on:
+      postgres_test:
+        condition: service_started
+      qdrant_test:
+        condition: service_started
+      dgraph_test:
+        condition: service_started
+    networks:
+      iarvis_network:
+        aliases:
+          - backend
+
+volumes:
+  postgres_test_data:
+  qdrant_test_data:
+  dgraph_test_data:
+  huggingface_cache_test:
+
+networks:
+  iarvis_network:
+    external: true
+    name: iarvis_iarvis_network

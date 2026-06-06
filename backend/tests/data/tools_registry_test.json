@@ -1,0 +1,86 @@
+[
+  {
+    "tool_id": "tool_send_email",
+    "display_name": "Send Email",
+    "description": "Send an email message to a recipient. Use when the user asks to send an email, message someone by email, contact by email, or communicate a written message via email.",
+    "webhook_path": "tool_send_email",
+    "example": {
+      "to": "juan@example.com",
+      "subject": "Meeting reminder",
+      "body": "Hi Juan, this is a reminder for our meeting tomorrow at 10am."
+    },
+    "parameters": {
+      "to": {
+        "type": "string",
+        "description": "Email address of the recipient (e.g. juan@example.com)",
+        "required": true
+      },
+      "subject": {
+        "type": "string",
+        "description": "Subject line of the email",
+        "required": true
+      },
+      "body": {
+        "type": "string",
+        "description": "Body content of the email",
+        "required": true
+      }
+    }
+  },
+  {
+    "tool_id": "tool_create_calendar_event",
+    "display_name": "Create Calendar Event",
+    "description": "Create a new event or appointment in a calendar. Use when the user wants to schedule something, add an event, set a reminder, book an appointment, or create a calendar entry.",
+    "webhook_path": "tool_create_calendar_event",
+    "example": {
+      "title": "Dentist appointment",
+      "start_time": "2026-05-26T10:00:00+02:00",
+      "end_time": "2026-05-26T11:00:00+02:00",
+      "description": "Annual dental checkup at Dr. Garcia's office",
+      "location": "Calle Mayor 123, Madrid"
+    },
+    "parameters": {
+      "title": {
+        "type": "string",
+        "description": "Title or summary of the event",
+        "required": true
+      },
+      "start_time": {
+        "type": "string",
+        "description": "Start date and time in ISO 8601 format (YYYY-MM-DDTHH:MM:SS+TZ). REQUIRED — compute from user's words using today's date. Example: today is May 24, user says 'tomorrow at 10am' → 2026-05-25T10:00:00+02:00",
+        "required": true
+      },
+      "end_time": {
+        "type": "string",
+        "description": "End date and time in ISO 8601 format. If the user didn't specify an end time, set it to exactly 1 hour after start_time",
+        "required": true
+      },
+      "description": {
+        "type": "string",
+        "description": "Optional notes or details about the event",
+        "required": false
+      },
+      "location": {
+        "type": "string",
+        "description": "Optional location of the event",
+        "required": false
+      }
+    }
+  },
+  {
+    "tool_id": "tool_test_echo",
+    "display_name": "Echo Test Tool",
+    "description": "A mock tool for testing. Does nothing real — just echoes back the message parameter. Use when the user asks to test a tool, run a test, or echo something.",
+    "webhook_path": "http://mock_tool:8080/echo",
+    "example": {
+      "message": "Hello world"
+    },
+    "parameters": {
+      "message": {
+        "type": "string",
+        "description": "The message to echo back",
+        "required": true
+      }
+    }
+  }
+]

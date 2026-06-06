@@ -1,0 +1,88 @@
+{
+  "_description": "Prompts de test organizados por categoria para tests E2E de certeza y latencia.",
+  "_note": "STORE y TOOL son asincronos (SSE) y NO aparecen en action_details. Solo SEARCH y NONE son verificables sincronamente. Los prompts STORE/TOOL se testean indirectamente via ArchivistJSONQuality y LibrarianJSONQuality.",
+
+  "store": [
+    {
+      "id": "store_001",
+      "prompt": "recuerda que me gusta el queso",
+      "expected_actions": ["STORE"],
+      "description": "Preferencia simple de comida"
+    },
+    {
+      "id": "store_002",
+      "prompt": "mi hermano Juan vive en Madrid",
+      "expected_actions": ["STORE"],
+      "description": "Relación familiar + ubicación"
+    },
+    {
+      "id": "store_003",
+      "prompt": "guarda que tengo cita con el dentista el lunes",
+      "expected_actions": ["STORE"],
+      "description": "Evento con fecha"
+    }
+  ],
+
+  "search": [
+    {
+      "id": "search_001",
+      "prompt": "qué me gusta comer?",
+      "expected_actions": ["SEARCH"],
+      "description": "Consulta de preferencia alimenticia"
+    },
+    {
+      "id": "search_002",
+      "prompt": "dónde vive Juan?",
+      "expected_actions": ["SEARCH"],
+      "description": "Consulta de ubicación de persona"
+    }
+  ],
+
+  "tool": [
+    {
+      "id": "tool_001",
+      "prompt": "envía un email a mi padre diciendo que voy tarde",
+      "expected_actions": ["TOOL", "STORE"],
+      "description": "Acción TOOL + almacenamiento de hecho"
+    },
+    {
+      "id": "tool_002",
+      "prompt": "run the echo test tool with message: hello from e2e tests",
+      "expected_actions": ["TOOL"],
+      "description": "Mock tool — solo verifica que el pipeline TOOL funciona"
+    }
+  ],
+
+  "none": [
+    {
+      "id": "none_001",
+      "prompt": "hola",
+      "expected_actions": ["NONE"],
+      "description": "Saludo simple"
+    },
+    {
+      "id": "none_002",
+      "prompt": "cuál es la capital de Francia?",
+      "expected_actions": ["NONE"],
+      "description": "Pregunta de conocimiento general"
+    }
+  ],
+
+  "latency": {
+    "_description": "Mensajes para tests de latencia. simple = respuesta rápida (NONE), complex = genera texto largo (NONE).",
+    "simple": "hola",
+    "complex": "explícame en unas 100 palabras cuál es la diferencia entre el vino tinto y el vino blanco"
+  },
+
+  "_all_prompts_flat": {
+    "_note": "Para uso interno: lista plana con todos los prompts de certeza y su expected_actions",
+    "store_001": {"prompt": "recuerda que me gusta el queso", "expected": ["STORE"]},
+    "store_002": {"prompt": "mi hermano Juan vive en Madrid", "expected": ["STORE"]},
+    "store_003": {"prompt": "guarda que tengo cita con el dentista el lunes", "expected": ["STORE"]},
+    "search_001": {"prompt": "qué me gusta comer?", "expected": ["SEARCH"]},
+    "search_002": {"prompt": "dónde vive Juan?", "expected": ["SEARCH"]},
+    "tool_001": {"prompt": "envía un email a mi padre diciendo que voy tarde", "expected": ["TOOL", "STORE"]},
+    "none_001": {"prompt": "hola", "expected": ["NONE"]},
+    "none_002": {"prompt": "cuál es la capital de Francia?", "expected": ["NONE"]}
+  }
+}

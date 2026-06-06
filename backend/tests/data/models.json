@@ -1,0 +1,81 @@
+{
+  "_description": "Modelos Ollama disponibles para tests E2E.",
+  "_note": "phi3.5 tiene skip flags porque puede overflow a CPU (T600 4GB). Actualizar si cambia la GPU.",
+
+  "models": [
+    {
+      "name": "qwen2.5:1.5b",
+      "label": "Qwen 2.5 1.5B",
+      "embedding": false,
+      "skip_latency": false,
+      "skip_accuracy": false,
+      "expected_router_accuracy": 0.8,
+      "expected_json_accuracy": 0.9
+    },
+    {
+      "name": "qwen2.5:3b",
+      "label": "Qwen 2.5 3B",
+      "embedding": false,
+      "skip_latency": false,
+      "skip_accuracy": false,
+      "expected_router_accuracy": 0.85,
+      "expected_json_accuracy": 0.95
+    },
+    {
+      "name": "qwen2.5-coder:1.5b",
+      "label": "Qwen Coder 1.5B",
+      "embedding": false,
+      "skip_latency": false,
+      "skip_accuracy": false,
+      "expected_router_accuracy": 0.7,
+      "expected_json_accuracy": 0.8
+    },
+    {
+      "name": "llama3.2:latest",
+      "label": "Llama 3.2 3B",
+      "embedding": false,
+      "skip_latency": false,
+      "skip_accuracy": false,
+      "expected_router_accuracy": 0.75,
+      "expected_json_accuracy": 0.7
+    },
+    {
+      "name": "gemma2:2b",
+      "label": "Gemma 2 2B",
+      "embedding": false,
+      "skip_latency": false,
+      "skip_accuracy": false,
+      "expected_router_accuracy": 0.7,
+      "expected_json_accuracy": 0.6
+    },
+    {
+      "name": "phi3.5:latest",
+      "label": "Phi-3.5 3.8B",
+      "embedding": false,
+      "skip_latency": true,
+      "skip_accuracy": true,
+      "expected_router_accuracy": 0.0,
+      "expected_json_accuracy": 0.0
+    },
+    {
+      "name": "nomic-embed-text:latest",
+      "label": "Nomic Embed Text",
+      "embedding": true,
+      "skip_latency": true,
+      "skip_accuracy": true,
+      "expected_router_accuracy": 0.0,
+      "expected_json_accuracy": 0.0
+    }
+  ],
+
+  "latency": {
+    "iterations": 5,
+    "timeout_per_call": 180,
+    "warmup_rounds": 1
+  },
+
+  "accuracy": {
+    "iterations": 10,
+    "timeout_per_call": 180
+  }
+}
