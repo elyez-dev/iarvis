@@ -88,8 +88,13 @@ st.markdown(
             align-items: center !important; /* Centrado vertical general */
         }
 
-        /* 2. El Label Fantasma: Lo matamos de verdad (Streamlit a veces necesita display:none en el contenedor padre del label) */
+        /* 2. El Label Fantasma */
         div[data-testid="stHorizontalBlock"]:has(input[aria-label="_"]) label[data-testid="stWidgetLabel"] {
+            display: none !important;
+        }
+
+        /* 2b. "Press enter to apply" — hide */
+        [data-testid="stSidebar"] [data-testid="stTextInput"]:has(input[aria-label="_"]) [data-testid="InputInstructions"] {
             display: none !important;
         }
 
@@ -101,17 +106,34 @@ st.markdown(
             gap: 0 !important; /* Quitamos cualquier espacio vertical inyectado */
         }
 
-        /* 4. Neutralizamos el impacto visual del Tooltip (El causante de que la X se desalinee respecto al check) */
-        div[data-testid="stHorizontalBlock"]:has(input[aria-label="_"]) div[data-testid="stTooltipIcon"] {
-            display: block !important;
-            position: static !important;
-            height: auto !important;
-        }
-
-        /* 5. Aseguramos que los contenedores de los botones no tengan margen inferior extra */
+/* 4. Contenedores de botones sin margen extra */
         div[data-testid="stHorizontalBlock"]:has(input[aria-label="_"]) div[data-testid="stElementContainer"] {
             margin: 0 !important;
             padding: 0 !important;
+        }
+
+        /* --- 8. Responsive: wrap sidebar 3-columns on narrow screens --- */
+        @media (max-width: 768px) {
+            [data-testid="stSidebar"] div[data-testid="stHorizontalBlock"] {
+                flex-wrap: wrap !important;
+                gap: 0.25rem !important;
+            }
+            [data-testid="stSidebar"] div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:first-child {
+                flex: 1 1 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+            }
+            [data-testid="stSidebar"] div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:nth-child(n+2) {
+                flex: 1 1 calc(50% - 0.25rem) !important;
+                max-width: calc(50% - 0.25rem) !important;
+                min-width: 0 !important;
+            }
+            [data-testid="stSidebar"] div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:nth-child(n+2) div[data-testid="stElementContainer"] {
+                width: 100% !important;
+            }
+            [data-testid="stSidebar"] div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:nth-child(n+2) button[data-testid="stBaseButton-secondary"] {
+                width: 100% !important;
+            }
         }
     </style>
     """,
@@ -382,9 +404,7 @@ with st.sidebar:
 
         with st.container(border=True):
             if editing:
-                # Adjust gap and column proportions.
                 col_text, c_save, c_cancel = st.columns([0.76, 0.12, 0.12], vertical_alignment="bottom", gap="small")
-                
                 with col_text:
                     new_title = st.text_input(
                         "_",
@@ -394,7 +414,6 @@ with st.sidebar:
                         max_chars=255,
                     )
                 with c_save:
-                    # Save button.
                     if st.button("", icon=":material/check:", key=f"save_{chat['id']}", help=_t("chat.rename")):
                         data, err = _api("PUT", f"/frontend/chats/{chat['id']}", {"title": new_title})
                         if data:
@@ -403,17 +422,13 @@ with st.sidebar:
                         elif err:
                             st.toast(str(err))
                 with c_cancel:
-                    # Cancel button.
                     if st.button("", icon=":material/close:", key=f"cancel_{chat['id']}", help=_t("chat.delete_no")):
                         st.session_state.editing_chat = None
                         st.rerun()
             else:
-                # Tighten button spacing.
                 col_title, row_edit, row_delete = st.columns([0.76, 0.12, 0.12], vertical_alignment="center", gap="small")
-                
                 with col_title:
                     label = f"{'●' if active else '○'} {chat['title']}"
-                    # Title button fills available width.
                     if st.button(label, key=f"chat_{chat['id']}", use_container_width=True):
                         st.session_state.editing_chat = None
                         if st.session_state.chat_id != chat["id"]:
@@ -423,12 +438,10 @@ with st.sidebar:
                             hist, _ = _api("GET", f"/frontend/chats/{chat['id']}/history")
                             st.session_state.messages = hist["messages"] if hist else []
                         st.rerun()
-                        
                 with row_edit:
                     if st.button("", icon=":material/edit:", key=f"edit_{chat['id']}", help=_t("chat.rename")):
                         st.session_state.editing_chat = chat["id"]
                         st.rerun()
-                        
                 with row_delete:
                     if st.button("", icon=":material/delete:", key=f"del_{chat['id']}", help=_t("chat.delete")):
                         st.session_state.delete_chat_id = chat["id"]
