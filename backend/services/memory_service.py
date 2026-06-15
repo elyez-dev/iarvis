@@ -255,11 +255,7 @@ class MemoryService:
         return triplets
 
     def _normalize_patterns(self, value: Any) -> List[Dict[str, Any]]:
-        """Accept patterns in several shapes:
-        - list of {subject,predicate,object} dicts (preferred)
-        - list of "S|P|O" strings (split on | or ->)
-        - empty/missing → []
-        Returns a list of dicts suitable for Pydantic validation."""
+        """Normalize patterns from dicts, strings, or mixed input."""
         if value is None:
             return []
         raw_items: List[Any] = value if isinstance(value, list) else [value]
@@ -305,7 +301,7 @@ class MemoryService:
         if not n8n_query.rag_query.strip():
             raise ValueError("'rag_query' must be a non-empty string")
         n8n_query.graph_entities = [entity.strip() for entity in n8n_query.graph_entities if entity and entity.strip()]
-        # Drop patterns where all three slots are empty (would be too broad to query).
+        # Drop fully-empty patterns.
         n8n_query.graph_patterns = [
             p for p in n8n_query.graph_patterns
             if (p.subject and p.subject.strip()) or (p.predicate and p.predicate.strip()) or (p.object and p.object.strip())
@@ -408,9 +404,7 @@ class MemoryService:
             raise ValueError(f"Failed to store archivist query in Qdrant: {exc}") from exc
 
     async def _ensure_collection_exists(self, vector_size: int) -> None:
-        """Ensure the Qdrant collection exists. Uses an in-memory TTL cache to avoid
-        frequent calls to get_collections in high-throughput scenarios.
-        """
+        """Ensure the Qdrant collection exists (with TTL cache)."""
         now = time.time()
         if self._collection_ready and (now - self._collection_checked_at) < self._collection_ttl_seconds:
             return
@@ -516,13 +510,7 @@ class MemoryService:
         )
 
     async def delete_all_in_rag(self) -> str:
-        """Delete all points from the default Qdrant collection.
-
-        Drops the collection and resets the existence cache so the next
-        write operation recreates it automatically.
-
-        Returns an error message string (empty on success).
-        """
+        """Delete all points from the default Qdrant collection."""
         try:
             await asyncio.to_thread(
                 self.qdrant_client.delete_collection,

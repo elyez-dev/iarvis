@@ -1,18 +1,5 @@
 """
-Tests E2E de latencia end-to-end del flujo iArvis.
-
-Mide el tiempo desde que se envía un mensaje a /frontend/chat hasta que
-se recibe la respuesta traducida, para cada modelo de Ollama configurado.
-
-Dos tipos de mensaje:
-  - simple: "hola" → clasificación NONE, respuesta trivial
-  - complex: "explícame en unas 100 palabras la diferencia entre vino tinto y blanco"
-             → clasificación NONE, respuesta larga (mide generación de texto)
-
-Para cada modelo × mensaje se ejecutan N iteraciones (configurable con
---iterations, default 5). Se calculan media, p50, p95 y desviación.
-
-Los resultados se guardan en backend/tests/reports/latency_{timestamp}.json.
+E2E latency tests for the iArvis flow.
 """
 
 import os
@@ -35,9 +22,7 @@ pytestmark = [
 ]
 
 
-# =============================================================================
-# Tests parametrizados por modelo
-# =============================================================================
+# -- Parameterized model tests --
 
 
 def pytest_generate_tests(metafunc):
@@ -70,17 +55,11 @@ def pytest_generate_tests(metafunc):
         )
 
 
-# =============================================================================
-# Test de latencia
-# =============================================================================
+# -- Latency test --
 
 
 class TestLatency:
-    """Suite de tests de latencia end-to-end.
-
-    Para cada modelo, envía un mensaje simple y uno complejo N veces y mide
-    el tiempo de respuesta. Al final, computa estadísticas y las guarda.
-    """
+    """End-to-end latency measurement suite."""
 
     def test_simple_message_latency(
         self,
@@ -91,15 +70,7 @@ class TestLatency:
         report_dir: str,
         warmup_backend,
     ):
-        """Mide latencia media para un mensaje simple ('hola').
-
-        Args:
-            http_client: Cliente HTTP (fixture).
-            model: Dict del modelo actual.
-            iterations: Número de iteraciones (fixture --iterations).
-            latency_prompts: Diccionario con prompts de latencia.
-            report_dir: Directorio para reportes.
-        """
+        """Measure average latency for a simple message."""
         prompt = latency_prompts.get("simple", "hola")
         model_name = model["name"]
         test_t0 = time.perf_counter()
@@ -158,15 +129,7 @@ class TestLatency:
         report_dir: str,
         warmup_backend,
     ):
-        """Mide latencia media para un mensaje que requiere generar texto largo.
-
-        Args:
-            http_client: Cliente HTTP (fixture).
-            model: Dict del modelo actual.
-            iterations: Número de iteraciones (fixture --iterations).
-            latency_prompts: Diccionario con prompts de latencia.
-            report_dir: Directorio para reportes.
-        """
+        """Measure average latency for a text-generation message."""
         prompt = latency_prompts.get(
             "complex",
             "explícame en unas 100 palabras cuál es la diferencia entre el vino tinto y el vino blanco",

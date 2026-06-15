@@ -16,15 +16,7 @@ from typing import Optional
 logger = logging.getLogger(__name__)
 
 def _normalize_casing_for_translation(text: str, threshold: float = 0.8) -> str:
-    """NLLB rinde fatal con texto todo en mayúsculas (sesgo del corpus de
-    entrenamiento; "HOLA" se tokeniza con subpalabras raras y el decoder
-    se descarrila).
-
-    Heurística: si más del `threshold` de las letras son mayúsculas,
-    consideramos que el usuario está gritando y pasamos a minúsculas
-    antes de traducir. El umbral por defecto (0.8) deja pasar frases
-    normales con acrónimos legítimos (NASA, ONU, IBM) sin tocar.
-    """
+    """Lowercase text when most characters are uppercase (NLLB degrades on ALL CAPS input)."""
     letters = [c for c in text if c.isalpha()]
     if not letters:
         return text
@@ -39,14 +31,11 @@ class ChatService:
         self._action_log = ActionLog.instance()
 
     def _fresh_settings(self) -> dict:
-        """Read current user settings from disk (not cached) so language/name/tone
-        changes take effect without restart."""
+        """Read current user settings from disk every time."""
         return user_settings().settings
 
     async def _sync_action_details(self, chat_id: Optional[str]) -> list[ActionDetail]:
-        """Pop any action entries that arrived synchronously during the n8n call.
-        SEARCH (librarian) is synchronous — its results are ready when the webhook
-        returns. STORE/TOOL may also be ready by luck. Remaining ones arrive via SSE."""
+        """Pop action entries that arrived synchronously during the n8n call."""
         if not chat_id:
             return []
         entries = await self._action_log.pop(chat_id)
@@ -102,7 +91,7 @@ class ChatService:
 
                 message_to_translate = _normalize_casing_for_translation(message)
                 if message_to_translate != message:
-                    logger.info("[Normalize] casing shouted -> lowercased: %r -> %r", message, message_to_translate)
+                    logger.info("[Normalize] all caps -> lowercased: %r -> %r", message, message_to_translate)
 
                 message_en = await asyncio.to_thread(
                     translator.translate,
@@ -110,7 +99,7 @@ class ChatService:
                     src_lang=nllb_user_lang,
                     tgt_lang=nllb_eng,
                 )
-                logger.info("[Traductor IN] %s: %r -> en: %r", language_code, message_to_translate, message_en)
+                logger.info("[Translation IN] %s: %r -> en: %r", language_code, message_to_translate, message_en)
 
                 data = await self._send_to_n8n(message_en, chat_id)
 
@@ -120,7 +109,7 @@ class ChatService:
                     src_lang=nllb_eng,
                     tgt_lang=nllb_user_lang,
                 )
-                logger.info("[Traductor OUT] en: %r -> %s: %r", data["response"], language_code, response_translated)
+                logger.info("[Translation OUT] en: %r -> %s: %r", data["response"], language_code, response_translated)
 
                 response_text = response_translated
                 response_chat_id = data["chat_id"]
@@ -244,13 +233,7 @@ class ChatService:
                 )
 
     async def decision_check(self, message: str, tries: Optional[int] = None) -> DecisionCheckResponse:
-        """
-        Validate the ROUTER LLM output (JSON string) and convert it into action flags.
-        Expected payload: {"actions": ["SEARCH" | "STORE" | "TOOL" | "NONE", ...]}
-        Rules:
-          - actions must be a non-empty list of valid keywords.
-          - NONE must appear alone if used.
-        """
+        """Validate ROUTER JSON output and convert to action flags."""
         try:
             data = json.loads(message)
         except json.JSONDecodeError as exc:

@@ -1,14 +1,5 @@
 """
-Tests unitarios de funciones normalizadoras del backend.
-
-Cubre las funciones auxiliares de memory_service.py que transforman
-datos entre formatos legacy y actuales:
-  - _normalize_triplets: acepta dicts, strings "S->P->O", y mezclas
-  - _normalize_patterns: acepta dicts y strings "S|P|O"
-  - _normalize_entity_types: valida contra tipos permitidos
-
-Cada función se testea aislada (sin depender de schemas reales del backend)
-usando réplicas inline de la lógica.
+Unit tests for normalizer functions (triplets, patterns, entity types).
 """
 
 from typing import Any, Dict, List, Optional, Union
@@ -18,7 +9,7 @@ import pytest
 pytestmark = pytest.mark.unit
 
 
-# -- Data classes para los tests (equivalentes a los Pydantic schemas) --------
+# -- Test dataclasses --
 
 @dataclass
 class GraphTriplet:
@@ -90,9 +81,7 @@ def _normalize_entity_types(types: Dict[str, str]) -> Dict[str, str]:
     return result
 
 
-# =============================================================================
-# Tests: _normalize_triplets
-# =============================================================================
+# -- _normalize_triplets --
 
 class TestNormalizeTriplets:
 
@@ -151,9 +140,7 @@ class TestNormalizeTriplets:
         assert result[0].object == "red_Toyota"
 
 
-# =============================================================================
-# Tests: _normalize_patterns
-# =============================================================================
+# -- _normalize_patterns --
 
 class TestNormalizePatterns:
 
@@ -207,9 +194,7 @@ class TestNormalizePatterns:
         assert result == []
 
 
-# =============================================================================
-# Tests: _normalize_entity_types
-# =============================================================================
+# -- _normalize_entity_types --
 
 class TestNormalizeEntityTypes:
 

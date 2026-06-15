@@ -30,7 +30,7 @@ class ChatResponse(BaseModel):
     chat_id: Optional[str] = Field(None, example="1")
     action_details: List[ActionDetail] = Field(
         default_factory=list,
-        description="SEARCH results available synchronously; STORE/TOOL arrive via SSE",
+        description="SEARCH results available synchronously; STORE/TOOL arrive via polling",
     )
 
 

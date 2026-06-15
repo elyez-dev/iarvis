@@ -24,8 +24,7 @@ memoryService = memory_service.MemoryService()
 toolService = tool_service.ToolService()
 action_log = ActionLog.instance()
 
-# endpoint for n8n to check the AI's decision-making string format
-# use tracked_router to get the tries counter in case of validation errors
+# Tracked to include tries counter on validation errors.
 @tracked_router.post(
     "/decision_check",
     summary="Checks the ROUTER AI response format",

@@ -159,7 +159,7 @@ def _build_language_list():
 
 
 def _load_lang_names():
-    """Avoid circular import — load language_names from the i18n JSON directly."""
+    """Load language display names from i18n JSON."""
     import json, os as _os
     lang = st.session_state.get("settings", {}).get("language_code", "en") or "en"
     path = _os.path.join(_os.path.dirname(__file__), "i18n", f"{lang}.json")
@@ -274,9 +274,7 @@ if st.session_state.delete_confirmed:
     time.sleep(1)
     st.rerun()
 
-# When language changes, update widget states so selectbox previews
-# match the new translations (Streamlit stores the label text, not
-# the index, so old-language labels persist across reruns).
+# Refresh widget labels on language change (Streamlit caches selectbox text).
 if "_prev_lang" not in st.session_state:
     st.session_state._prev_lang = st.session_state.settings.get("language_code", "en")
 _current_lang = st.session_state.settings.get("language_code", "en")
@@ -384,7 +382,7 @@ with st.sidebar:
 
         with st.container(border=True):
             if editing:
-                # 1. Añadimos gap="small" y ajustamos proporciones
+                # Adjust gap and column proportions.
                 col_text, c_save, c_cancel = st.columns([0.76, 0.12, 0.12], vertical_alignment="bottom", gap="small")
                 
                 with col_text:
@@ -396,7 +394,7 @@ with st.sidebar:
                         max_chars=255,
                     )
                 with c_save:
-                    # Este tiene tooltip
+                    # Save button.
                     if st.button("", icon=":material/check:", key=f"save_{chat['id']}", help=_t("chat.rename")):
                         data, err = _api("PUT", f"/frontend/chats/{chat['id']}", {"title": new_title})
                         if data:
@@ -405,17 +403,17 @@ with st.sidebar:
                         elif err:
                             st.toast(str(err))
                 with c_cancel:
-                    # ¡AÑADIMOS EL TOOLTIP AQUÍ! (puedes crear la traducción "chat.cancel" o poner un texto temporal)
+                    # Cancel button.
                     if st.button("", icon=":material/close:", key=f"cancel_{chat['id']}", help=_t("chat.delete_no")):
                         st.session_state.editing_chat = None
                         st.rerun()
             else:
-                # 1. gap="small" para que los botones de la derecha queden más juntitos y estéticos
+                # Tighten button spacing.
                 col_title, row_edit, row_delete = st.columns([0.76, 0.12, 0.12], vertical_alignment="center", gap="small")
                 
                 with col_title:
                     label = f"{'●' if active else '○'} {chat['title']}"
-                    # El título SÍ mantiene use_container_width=True para empujar los iconos a la derecha
+                    # Title button fills available width.
                     if st.button(label, key=f"chat_{chat['id']}", use_container_width=True):
                         st.session_state.editing_chat = None
                         if st.session_state.chat_id != chat["id"]:

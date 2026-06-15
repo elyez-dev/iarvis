@@ -20,10 +20,7 @@ import pytest
 pytestmark = pytest.mark.unit
 
 
-# =============================================================================
-# Snapshot de los diccionarios reales de services/graph_service.py
-# (copiados 2026-06-02; revisar periodicamente)
-# =============================================================================
+# Snapshot of real graph_service dictionaries.
 
 PREDICATE_CANON_VERBS = {
     # likes
@@ -145,9 +142,7 @@ def _normalize_predicate(predicate: str) -> str:
     return p
 
 
-# =============================================================================
-# Tests: verbos simples
-# =============================================================================
+# -- Simple verb mapping --
 
 class TestVerbCanonicalization:
 
@@ -185,9 +180,7 @@ class TestVerbCanonicalization:
         assert _normalize_predicate("dwelleth") == "dwelleth"  # no en dict
 
 
-# =============================================================================
-# Tests: predicados compuestos (has_grandma -> has_grandmother)
-# =============================================================================
+# -- Compound predicates --
 
 class TestCompoundPredicateCanonicalization:
 
@@ -215,9 +208,7 @@ class TestCompoundPredicateCanonicalization:
         assert _normalize_predicate("lives_near") == "lives_near"
 
 
-# =============================================================================
-# Tests: formato y sanity
-# =============================================================================
+# -- Format normalization --
 
 class TestFormatNormalization:
 
@@ -239,9 +230,7 @@ class TestFormatNormalization:
         assert _normalize_predicate("works_at") == "works_at"
 
 
-# =============================================================================
-# Tests: casos borde
-# =============================================================================
+# -- Edge cases --
 
 class TestEdgeCases:
 

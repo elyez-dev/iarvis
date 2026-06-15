@@ -75,7 +75,7 @@ def services_ready() -> bool:
 
 @pytest.fixture(scope="session")
 def warmup_backend(http_client, services_ready: bool) -> None:
-    """Envia un mensaje dummy para cargar NLLB y Ollama antes de medir."""
+    """Warm up NLLB and Ollama before measuring."""
     logger.info("Warming up NLLB + Ollama...")
     t0 = time.perf_counter()
     try:
@@ -98,7 +98,7 @@ def run_chat_prompt(
     prompt: str,
     chat_id: str = None,
 ) -> dict:
-    """POST /frontend/chat y devuelve el JSON de respuesta."""
+    """POST /frontend/chat and return response JSON."""
     if chat_id is None:
         chat_id = "test_e2e_" + str(time.time()).replace(".", "")
     payload = {"message": prompt, "chat_id": chat_id}
@@ -110,7 +110,7 @@ def run_chat_prompt(
 
 
 def extract_actions_from_response(response: dict) -> list[str]:
-    """Extrae tipos de accion desde action_details (List[ActionDetail])."""
+    """Extract action types from action_details."""
     details = response.get("action_details", [])
     if isinstance(details, list):
         actions = [d.get("type", "").upper() for d in details if isinstance(d, dict)]

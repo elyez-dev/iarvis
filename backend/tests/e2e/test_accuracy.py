@@ -1,18 +1,5 @@
 """
-Tests E2E de certeza del flujo iArvis.
-
-Mide la precisión de cada modelo de Ollama en tres aspectos:
-  1. ROUTER: ¿clasifica correctamente la intención del mensaje?
-  2. ARCHIVIST: ¿genera JSON válido con triplets y entity_types para STORE?
-  3. LIBRARIAN: ¿genera JSON válido con rag_query y graph_patterns para SEARCH?
-
-Para cada modelo × prompt se ejecutan N iteraciones (--iterations, default 10).
-Los resultados se guardan en backend/tests/reports/accuracy_{timestamp}.json.
-
-Nota de diseño: este test llama directamente a /n8n/archivist_query y
-/n8n/librarian_query (los mismos endpoints que usa n8n internamente) para
-validar el JSON generado por los LLM, sin depender del estado del workflow.
-La clasificación del ROUTER se verifica via /frontend/chat y action_details.
+E2E accuracy tests for the iArvis flow.
 """
 
 import os
@@ -39,9 +26,7 @@ pytestmark = [
 ]
 
 
-# =============================================================================
-# Generación de tests parametrizados por modelo
-# =============================================================================
+# -- Parameterized model tests --
 
 
 def pytest_generate_tests(metafunc):
@@ -70,9 +55,7 @@ def pytest_generate_tests(metafunc):
         )
 
 
-# =============================================================================
-# Helpers
-# =============================================================================
+# -- Helpers --
 
 PROMPTS_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "prompts.json")
 
@@ -88,22 +71,7 @@ def _call_n8n_endpoint(
     endpoint: str,
     message_body: dict,
 ) -> dict:
-    """Llama a un endpoint interno /n8n/* y devuelve el JSON de respuesta.
-
-    Estos son los mismos endpoints que usa n8n para invocar las queries
-    de ARCHIVIST, LIBRARIAN y TOOL ROUTER.
-
-    Args:
-        client: Cliente HTTP.
-        endpoint: Ruta del endpoint (ej: '/n8n/archivist_query').
-        message_body: Cuerpo del POST.
-
-    Returns:
-        Dict con la respuesta del backend.
-
-    Raises:
-        AssertionError si el endpoint devuelve error.
-    """
+    """Call an internal /n8n/* endpoint and return the JSON response."""
     resp = client.post(endpoint, json=message_body)
     assert resp.status_code == 200, (
         f"{endpoint} returned {resp.status_code}: {resp.text[:200]}"
@@ -111,19 +79,11 @@ def _call_n8n_endpoint(
     return resp.json()
 
 
-# =============================================================================
-# Test 1: Precisión del ROUTER
-# =============================================================================
+# -- Test 1: ROUTER accuracy --
 
 
 class TestRouterAccuracy:
-    """Evalua si el ROUTER clasifica correctamente la intencion.
-
-    Solo valida SEARCH y NONE via action_details (sincrono).
-    STORE y TOOL llegan por SSE y NO aparecen en action_details
-    (ver 02-architecture.md); esos prompts se validan via los tests
-    de ArchivistJSONQuality y LibrarianJSONQuality respectivamente.
-    """
+    """Evaluate ROUTER classification accuracy (SEARCH and NONE only)."""
 
     def test_router_classification(
         self,
@@ -209,9 +169,7 @@ class TestRouterAccuracy:
         )
 
 
-# =============================================================================
-# Test 2: Calidad del JSON del ARCHIVIST
-# =============================================================================
+# -- Test 2: ARCHIVIST JSON quality --
 
 
 class TestArchivistJSONQuality:
@@ -309,9 +267,7 @@ class TestArchivistJSONQuality:
         save_report(report, report_dir, "accuracy")
 
 
-# =============================================================================
-# Test 3: Calidad del JSON del LIBRARIAN
-# =============================================================================
+# -- Test 3: LIBRARIAN JSON quality --
 
 
 class TestLibrarianJSONQuality:
@@ -393,9 +349,7 @@ class TestLibrarianJSONQuality:
         save_report(report, report_dir, "accuracy")
 
 
-# =============================================================================
-# Test 4: Verificacion real de persistencia STORE
-# =============================================================================
+# -- Test 4: STORE persistence --
 
 
 class TestStorePersistence:
@@ -503,9 +457,7 @@ def _expected_keywords_for_prompt(prompt_id: str) -> list[str]:
     return mapping.get(prompt_id, [])
 
 
-# =============================================================================
-# Test 5: Verificacion real de recuperacion SEARCH
-# =============================================================================
+# -- Test 5: SEARCH retrieval --
 
 
 class TestSearchRetrieval:
@@ -573,9 +525,7 @@ class TestSearchRetrieval:
         }, report_dir, "accuracy")
 
 
-# =============================================================================
-# Test 6: Verificacion de ejecucion de TOOL (mock)
-# =============================================================================
+# -- Test 6: TOOL execution (mock) --
 
 
 class TestToolExecution:

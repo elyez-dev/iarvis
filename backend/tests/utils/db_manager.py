@@ -21,14 +21,7 @@ def build_test_session_id() -> str:
 
 
 def cleanup_postgres_test_data(postgres_url: str = None) -> None:
-    """Borra sesiones test_e2e_ de n8n_chat_histories en produccion.
-
-    n8n usa la Postgres de produccion para su chat memory (no se puede
-    cambiar sin editar el workflow). Esta funcion limpia solo las filas
-    con session_id que empiezan por test_e2e_.
-
-    Intenta psycopg primero; si no, usa docker exec como fallback.
-    """
+    """Delete test_e2e_ sessions from the production n8n_chat_histories."""
     import os
 
     # Metodo 1: psycopg

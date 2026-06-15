@@ -1,11 +1,4 @@
-"""
-Utilidades de cálculo de métricas para tests E2E.
-
-Proporciona:
-  - compute_latency_stats: media, p50, p95, p99, std, min, max
-  - compute_accuracy: ratio de aciertos
-  - save_report: guarda resultados en JSON dentro de tests/reports/
-"""
+"""Metrics utilities for E2E tests."""
 
 import os
 import json

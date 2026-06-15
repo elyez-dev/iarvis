@@ -102,8 +102,7 @@ class ToolService:
                 error=validation_error,
             )
 
-        # Absolute URLs (http:// or https://): call directly without n8n.
-        # Enables external webhooks (Slack, Zapier, etc.) and mock servers for testing.
+        # Absolute URLs: call directly without n8n.
         webhook_path = tool_def.get("webhook_path", tool_id)
         if webhook_path.startswith("http://") or webhook_path.startswith("https://"):
             url = webhook_path

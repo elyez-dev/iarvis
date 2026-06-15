@@ -1,10 +1,5 @@
 """
-Fixtures compartidos para todos los tests (unit + e2e).
-
-Proporciona:
-  - http_client: httpx.AsyncClient apuntando al backend real
-  - opcion --iterations en CLI de pytest
-  - skip condicional si servicios no disponibles
+Shared fixtures for all tests (unit + e2e).
 """
 
 import os
@@ -62,18 +57,14 @@ def report_dir(request):
 
 @pytest.fixture(scope="session")
 def http_client():
-    """Cliente HTTP para llamar al backend real.
-
-    Usa BACKEND_URL del env (default http://localhost:8000).
-    Timeout alto porque n8n + LLM pueden tardar.
-    """
+    """HTTP client pointing at the real backend."""
     with httpx.Client(base_url=BACKEND_URL, timeout=180.0) as client:
         yield client
 
 
 @pytest.fixture(scope="session")
 async def async_http_client():
-    """Version async del client (para test_asyncio)."""
+    """Async version of the HTTP client."""
     async with httpx.AsyncClient(base_url=BACKEND_URL, timeout=180.0) as client:
         yield client
 

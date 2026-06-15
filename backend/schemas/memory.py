@@ -9,10 +9,7 @@ EntityType = Literal[
 
 
 class GraphPattern(BaseModel):
-	"""A search pattern for the knowledge graph: (subject, predicate, object).
-	Each slot may be a concrete entity name (e.g. "User", "Juan_brother"), a closed
-	EntityType (e.g. "Food", "Person") matching nodes of that type, or null/empty for
-	wildcard. At least one of the three must be non-null."""
+	"""A search pattern for the knowledge graph: (subject, predicate, object)."""
 	subject: Optional[str] = Field(default=None, example="User")
 	predicate: Optional[str] = Field(default=None, example="likes")
 	object: Optional[str] = Field(default=None, example="Food")

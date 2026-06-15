@@ -21,10 +21,7 @@ import pytest
 pytestmark = pytest.mark.unit
 
 
-# =============================================================================
-# Replica exacta de _parse_json_payload_from_message + _loads_flexible_json
-# de services/memory_service.py (snapshot 2026-06-02)
-# =============================================================================
+# Exact replica of memory_service JSON parsers.
 
 def _loads_flexible_json(raw_text: str):
     """Replica exacta de MemoryService._loads_flexible_json."""
@@ -74,9 +71,7 @@ def _parse_json_payload_from_message(message: str, label: str = "test") -> dict:
     return parsed
 
 
-# =============================================================================
-# Replicas de _normalize_* de memory_service.py
-# =============================================================================
+# Replicas of _normalize_* functions.
 
 from typing import Any, Dict, List
 
@@ -155,9 +150,7 @@ def _normalize_entity_types(types: dict) -> dict:
     return result
 
 
-# =============================================================================
-# Tests: _parse_json_payload_from_message (librarian)
-# =============================================================================
+# -- _parse_json_payload (librarian) --
 
 LIBRARIAN_MINIMAL = """{"rag_query":"the user's favorite food","graph_patterns":[],"time_context":""}"""
 
@@ -245,9 +238,7 @@ def test_librarian_json_embedded_in_text():
     assert result["rag_query"] == "test"
 
 
-# =============================================================================
-# Tests: _parse_json_payload_from_message (archivist)
-# =============================================================================
+# -- _parse_json_payload (archivist) --
 
 ARCHIVIST_MINIMAL = (
     '{"rag_document":"The user likes cheese.",'
@@ -286,9 +277,7 @@ def test_archivist_json_markdown_fence():
     assert result["rag_document"] == "test"
 
 
-# =============================================================================
-# Tests: _normalize_triplets
-# =============================================================================
+# -- _normalize_triplets --
 
 def test_normalize_triplets_dict_list():
     """Lista de dicts se normaliza a GraphTriplet objects."""
@@ -349,9 +338,7 @@ def test_normalize_triplets_alternate_keys():
     assert result[0].subject == "User"
 
 
-# =============================================================================
-# Tests: _normalize_patterns
-# =============================================================================
+# -- _normalize_patterns --
 
 def test_normalize_patterns_dict():
     """Lista de dicts se normaliza."""
@@ -372,9 +359,7 @@ def test_normalize_patterns_legacy_string():
     assert result[0]["object"] is None
 
 
-# =============================================================================
-# Tests: _normalize_entity_types
-# =============================================================================
+# -- _normalize_entity_types --
 
 def test_normalize_entity_types_all_valid():
     """Todos los tipos validos pasan sin cambios."""

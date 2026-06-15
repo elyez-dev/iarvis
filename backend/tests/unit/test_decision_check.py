@@ -1,11 +1,5 @@
 """
-Tests unitarios de decision_check del backend.
-
-Valida la lógica de ChatService.decision_check() que:
-  1. Parsea JSON del ROUTER ({actions: ["SEARCH","STORE","TOOL","NONE"]})
-  2. Valida que sean keywords conocidos
-  3. NONE debe ir solo
-  4. Devuelve DecisionCheckResponse(search, store, tool) como booleans
+Unit tests for decision_check validation logic.
 """
 
 import json
@@ -16,7 +10,7 @@ from pydantic import BaseModel
 pytestmark = pytest.mark.unit
 
 
-# Schema de respuesta (copia de schemas/chat.py para evitar dependencia)
+# Inline copy to avoid dependency on real schemas.
 class DecisionCheckResponse(BaseModel):
     search: bool = False
     store: bool = False
@@ -27,18 +21,7 @@ VALID_ACTIONS = {"SEARCH", "STORE", "TOOL", "NONE"}
 
 
 def _decision_check(message: str, tries: Optional[int] = None) -> dict:
-    """Copia simplificada de ChatService.decision_check().
-
-    La implementación real (chat_service.py) hace:
-      1. json.loads del mensaje
-      2. Extrae actions del dict
-      3. Valida contra VALID_ACTIONS
-      4. Si NONE presente, checkea que sea el único
-      5. Devuelve DecisionCheckResponse con booleans
-      6. Si algo falla, lanza HTTPException(400) con tries+1
-
-    Este test prueba la lógica pura sin HTTP.
-    """
+    """Simplified copy of ChatService.decision_check() for isolated testing."""
     try:
         data = json.loads(message)
     except (json.JSONDecodeError, TypeError):
@@ -63,10 +46,10 @@ def _decision_check(message: str, tries: Optional[int] = None) -> dict:
     return response.model_dump()
 
 
-# -- Tests: acciones válidas --------------------------------------------------
+# -- Valid actions --
 
 def test_search_only():
-    """SEARCH solo debe devolver search=True, store=False, tool=False."""
+    """SEARCH alone returns search=True, store=False, tool=False."""
     result = _decision_check('{"actions":["SEARCH"]}')
     assert result["search"] is True
     assert result["store"] is False
@@ -74,7 +57,7 @@ def test_search_only():
 
 
 def test_store_only():
-    """STORE solo debe devolver store=True."""
+    """STORE alone returns store=True."""
     result = _decision_check('{"actions":["STORE"]}')
     assert result["search"] is False
     assert result["store"] is True
@@ -82,7 +65,7 @@ def test_store_only():
 
 
 def test_tool_only():
-    """TOOL solo debe devolver tool=True."""
+    """TOOL alone returns tool=True."""
     result = _decision_check('{"actions":["TOOL"]}')
     assert result["search"] is False
     assert result["store"] is False
@@ -90,7 +73,7 @@ def test_tool_only():
 
 
 def test_none_only():
-    """NONE solo debe devolver todo False."""
+    """NONE alone returns all False."""
     result = _decision_check('{"actions":["NONE"]}')
     assert result["search"] is False
     assert result["store"] is False
@@ -98,7 +81,7 @@ def test_none_only():
 
 
 def test_search_and_store():
-    """SEARCH + STORE combinados."""
+    """SEARCH + STORE combined."""
     result = _decision_check('{"actions":["SEARCH","STORE"]}')
     assert result["search"] is True
     assert result["store"] is True
@@ -113,67 +96,64 @@ def test_all_three():
     assert result["tool"] is True
 
 
-# -- Tests: acciones inválidas ------------------------------------------------
+# -- Invalid actions --
 
 def test_none_with_others():
-    """NONE combinado con otras acciones debe lanzar error.
-
-    Regla: si NONE está presente, debe ser el único elemento.
-    """
+    """NONE combined with other actions raises an error."""
     with pytest.raises(ValueError, match="NONE must appear alone"):
         _decision_check('{"actions":["NONE","SEARCH"]}')
 
 
 def test_empty_actions():
-    """Array vacío debe lanzar error."""
+    """Empty actions list raises an error."""
     with pytest.raises(ValueError, match="non-empty"):
         _decision_check('{"actions":[]}')
 
 
 def test_missing_actions_key():
-    """JSON sin clave actions debe lanzar error."""
+    """Missing actions key raises an error."""
     with pytest.raises(ValueError, match="actions"):
         _decision_check('{"foo":"bar"}')
 
 
 def test_invalid_action_name():
-    """Action no reconocida debe lanzar error."""
+    """Unrecognized action raises an error."""
     with pytest.raises(ValueError, match="INVALID"):
         _decision_check('{"actions":["INVALID"]}')
 
 
 def test_invalid_json():
-    """JSON malformado debe lanzar error."""
+    """Malformed JSON raises an error."""
     with pytest.raises(ValueError, match="Invalid JSON"):
         _decision_check("{invalid json}")
 
 
 def test_invalid_not_json():
-    """Texto plano no JSON debe lanzar error."""
+    """Plain text (not JSON) raises an error."""
     with pytest.raises(ValueError, match="Invalid JSON"):
         _decision_check("this is not json")
 
 
-# -- Tests: orden y duplicados ------------------------------------------------
+# -- Order and duplicates --
 
 def test_actions_order_independent():
-    """El orden de las actions no afecta al resultado."""
+    """Action order does not affect the result."""
     r1 = _decision_check('{"actions":["STORE","SEARCH"]}')
     r2 = _decision_check('{"actions":["SEARCH","STORE"]}')
     assert r1 == r2
 
 
 def test_duplicate_actions():
-    """Actions duplicadas no afectan al booleano (set semantics)."""
+    """Duplicate actions do not affect the boolean result (set semantics)."""
     result = _decision_check('{"actions":["SEARCH","SEARCH","SEARCH"]}')
     assert result["search"] is True
     assert result["store"] is False
 
 
-# -- Tests: formato del JSON --------------------------------------------------
+# -- JSON format --
 
 def test_with_whitespace():
-    """JSON con espacios y saltos de línea extra."""
+    """JSON with extra whitespace and line breaks."""
     msg = """
     {
         "actions": ["SEARCH"]

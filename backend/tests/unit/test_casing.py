@@ -1,13 +1,5 @@
 """
-Tests unitarios de normalización de casing para traducción.
-
-Verifica _normalize_casing_for_translation(text, threshold=0.8):
-  - Texto normal (menos del 80% mayúsculas) no se modifica
-  - Texto ALL CAPS (>80% mayúsculas) se pasa a lowercase
-  - Texto con acrónimos legítimos no se toca
-  - Texto vacío
-  - Texto sin letras (números, símbolos)
-  - Casos frontera justo en el umbral 0.8
+Unit tests for casing normalization before translation.
 """
 
 import pytest
@@ -16,11 +8,7 @@ pytestmark = pytest.mark.unit
 
 
 def _normalize_casing_for_translation(text: str, threshold: float = 0.8) -> str:
-    """Copia de chat_service._normalize_casing_for_translation.
-
-    Heurística: si más del threshold% de los caracteres alfabéticos
-    son mayúsculas, se considera "shouting" y se pasa a lowercase.
-    """
+    """Copy of chat_service._normalize_casing_for_translation."""
     letters = [c for c in text if c.isalpha()]
     if not letters:
         return text
@@ -33,7 +21,7 @@ def _normalize_casing_for_translation(text: str, threshold: float = 0.8) -> str:
     return text
 
 
-# -- Tests: texto normal (no se toca) -----------------------------------------
+# -- Normal text (unchanged) --
 
 def test_normal_lowercase():
     """Texto en minúsculas no se modifica."""
@@ -61,7 +49,7 @@ def test_mixed_case_not_touched():
     assert _normalize_casing_for_translation(text) == text
 
 
-# -- Tests: ALL CAPS (se normaliza) -------------------------------------------
+# -- ALL CAPS (lowercased) --
 
 def test_all_caps_simple():
     """ALL CAPS simple debe pasar a lowercase."""
@@ -86,7 +74,7 @@ def test_all_caps_with_accented():
     assert result == "qué tal estás"
 
 
-# -- Tests: texto sin letras --------------------------------------------------
+# -- No letters --
 
 def test_no_letters():
     """Texto sin caracteres alfabéticos no se modifica."""
@@ -98,7 +86,7 @@ def test_empty_string():
     assert _normalize_casing_for_translation("") == ""
 
 
-# -- Tests: umbral frontera ---------------------------------------------------
+# -- Threshold boundary --
 
 def test_just_below_threshold():
     """Texto justo por debajo del umbral (0.75) no se toca."""
@@ -124,7 +112,7 @@ def test_exactly_at_threshold_not_touched():
     assert _normalize_casing_for_translation(text) == text
 
 
-# -- Tests: casos reales del bug (ver 02-architecture.md) ---------------------
+# -- Real bug cases --
 
 def test_real_bug_case_hola():
     """Caso real: 'HOLA!' se traducía como '- I'm going to go.' Con normalización pasa a lowercase."""

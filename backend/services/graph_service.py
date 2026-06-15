@@ -1,26 +1,5 @@
 """
 GraphService — interface to the dgraph knowledge graph for iArvis.
-
-Two query interfaces, in order of preference:
-  - `query_patterns(patterns)`: NEW. Pattern-matching over (subject, predicate, object)
-    with wildcards. Used by the new LIBRARIAN. Filters at DQL level, returns minimal
-    relevant edges, not a 1-hop dump.
-  - `query_entities(entities, time_context)`: LEGACY. Fallback when the LIBRARIAN
-    only emits flat entity names (older prompt). Returns ALL outgoing edges of each
-    matched entity.
-
-Conventions
------------
-- Entity names are user-facing strings (e.g. "User", "Juan_brother", "cheese").
-- All nodes carry `dgraph.type = "Entity"`. The `type` field is one of the 10 closed
-  types (Person, Animal, Place, Object, Food, Event, Activity, Concept, Feeling, Other).
-- Predicates of RELATION are declared on-demand the first time they appear,
-  as `[uid] @reverse`. Predicate names are normalized to lowercase snake_case and
-  canonicalized through PREDICATE_CANON (`owns` -> `has`, `loves` -> `likes`, ...).
-- Edge facets:
-  * `on`    for event-like predicates (bought, met, visited, ...).
-  * `since` for state-like predicates (likes, lives_in, has_brother, ...).
-  * Omitted when time_context is empty.
 """
 import asyncio
 import json
@@ -51,18 +30,11 @@ ALLOWED_ENTITY_TYPES: set[str] = {
 }
 
 
-# Snake_case-friendly identifier for entity names. We accept letters, digits and
-# underscores. Anything else (spaces, colons, hyphens, accented chars) is rejected
-# by `_classify_slot` so we don't send broken queries to dgraph.
+# Only letters, digits and underscores allowed in entity names.
 _NAME_RE = re.compile(r"^[A-Za-z0-9_]+$")
 
 
-# PREDICATE_CANON: maps surface predicate forms to canonical ones.
-# Curated by hand using ConceptNet 5.7 Synonym edges (WordNet 3.1 subset) as a
-# discovery guide; pruned to remove polysemic matches that WordNet bundles into
-# the same synset without sense disambiguation. Entries are kept ONLY when the
-# synonymy is unambiguous for autobiographical-memory predicates.
-#
+# PREDICATE_CANON: maps surface predicate forms to canonical ones (verb-level and noun-level).
 # Two layers:
 #   - verb-level: applied as-is to single-token predicates (likes, has, ...).
 #   - noun-level: applied to the suffix of compound predicates (has_grandma -> has_grandmother).
@@ -196,10 +168,7 @@ class GraphService:
         print(f"DEBUG: GraphService.__init__ completed successfully", flush=True)
 
     def _refresh_declared_predicates(self, force: bool = False) -> None:
-        """Refresh cached declared predicates from dgraph schema.
-        Uses an in-memory TTL so frequent operations don't hammer the schema endpoint.
-        Set force=True to bypass the TTL (used after declaring new predicates).
-        """
+        """Refresh cached declared predicates from dgraph schema."""
         now = time.time()
         if not force and (now - self._predicates_last_refreshed) < self._predicates_ttl_seconds:
             return
@@ -219,7 +188,6 @@ class GraphService:
             self._predicates_last_refreshed = now
         except Exception as exc:
             logger.warning("Could not refresh declared predicates: %s", exc)
-            # keep previous cached sets if any; don't clear them on transient error
             if not self._declared_predicates:
                 self._declared_predicates = set()
             if not self._relation_predicates:
@@ -432,13 +400,7 @@ class GraphService:
     # =====================================================================
 
     def _classify_slot(self, value: Optional[str]) -> Tuple[Optional[str], Optional[str]]:
-        """Return (kind, value). kind is:
-          - 'name'    if value is a snake_case identifier (`[A-Za-z0-9_]+`).
-          - 'type'    if value is exactly one of the 10 ALLOWED_ENTITY_TYPES.
-          - 'invalid' if value is non-empty but doesn't fit either form
-                      (e.g. "Color: Yellow", "things I have").
-          - None      if value is None / empty (wildcard).
-        Callers treat 'invalid' as "reject the whole pattern"."""
+        """Classify slot value as name, type, invalid, or wildcard."""
         if value is None:
             return None, None
         v = value.strip()
@@ -453,19 +415,13 @@ class GraphService:
     def _build_pattern_block(
         self, idx: int, p: GraphPattern
     ) -> Tuple[Optional[str], Optional[str]]:
-        """Build the DQL block for one pattern.
-        Returns (block, anchor_kind) where anchor_kind is one of:
-          - "subject" (forward edge traversal from subject)
-          - "object"  (reverse edge traversal from object using ~predicate)
-        Returns (None, None) for invalid or too-broad patterns."""
+        """Build DQL block for one search pattern."""
         s_kind, s_val = self._classify_slot(p.subject)
         o_kind, o_val = self._classify_slot(p.object)
         pred_raw = (p.predicate or "").strip()
         pred = self._normalize_predicate(pred_raw) if pred_raw else ""
 
-        # Reject patterns with malformed name slots (e.g. "Color: Yellow", "things I have").
-        # The LLM occasionally invents a descriptor string here; we don''t want to send a
-        # never-matching DQL query to dgraph. Logged so prompt iterations can react.
+        # Reject patterns with malformed name slots.
         if s_kind == "invalid" or o_kind == "invalid":
             logger.warning(
                 "_build_pattern_block reject | idx=%d malformed slot | s=%r o=%r pred=%r",
@@ -627,8 +583,7 @@ class GraphService:
         neighbor_index: int,
         facet_key_root: str,
     ) -> str:
-        """Render `- subject predicate object (facet=value, ...)` for one edge.
-        facet_key_root is the actual key in the node (may be `~pred` for reverse)."""
+        """Render one edge as prose, including facets if present."""
         facets: List[str] = []
         for fkey in ("since", "on", "confidence"):
             facet_key = f"{facet_key_root}|{fkey}"
@@ -651,11 +606,7 @@ class GraphService:
     # =====================================================================
 
     def _normalize_predicate(self, predicate: str) -> str:
-        """Lowercase + snake_case + canonicalize. Two layers:
-          1) Direct verb mapping (loves -> likes).
-          2) Compound predicate: split on first underscore; if the suffix is a
-             known noun synonym, rewrite (has_grandma -> has_grandmother).
-        Predicates not in any map are returned as-is (soft canonicalization)."""
+        """Lowercase, snake_case, canonicalize via verb and noun maps."""
         p = predicate.strip().lower().replace(" ", "_")
         p = re.sub(r"[^a-z0-9_]", "", p)
         if not p:
@@ -901,18 +852,7 @@ class GraphService:
     # =====================================================================
 
     async def delete_all(self) -> str:
-        """Wipe all data in the dgraph instance.
-
-        Tries `drop_all` first (resets schema + data). If the standalone
-        server rejects the operation, falls back to a DQL delete of all
-        Entity nodes + their edges.
-
-        After wiping, re-applies the base scalar predicates so the schema
-        is ready for subsequent store operations. Clears the in-memory
-        predicate caches.
-
-        Returns an error message string (empty on success).
-        """
+        """Wipe all data and reset the schema."""
         errors: list[str] = []
 
         # 1) Drop all data
@@ -964,7 +904,7 @@ class GraphService:
             logger.error("GraphService.delete_all: %s", msg)
             errors.append(msg)
 
-        # 3) Clear in-memory predicate caches so they get refreshed on next access
+        # Clear in-memory caches.
         self._declared_predicates = {"name", "type", "source_docs", "dgraph.type"}
         self._relation_predicates = set()
         self._predicates_last_refreshed = 0.0

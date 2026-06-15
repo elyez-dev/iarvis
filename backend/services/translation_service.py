@@ -49,7 +49,7 @@ class TranslationService:
         translated_tokens = self.model.generate(
             **inputs, 
             forced_bos_token_id=tgt_lang_id,
-            max_length=512 # Safety cap to avoid issues with very long texts
+            max_length=512
         )
         return self.tokenizer.batch_decode(translated_tokens, skip_special_tokens=True)[0]
 

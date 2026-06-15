@@ -17,17 +17,7 @@ class ActionEntry:
 
 
 class ActionLog:
-    """
-    In-process log that tracks action results during a chat request.
-    n8n's subflows call /n8n/archivist_query, /n8n/librarian_query,
-    /n8n/execute_tool — each of those writes its result here keyed by chat_id.
-
-    Two consumption patterns:
-    - pop(): destructive, used by chat_service._sync_action_details for
-      synchronous SEARCH results included in ChatResponse.
-    - peek()/ack(): non-destructive then confirm, used by the frontend
-      polling endpoint for async STORE/TOOL results.
-    """
+    """In-process log tracking action results during a chat request."""
 
     _instance: Optional["ActionLog"] = None
 

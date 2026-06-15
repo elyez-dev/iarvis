@@ -1,17 +1,5 @@
 """
-Tests unitarios de schemas Pydantic del backend.
-
-Verifica que los modelos de datos (schemas/memory.py, schemas/chat.py, schemas/tools.py)
-validan correctamente entrada válida y rechazan entrada inválida.
-
-Cubre:
-  - LibrarianN8NQuery: rag_query obligatorio, graph_entities/graph_patterns opcionales
-  - ArchivistN8NQuery: rag_document obligatorio, graph_triplets mínimo 1
-  - GraphTriplet: subject/predicate/object strings
-  - GraphPattern: subject/predicate/object opcionales (pueden ser None)
-  - EntityType: solo acepta los 10 tipos permitidos
-  - DecisionCheckRequest/Response: actions array válido
-  - ChatRequest/ChatResponse: message obligatorio
+Unit tests for Pydantic schemas validation.
 """
 
 from typing import Any, Dict
@@ -19,7 +7,7 @@ import pytest
 from pydantic import ValidationError
 
 
-# -- LibrarianN8NQuery --------------------------------------------------------
+# -- LibrarianN8NQuery --
 
 def test_librarian_valid_minimal():
     """LibrarianN8NQuery con solo rag_query (obligatorio) debe ser válido.
@@ -74,7 +62,7 @@ def test_librarian_empty_rag_query():
         pass  # rag_query vacío puede pasar dependiendo de la definición Field
 
 
-# -- ArchivistN8NQuery --------------------------------------------------------
+# -- ArchivistN8NQuery --
 
 def test_archivist_valid_minimal():
     """ArchivistN8NQuery con rag_document y 1 graph_triplet debe ser válido."""
@@ -126,7 +114,7 @@ def test_archivist_missing_triplets():
     assert query.graph_triplets == []
 
 
-# -- GraphTriplet -------------------------------------------------------------
+# -- GraphTriplet --
 
 def test_graph_triplet_valid():
     """GraphTriplet con subject, predicate, object strings."""
@@ -144,7 +132,7 @@ def test_graph_triplet_empty_strings():
     assert t.subject == ""
 
 
-# -- GraphPattern -------------------------------------------------------------
+# -- GraphPattern --
 
 def test_graph_pattern_subject_none():
     """GraphPattern con subject=None debe ser válido (wildcard)."""
@@ -168,7 +156,7 @@ def test_graph_pattern_all_none():
     assert p.object is None
 
 
-# -- EntityType literal -------------------------------------------------------
+# -- EntityType literal --
 
 @pytest.mark.parametrize("valid_type", [
     "Person", "Animal", "Place", "Object", "Food",
@@ -182,7 +170,7 @@ def test_entity_type_valid_values(valid_type: str):
                           "Event", "Activity", "Concept", "Feeling", "Other"]
 
 
-# -- DecisionCheck schemas ----------------------------------------------------
+# -- DecisionCheck schemas --
 
 # -- ChatRequest --------------------------------------------------------------
 
