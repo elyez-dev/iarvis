@@ -253,6 +253,9 @@ class GraphService:
             obj = t.object.strip()
             if not subj or not obj:
                 continue
+            if not _NAME_RE.match(subj) or not _NAME_RE.match(obj):
+                logger.warning("store_triplets skip invalid entity name | subj=%r obj=%r", subj, obj)
+                continue
             norm_triplets.append({"subject": subj, "predicate": pred, "object": obj})
             all_names.add(subj)
             all_names.add(obj)

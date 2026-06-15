@@ -1,0 +1,313 @@
+{
+  "name": "iarvis_data_store",
+  "id": "F2aPXErqfTR3DoVh",
+  "active": true,
+  "versionId": "289e6695-641b-4330-a149-9d2b2e879b1c",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "17180119-85b2-4aeb-a7e3-4c1360cec6a6",
+              "leftValue": "={{ $json.statusCode }}",
+              "rightValue": 200,
+              "operator": {
+                "type": "number",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -208,
+        432
+      ],
+      "id": "57a26753-9bdb-489f-bcf9-c1fe55c8b17b",
+      "name": "If Format Error"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "1c24a845-9d6e-42aa-b415-3d7e8fab9216",
+              "leftValue": "={{ $('Syntax check and format').item.json.body.tries }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -80,
+        224
+      ],
+      "id": "15a0d99e-3a7e-4046-af3d-2b6b56e2406a",
+      "name": "3 max tries"
+    },
+    {
+      "parameters": {
+        "errorMessage": "The archivist output format was invalid"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        96,
+        224
+      ],
+      "id": "070be901-a386-4ddb-94f7-d22b047c4d84",
+      "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "user_message"
+            },
+            {
+              "name": "chat_id"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -960,
+        432
+      ],
+      "id": "bcbfa4e4-b864-40f7-ad83-b03c206b0df2",
+      "name": "Main flow call"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "78945b15-dce7-4b68-8b8b-f85a6b3bdb84",
+              "name": "user_message",
+              "value": "={{ $('Main flow call').item.json.user_message }}",
+              "type": "string"
+            },
+            {
+              "id": "36883c1a-5e5c-4a35-8248-a56600a33dd2",
+              "name": "tries",
+              "value": "={{ $json.body.tries || 0 }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -800,
+        432
+      ],
+      "id": "8712c4b4-5f1a-4acb-b01e-8148c969c299",
+      "name": "set tries"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://backend:8000/n8n/archivist_query",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "=message",
+              "value": "={{  $('ARCHIVIST').item.json.toJsonString()}}"
+            },
+            {
+              "name": "tries",
+              "value": "={{ $('set tries').item.json.tries || 0 }}"
+            },
+            {
+              "name": "=chat_id",
+              "value": "={{ $('Main flow call').item.json.chat_id }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -368,
+        432
+      ],
+      "id": "bd72b79b-6267-4601-9cc4-4650bad444f8",
+      "name": "Syntax check and format",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Main flow call').item.json.user_message }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are a Data Extraction tool (\"The Archivist\"). Given a user message, extract the personal facts to be saved into two databases: a RAG database (vector semantic) and a graph database (entity nodes + predicate edges).\n\nCRITICAL — your output JSON MUST contain ALL FOUR fields ALWAYS, never omit any:\n  1. \"rag_document\" (string, required, non-empty)\n  2. \"graph_triplets\" (array of {subject,predicate,object}, required, at least one)\n  3. \"entity_types\" (object mapping every entity name in the triplets to ONE of these 10 strings: Person, Animal, Place, Object, Food, Event, Activity, Concept, Feeling, Other)\n  4. \"time_context\" (string, use \"\" if no temporal info)\n\nRules:\n- Output the JSON object specified by the schema. Nothing else.\n- Do not answer the user. Only extract data.\n- For `rag_document`: rewrite as a clear, declarative, third-person sentence. Replace \"I\" / \"my\" with \"the user\" / \"the user's\". The sentence must stand on its own a year from now.\n- For `graph_triplets`: subject-predicate-object tuples. Always at least one. Use snake_case lowercase verbs for `predicate` (e.g. likes, has, bought, lives_in, has_brother). Pick the most natural verb for the action — the backend canonicalizes common synonyms automatically (likes/loves/enjoys all collapse to `likes`).\n- For names: use snake_case for multi-word entities (`red_toyota`, `garlic_bread`, `dentist_appointment`).\n- For ANY name where the user provides a relationship or qualifier (brother, colleague, partner, friend, my, etc.), ALWAYS append the qualifier with underscore: `Juan_brother`, `Juan_colleague`, `Pablo_partner`, `Madrid_spain`. The user's message contains context clues — listen for them: \"my brother Juan\" → `Juan_brother`, \"my colleague Juan\" → `Juan_colleague`, \"my partner Pablo\" → `Pablo_partner`, \"my friend Maria\" → `Maria_friend`, \"our house in Madrid\" → `Madrid_home`, \"Juan from work\" → `Juan_coworker`. Only leave a name bare (`Juan`) when NO context whatsoever is provided — no relationship, no qualifier, just a bare name.\n- For `entity_types`: every distinct name in the triplets MUST be a key in `entity_types`. Value MUST be EXACTLY one of: Person, Animal, Place, Object, Food, Event, Activity, Concept, Feeling, Other. \"User\" is always Person. Brands/companies/abstract ideas are Concept. Pets are Animal. Meals/drinks are Food.\n- For `time_context`: ISO date or natural descriptor if relevant (today is {{$today}}); empty string \"\" if no temporal info.\n\nExamples (note that ALL examples include ALL four fields):\n\nUser: \"I like coffee.\"\nAssistant: {\"rag_document\": \"The user likes coffee.\", \"graph_triplets\": [{\"subject\":\"User\",\"predicate\":\"likes\",\"object\":\"coffee\"}], \"entity_types\": {\"User\":\"Person\",\"coffee\":\"Food\"}, \"time_context\": \"\"}\n\nUser: \"I just discovered that my favourite food is garlic bread!\"\nAssistant: {\"rag_document\": \"The user's favorite food is garlic bread.\", \"graph_triplets\": [{\"subject\":\"User\",\"predicate\":\"likes\",\"object\":\"garlic_bread\"}], \"entity_types\": {\"User\":\"Person\",\"garlic_bread\":\"Food\"}, \"time_context\": \"\"}\n\nUser: \"My brother Juan bought a red Toyota yesterday.\"\nAssistant: {\"rag_document\": \"The user's brother Juan bought a red Toyota yesterday.\", \"graph_triplets\": [{\"subject\":\"User\",\"predicate\":\"has_brother\",\"object\":\"Juan_brother\"},{\"subject\":\"Juan_brother\",\"predicate\":\"bought\",\"object\":\"red_Toyota\"}], \"entity_types\": {\"User\":\"Person\",\"Juan_brother\":\"Person\",\"red_Toyota\":\"Object\"}, \"time_context\": \"yesterday\"}\n\nUser: \"My colleague Juan works at Telefónica.\"\nAssistant: {\"rag_document\": \"The user's colleague Juan works at Telefónica.\", \"graph_triplets\": [{\"subject\":\"User\",\"predicate\":\"has_colleague\",\"object\":\"Juan_colleague\"},{\"subject\":\"Juan_colleague\",\"predicate\":\"works_at\",\"object\":\"Telefonica\"}], \"entity_types\": {\"User\":\"Person\",\"Juan_colleague\":\"Person\",\"Telefonica\":\"Concept\"}, \"time_context\": \"\"}\n\nUser: \"Remind me that I have a dentist appointment next Tuesday.\"\nAssistant: {\"rag_document\": \"The user has a dentist appointment next Tuesday.\", \"graph_triplets\": [{\"subject\":\"User\",\"predicate\":\"has_appointment\",\"object\":\"dentist_appointment\"}], \"entity_types\": {\"User\":\"Person\",\"dentist_appointment\":\"Event\"}, \"time_context\": \"next Tuesday\"}\n\nUser: \"My brother Pablo lives in Valencia but my partner Pablo works at Telefónica.\"\nAssistant: {\"rag_document\": \"The user's brother Pablo lives in Valencia and the user's partner Pablo works at Telefónica.\", \"graph_triplets\": [{\"subject\":\"User\",\"predicate\":\"has_brother\",\"object\":\"Pablo_brother\"},{\"subject\":\"Pablo_brother\",\"predicate\":\"lives_in\",\"object\":\"Valencia\"},{\"subject\":\"User\",\"predicate\":\"has_partner\",\"object\":\"Pablo_partner\"},{\"subject\":\"Pablo_partner\",\"predicate\":\"works_at\",\"object\":\"Telefonica\"}], \"entity_types\": {\"User\":\"Person\",\"Pablo_brother\":\"Person\",\"Valencia\":\"Place\",\"Pablo_partner\":\"Person\",\"Telefonica\":\"Concept\"}, \"time_context\": \"\"}"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        -656,
+        432
+      ],
+      "id": "04c607e1-9ccd-4545-a280-e41b0573872b",
+      "name": "ARCHIVIST",
+      "retryOnFail": false,
+      "waitBetweenTries": 100
+    },
+    {
+      "parameters": {
+        "model": "qwen2.5:3b",
+        "options": {
+          "temperature": 0.1,
+          "numCtx": 2048,
+          "format": "json"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        -656,
+        592
+      ],
+      "id": "b0fe298c-10f2-44e1-bcb2-d011cae0252f",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "nmLxs50Akyuoz65u",
+          "name": "Ollama account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "If Format Error": {
+      "main": [
+        [
+          {
+            "node": "3 max tries",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "3 max tries": {
+      "main": [
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "set tries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Main flow call": {
+      "main": [
+        [
+          {
+            "node": "set tries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set tries": {
+      "main": [
+        [
+          {
+            "node": "ARCHIVIST",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Syntax check and format": {
+      "main": [
+        [
+          {
+            "node": "If Format Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ARCHIVIST": {
+      "main": [
+        [
+          {
+            "node": "Syntax check and format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "ARCHIVIST",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Backup n8n workflows to <repo>/n8n/workflows/
+# Backup n8n workflows to <repo>/workflows/
 # Robust to cwd: resolves paths relative to this script, not the caller.
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-BACKUP_DIR="$REPO_ROOT/n8n/workflows"
+BACKUP_DIR="$REPO_ROOT/workflows"
 
 CONTAINER_NAME="${N8N_CONTAINER_NAME:-iarvis_n8n}"
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")

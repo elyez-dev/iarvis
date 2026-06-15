@@ -490,27 +490,32 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# Ignorar carpetas de datos voluminosos
+# Ignorar carpetas de datos voluminosos (symlinks al volumen LUKS)
+ollama-data
 ollama-data/
 
 # Ignorar datos de usuario de n8n (contiene tu base de datos y claves)
 n8n/*
 
-#guardar workflows
-!n8n/workflows/
-!n8n/workflows/**
+# n8n is a full symlink to /mnt/iarvis-secure/n8n/
+n8n
 
 # Ignorar archivos del sistema
 .DS_Store
 Thumbs.db
 
-# no guardar archivos de las bases de datos
+# no guardar archivos de las bases de datos (y symlinks al volumen LUKS)
+postgres-data
 postgres-data/
+qdrant-data
 qdrant-data/
 # Notas de desarrollo de Claude (no compartir en el repo)
 .claude/
 /CLAUDE.md
+dgraph-data
 dgraph-data/
+# ignorar backups de workflows con timestamp
+workflows/workflows_*
 opencode.json
 
 # Documentación personal de desarrollo (no compartir en el repo)

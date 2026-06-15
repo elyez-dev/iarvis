@@ -1,0 +1,1014 @@
+{
+  "name": "IArvis_main",
+  "id": "5bE1T9UI3OnTP63Y",
+  "active": true,
+  "versionId": "d5ee03a6-c56d-4568-86ae-3ed9f92e62c0",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chat",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -384,
+        0
+      ],
+      "id": "345864e3-1309-4ce1-9b2e-e33763caaf5c",
+      "name": "Webhook",
+      "webhookId": "59df9e83-fb60-4f31-ace0-4b987d84703e"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        1712,
+        16
+      ],
+      "id": "abaf2a61-8480-46a7-acfe-e2bb8f7089e0",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Webhook').item.json.body.chat_id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        1344,
+        240
+      ],
+      "id": "b6fd4578-55dd-499a-97bc-2c9bcf0ccd31",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "V7NyxTALs80oCdIt",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "==== DATABASE RESULTS ===\n[Vector DB]: {{ $json.retrieved_data_RAG }}\n[Graph DB]: {{ $json.retrieved_data_graph }}\n=== ACTIONS PERFORMED ===\n[{{ $json.actions_executed }}]\n=== USER MESSAGE ===\n{{ $json.user_message }}",
+        "options": {
+          "systemMessage": "=Your name is {{ $('Webhook').item.json.body.settings.Assistant_name }}. You are a personal AI assistant that helps the user remember important facts about their life. You are the final node of a multi-agent system.\n\nTone: {{ $('Webhook').item.json.body.settings.Assistant_tone }}.\n\n-----\n\nINPUT FORMAT: You will receive a structured text with clearly labeled sections:\n  === ACTIONS PERFORMED === — which actions ran during this turn.\n  === DATABASE RESULTS === — information retrieved from the user's personal databases. Treat this as the SOURCE OF TRUTH for any user-specific facts.\n  === USER MESSAGE === — the user's actual question or statement.\n\n-----\n\nREASONING ORDER (follow THIS exact sequence):\n\nSTEP 1 — CHECK ACTIONS FIRST: Read === ACTIONS PERFORMED === to understand what the system just did.\n  - If STORE is listed: the user PROVIDED information to save. Your response MUST acknowledge the storage. Do NOT say \"I don't have that info\" — the user was GIVING you data, not asking about it.\n  - If TOOL is listed: an external tool will be executed, acknowledge the execution.\n  - If SEARCH is listed: the system searched the databases, follow next step.\n  - If empty: no action ran — just chat naturally, DO NOT SAY \"I don't have that info\".\n\nSTEP 2 — ONLY FOLLOW IF SEARCH RAN — CHECK DATABASE RESULTS: Read === DATABASE RESULTS ===.\n  - If SEARCH did run and both DATABASE RESULTS empty — say you do not have that information stored\n  - If SEARCH did run and it contains relevant info: build your answer USING ONLY that data for user-specific facts. NEVER invent facts.\n  - If some results are clearly IRRELEVANT to the question: skip them silently.\n\n-----\n\nENTITY QUALIFIERS: When the database returns a name with a qualifier suffix:\n  \"Juan_brother\"   → say \"your brother Juan\"\n  \"Pablo_partner\"  → say \"your partner Pablo\"\n  \"Pablo_colleague\" → say \"your colleague Pablo\"\n  \"Pablo\" (bare)   → say \"Pablo\" (no relationship to clarify)\nNever merge two entities with DIFFERENT qualifiers — they are probably DIFFERENT people.\n\n-----\n\nRULES:\n- Be extremely concise. No suggestions or unsolicited advice.\n- Be honest if you don't know something.\n- Do not describe your purpose or capabilities.\n- Do not ask many questions.\n- NEVER fabricate user-specific data.\n\n-----\n\nEXAMPLES:\n\nInput (NO ACTIONS, CHAT NORMALLY):\n=== ACTIONS PERFORMED ===\n[]\n=== DATABASE RESULTS ===\n[Vector DB]: NONE\n[Graph DB]: NONE\n=== USER MESSAGE ===\nHello!\n\nOutput: \nHi there! How can I help?\n\n-----\n\nInput (NO ACTIONS, CHAT NORMALLY):\n=== ACTIONS PERFORMED ===\n[]\n=== DATABASE RESULTS ===\n[Vector DB]: NONE\n[Graph DB]: NONE\n=== USER MESSAGE ===\nTell me the difference between college and university.\n\nOutput: \nCollege often refers to a smaller institution focused on undergraduate education, while university is broader and typically includes both undergraduate and graduate programs.\n\n-----\n\nInput (RELEVANT INFO and SEARCH RAN, ANSWER):\n=== ACTIONS PERFORMED ===\n[SEARCH] \n=== DATABASE RESULTS ===\n[Vector DB]: - The user likes milk coffee. The user likes chocolate.\n[Graph DB]: - User likes milk_coffee\n=== USER MESSAGE ===\nDo I like coffee?\n\nOutput: \nYes, you like milk coffee.\n\n-----\n\nInput:\n=== ACTIONS PERFORMED ===\n[SEARCH]\n=== DATABASE RESULTS ===\n[Vector DB]: - The user's partner Pablo works at Telefónica.\n- The user's brother Pablo lives in Valencia.\n[Graph DB]: - Pablo_partner works_at Telefonica\n- Pablo_brother lives_in Valencia\n=== USER MESSAGE ===\nWhere does Pablo live?\n\nOutput: \nYour brother Pablo lives in Valencia, and your partner Pablo works at Telefónica.\n\n-----\n\nInput (IRRELEVANT INFO, BE HONEST):\n=== ACTIONS PERFORMED ===\n[SEARCH] \n=== DATABASE RESULTS ===\n[Vector DB]: - The user likes cheese.\n- The user likes milk coffee.\n[Graph DB]: - User likes cheese\n- User likes milk_coffee\n=== USER MESSAGE ===\nDo I like elephants?\n\nOutput: \nI don't have any information about elephants in your stored memory.\n\n-----\n\nInput (NO SEARCH, IGNORE DATABASE RESULTS AND AKCNOWLEDGE STORAGE):\n=== ACTIONS PERFORMED ===\n[STORE]\n=== DATABASE RESULTS ===\n[Vector DB]: NONE\n[Graph DB]: NONE\n=== USER MESSAGE ===\nRemember that I love bacon.\n\nOutput: \nGot it — I'll remember you love bacon.\n\n-----\n\nInput (AMBIGUOUS QUESTION, CLASSIFIED AS SEARCH AND STORE):\n=== ACTIONS PERFORMED ===\n[SEARCH, STORE]\n=== DATABASE RESULTS ===\n[Vector DB]: NONE\n[Graph DB]: NONE\n=== USER MESSAGE ===\nCan you remember how much I like chocolate?\n\nOutput: \nI don't have any chocolate-related preferences stored yet, but I will note your preference now.\n\n-----\n\nInput (NO SEARCH, ACK of ACTIONS PERFORMED):\n=== ACTIONS PERFORMED ===\n[STORE, TOOL]\n=== DATABASE RESULTS ===\n[Vector DB]: NONE\n[Graph DB]: NONE\n=== USER MESSAGE ===\nDon't forget I have a meeting tomorrow at 3pm, note it in my calendar.\n\nOutput: \nNoted. I will save your meeting for tomorrow at 3pm.\n\n-----\n\nInput (SEARCH RAN BUT NO RESULTS OR IRRELEVANT, FOUCS ON ACK STORAGE):\n=== ACTIONS PERFORMED ===\n[STORE, SEARCH]\n=== DATABASE RESULTS ===\n[Vector DB]: NONE\n[Graph DB]: NONE\n=== USER MESSAGE ===\nDid you know i had a brother named Juan?\n\nOutput: \nI hadn't that information, but I will store it now.\n\n-----\n\nInput:\n=== ACTIONS PERFORMED ===\n[TOOL]\n=== DATABASE RESULTS ===\n[Vector DB]: NONE\n[Graph DB]: NONE\n=== USER MESSAGE ===\nSend an email to juan@gmail.com telling him that I'll be late.\n\nOutput: \nPerfect! I will send and email right now"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        1248,
+        16
+      ],
+      "id": "48cc8798-bace-47eb-acd2-ac428ea0518a",
+      "name": "AGENT"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c55470d9-f20d-4bc2-8114-f1f83a252c38",
+              "name": "user_message",
+              "value": "={{ $('Webhook').item.json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "d12aa494-359e-450f-ac97-d3dc54efc699",
+              "name": "actions_executed",
+              "value": "={{ $('ROUTER').item.json.actions.toJsonString() }}",
+              "type": "array"
+            },
+            {
+              "id": "4fcfae78-b782-434b-b849-502d64b1d9d1",
+              "name": "retrieved_data_RAG",
+              "value": "={{ $if($('load data').isExecuted, $('load data').first().json.rag_results , 'NONE')}}",
+              "type": "string"
+            },
+            {
+              "id": "771bd763-8a93-4e33-a434-81ed711d77a9",
+              "name": "retrieved_data_graph",
+              "value": "={{ $if($('load data').isExecuted, $('load data').first().json.graph_results , 'NONE')}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1072,
+        16
+      ],
+      "id": "21a448f1-f095-42c9-b5d4-8ea5dbea52ed",
+      "name": "Data to agent",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cd0f4c4f-06a1-4936-b7cf-16593dada7f0",
+              "name": "response",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            },
+            {
+              "id": "33850a43-c9a2-4809-8081-933404e148fa",
+              "name": "chat_id",
+              "value": "={{ $('Webhook').item.json.body.chat_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1536,
+        16
+      ],
+      "id": "f1443af9-ea2c-4b9c-8b93-65203504cdd2",
+      "name": "Data to backend response"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.search }}",
+                    "rightValue": false,
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    },
+                    "id": "5295f4ca-d63c-4f21-b058-d3f91d0fbf3c"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "SearchDB"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "d04c4931-e79a-46fb-b5fd-77ef5e08c7b8",
+                    "leftValue": "={{ $json.body.store }}",
+                    "rightValue": false,
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "StoreDB"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "fcc4961a-c3df-43fd-b3b1-0fb3cd4d9e40",
+                    "leftValue": "={{ $json.body.tool }}",
+                    "rightValue": false,
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Use tool"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "NONE",
+          "allMatchingOutputs": true
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        576,
+        48
+      ],
+      "id": "899fea3e-7334-46d1-8ae5-1facf8a213d5",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://backend:8000/n8n/decision_check",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message",
+              "value": "={{ $('ROUTER').item.json.toJsonString()}}"
+            },
+            {
+              "name": "tries",
+              "value": "={{ $('Set tries').item.json.tries || 0 }}"
+            }
+          ]
+        },
+        "options": {
+          "lowercaseHeaders": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        224,
+        0
+      ],
+      "id": "edc93ff5-7a3c-4b5a-88b3-7d56674d3764",
+      "name": "Backend Router Validator"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "45c18357-c114-4f8f-8264-442db3a479b0",
+              "leftValue": "={{ $json.statusCode }}",
+              "rightValue": 200,
+              "operator": {
+                "type": "number",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        400,
+        0
+      ],
+      "id": "573652e7-a647-4c9f-87e5-50175d9a35e3",
+      "name": "If Format Error"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "afe90035-1eb2-4a5a-91de-efa4e70e97e0",
+              "leftValue": "={{ $('Backend Router Validator').item.json.body.tries }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        592,
+        -208
+      ],
+      "id": "afc37bf7-bd5b-4eb9-887e-ed7564f2bfaf",
+      "name": "3 max tries",
+      "retryOnFail": false,
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "errorMessage": "The router could not parse the user intention or the request was not valid"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        800,
+        -224
+      ],
+      "id": "4e7b3971-a0ac-4d9d-aede-5fcf704d28e3",
+      "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are a decision tool for a multi-agent AI system. Given a user message, decide which actions are needed: SEARCH (look up info from the user's personal database), STORE (save info into the user's personal database), TOOL (execute an external integration like email, calendar, etc.), or NONE (regular chat that needs no action).\n\nRules:\n- The database stores personal life facts: relatives, events, preferences, important dates, anything the user shared about their personal life. Use SEARCH or STORE only when this kind of info is involved.\n- TOOL is for external actions (email, calendar, messaging, etc.).\n- NONE is for general chat or questions a regular AI can answer without DB or tools.\n- Do not invent actions. Only the four listed are valid.\n- Combinations are allowed; NONE must appear alone if used.\n\nReply ONLY with the JSON object specified by the schema.\n\nExamples:\n\nUser: \"Hi!\"\nAssistant: {\"actions\": [\"NONE\"]}\n\nUser: \"i want you to remember that i like cheese\"\nAssistant: {\"actions\": [\"STORE\"]}\n\nUser: \"Can you remember that I love chocolate?\"\nAssistant: {\"actions\": [\"STORE\"]}\n\nUser: \"Please remember I prefer tea over coffee\"\nAssistant: {\"actions\": [\"STORE\"]}\n\nUser: \"Can you remember how much I like chocolate?\"\nAssistant: {\"actions\": [\"SEARCH\", \"STORE\"]}\n\nUser: \"Do you remember any food I like?\"\nAssistant: {\"actions\": [\"SEARCH\"]}\n\nUser: \"Remind me which food I like, I also want you to remember I like bacon\"\nAssistant: {\"actions\": [\"SEARCH\", \"STORE\"]}\n\nUser: \"Send an email to my father saying hi\"\nAssistant: {\"actions\": [\"TOOL\"]}\n\nUser: \"I liked Luigi's, add to my Calendar that I'm coming again in 1 month\"\nAssistant: {\"actions\": [\"TOOL\", \"STORE\"]}\n\nUser: \"I want you to email my father with a list of every food I like, also add fries to the list and remember I like them\"\nAssistant: {\"actions\": [\"TOOL\", \"SEARCH\", \"STORE\"]}\n\nUser: \"Tell me the difference between college and university\"\nAssistant: {\"actions\": [\"NONE\"]}\n\nUser: \"I want recommendations about what to eat today for lunch\"\nAssistant: {\"actions\": [\"NONE\"]}"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        -48,
+        0
+      ],
+      "id": "1e8e5998-e7f4-46c3-be1e-895ea65ea1b8",
+      "name": "ROUTER"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "F2aPXErqfTR3DoVh",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/F2aPXErqfTR3DoVh",
+          "cachedResultName": "iarvis_data_store"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "user_message": "={{ $('Webhook').item.json.body.message }}",
+            "chat_id": "={{ $('Webhook').item.json.body.chat_id }}"
+          },
+          "matchingColumns": [
+            "user_message"
+          ],
+          "schema": [
+            {
+              "id": "user_message",
+              "displayName": "user_message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1040,
+        192
+      ],
+      "id": "15a4b846-1c01-407c-9d66-43805b499704",
+      "name": "save data"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "4rxiMCMbddUfSUFh",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/4rxiMCMbddUfSUFh",
+          "cachedResultName": "iarvis_data_search"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "user_message": "={{ $('Webhook').item.json.body.message }}",
+            "chat_id": "={{ $('Webhook').item.json.body.chat_id }}"
+          },
+          "matchingColumns": [
+            "user_message"
+          ],
+          "schema": [
+            {
+              "id": "user_message",
+              "displayName": "user_message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        832,
+        -48
+      ],
+      "id": "c2e0d076-70fe-4d14-b798-0039243c9f84",
+      "name": "load data"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "UGsZDSw7D75aWrIX",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/UGsZDSw7D75aWrIX",
+          "cachedResultName": "iarvis_tool_router"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "user_message": "={{ $('Webhook').item.json.body.message }}",
+            "chat_id": "={{ $('Webhook').item.json.body.chat_id }}",
+            "rag_results": "={{ $if($('load data').isExecuted, $('load data').first().json.rag_results , \"NONE\")}}",
+            "graph_results": "={{ $if($('load data').isExecuted, $('load data').first().json.graph_results , \"NONE\")}}"
+          },
+          "matchingColumns": [
+            "user_message"
+          ],
+          "schema": [
+            {
+              "id": "user_message",
+              "displayName": "user_message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "rag_results",
+              "displayName": "rag_results",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "graph_results",
+              "displayName": "graph_results",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1040,
+        400
+      ],
+      "id": "456c7266-fbc8-494e-929d-167f623dd8bf",
+      "name": "call tools"
+    },
+    {
+      "parameters": {
+        "model": "qwen2.5:3b",
+        "options": {
+          "temperature": 0.1,
+          "numCtx": 2048,
+          "format": "json"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        -48,
+        192
+      ],
+      "id": "ffa8c1f3-db63-4711-ba12-03762ca616c4",
+      "name": "model 1",
+      "credentials": {
+        "ollamaApi": {
+          "id": "nmLxs50Akyuoz65u",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "qwen2.5:3b",
+        "options": {
+          "temperature": 0.4,
+          "numCtx": 2048
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        1248,
+        192
+      ],
+      "id": "2750ac0a-342b-4f48-b522-a7998c9a5bca",
+      "name": "model 2",
+      "credentials": {
+        "ollamaApi": {
+          "id": "nmLxs50Akyuoz65u",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4d474673-a4d2-4a32-9f09-697484525ffe",
+              "name": "message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "89c0ebe3-29d8-414f-a7f3-c070d30962cf",
+              "name": "tries",
+              "value": "={{ $json.body.tries || 0 }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -208,
+        0
+      ],
+      "id": "8a58767b-2b24-4fef-b782-6ff5298d67fb",
+      "name": "Set tries"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $if($('load data').isExecuted,false , true)}}",
+                    "rightValue": "={{ true }}",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "equals"
+                    },
+                    "id": "b729b72b-fede-49fd-a032-197bc106fb12"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "First"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "35082fac-6533-4567-8a3a-3dc73788b50e",
+                    "leftValue": "={{ true }}",
+                    "rightValue": "={{ true }}",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Second"
+            }
+          ]
+        },
+        "options": {
+          "allMatchingOutputs": true
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        832,
+        176
+      ],
+      "id": "220bbc85-9d14-43a3-93fc-154524180467",
+      "name": "Respond and save in the background"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $if($('load data').isExecuted,false , true)}}",
+                    "rightValue": "={{ true }}",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "equals"
+                    },
+                    "id": "b729b72b-fede-49fd-a032-197bc106fb12"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "First"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "35082fac-6533-4567-8a3a-3dc73788b50e",
+                    "leftValue": "={{ true }}",
+                    "rightValue": "={{ true }}",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Second"
+            }
+          ]
+        },
+        "options": {
+          "allMatchingOutputs": true
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        832,
+        384
+      ],
+      "id": "179fee17-799e-41ef-9df4-7b7008d3d2d0",
+      "name": "Respond and execute in the background"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set tries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AGENT",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook": {
+      "main": [
+        []
+      ]
+    },
+    "AGENT": {
+      "main": [
+        [
+          {
+            "node": "Data to backend response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data to agent": {
+      "main": [
+        [
+          {
+            "node": "AGENT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data to backend response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Backend Router Validator": {
+      "main": [
+        [
+          {
+            "node": "If Format Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Format Error": {
+      "main": [
+        [
+          {
+            "node": "3 max tries",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "load data",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond and save in the background",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond and execute in the background",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Data to agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "3 max tries": {
+      "main": [
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set tries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ROUTER": {
+      "main": [
+        [
+          {
+            "node": "Backend Router Validator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "load data": {
+      "main": [
+        [
+          {
+            "node": "Data to agent",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "call tools",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "model 1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "ROUTER",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "model 2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AGENT",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set tries": {
+      "main": [
+        [
+          {
+            "node": "ROUTER",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "call tools": {
+      "main": [
+        []
+      ]
+    },
+    "Respond and save in the background": {
+      "main": [
+        [
+          {
+            "node": "Data to agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "save data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond and execute in the background": {
+      "main": [
+        [
+          {
+            "node": "Data to agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "call tools",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

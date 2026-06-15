@@ -1,0 +1,69 @@
+{
+  "name": "iarvis_tool_create_calendar_event",
+  "id": "LbyFZJkHrCy8BKsy",
+  "active": true,
+  "versionId": "d948cb26-2c7e-4f7c-acd3-14024619b53e",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "tool_create_calendar_event",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1d746f97-2be4-4669-9345-73ac37c0301e",
+      "name": "Webhook",
+      "webhookId": "1a9ba67f-b0d1-4917-98e5-4b574dccb2fc"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "f.eloy24g@gmail.com",
+          "mode": "list",
+          "cachedResultName": "f.eloy24g@gmail.com"
+        },
+        "start": "={{ $json.body.start_time }}",
+        "end": "={{ $json.body.end_time }}",
+        "additionalFields": {
+          "description": "={{ $json.body.description }}",
+          "location": "={{ $json.body.location }}",
+          "summary": "={{ $json.body.title }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "22ca5154-7407-4a24-a4be-9ea65ad6ff4a",
+      "name": "Create an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "S2yYi8xH4y6FYVdn",
+          "name": "Google Calendar account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Create an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

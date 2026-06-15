@@ -30,7 +30,11 @@ logger = logging.getLogger(__name__)
 class MemoryService:
     def __init__(self):
         settings = config.settings()
-        self.qdrant_client = QdrantClient(url=settings.qdrant_url, timeout=settings.default_timeout)
+        self.qdrant_client = QdrantClient(
+            url=settings.qdrant_url,
+            api_key=settings.qdrant_api_key or None,
+            timeout=settings.default_timeout,
+        )
         self.ollama_url = settings.ollama_url.rstrip("/")
         self.timeout = settings.default_timeout
         self.embedding_model = settings.embedding_model
@@ -57,24 +61,22 @@ class MemoryService:
         )
         self._validate_query(n8n_query)
         # Run Qdrant search and graph lookup in parallel to reduce latency
-        search_coro = self._search_qdrant(n8n_query)
-        graph_coro = self._graph_lookup(n8n_query)
+        search_task = asyncio.create_task(self._search_qdrant(n8n_query))
+        graph_task = asyncio.create_task(self._graph_lookup(n8n_query))
         try:
-            matches, graph_results = await asyncio.gather(search_coro, graph_coro)
+            matches, graph_results = await asyncio.gather(search_task, graph_task)
         except Exception as exc:
-            # If either raises, log and try to provide partial results where possible
             logger.warning("Librarian parallel lookup: one task failed: %s", exc)
-            # try to salvage search results if possible
             matches = []
             graph_results = "NONE"
-            try:
-                matches = await asyncio.wait_for(search_coro, timeout=1.0)
-            except Exception:
-                matches = []
-            try:
-                graph_results = await asyncio.wait_for(graph_coro, timeout=1.0)
-            except Exception:
-                graph_results = "NONE"
+            if search_task.done() and not search_task.exception():
+                matches = search_task.result()
+            else:
+                logger.warning("Librarian search lookup failed: %s", search_task.exception())
+            if graph_task.done() and not graph_task.exception():
+                graph_results = graph_task.result()
+            else:
+                logger.warning("Librarian graph lookup failed: %s", graph_task.exception())
 
         formatted = self._format_memory_results(matches)
 

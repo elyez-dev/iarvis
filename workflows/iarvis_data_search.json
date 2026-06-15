@@ -1,0 +1,348 @@
+{
+  "name": "iarvis_data_search",
+  "id": "4rxiMCMbddUfSUFh",
+  "active": true,
+  "versionId": "cb0dc00e-faa5-42e2-ad3f-e7458e7d2e7c",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Main flow call').item.json.user_message }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are a Query Generation tool (\"The Librarian\"). Given a user message, produce search parameters for two databases: a RAG database (vector semantic) and a knowledge graph (pattern matching).\n\nCRITICAL — your output JSON MUST contain ALL THREE fields ALWAYS, never omit any:\n  1. \"rag_query\" (string, required, non-empty)\n  2. \"graph_patterns\" (array of {subject, predicate, object} patterns — see below; use [] if nothing structured to ask)\n  3. \"time_context\" (string, use \"\" if no temporal info)\n\nRules:\n- Output the JSON object specified by the schema. Nothing else.\n- Do not answer the user. Only produce search parameters.\n- `rag_query`: a clear descriptive sentence in third person, optimised for semantic search.\n- `time_context`: ISO date or descriptor if temporal (today is {{$today}}); \"\" otherwise.\n\nGRAPH PATTERNS — how they work:\nThe graph stores facts as (Subject)-[predicate]->(Object) edges. To search it, emit patterns where each slot is EXACTLY one of:\n  - A NAME — a snake_case lowercase identifier matching `[A-Za-z0-9_]+` (e.g. \"User\", \"Juan_brother\", \"yellow_bike\", \"madrid\", \"manchego_cheese\"). NO spaces, colons, accents, or punctuation.\n  - A TYPE — one of these EXACT strings (PascalCase): Person, Animal, Place, Object, Food, Event, Activity, Concept, Feeling, Other.\n  - null — wildcard (\"anything\").\nAt least ONE of subject/predicate/object must be non-null. Never emit (null, null, null).\n\nINVALID slot examples (DO NOT emit these — the backend rejects them):\n  - \"Color: Yellow\"          → not a name, not a type. If you want yellow things, leave object=null or use a known entity name like \"yellow_bike\".\n  - \"things I have\"          → free text. Use null or a type.\n  - \"User's brother\"         → has space and apostrophe. Use \"Juan_brother\" (the actual node name) or null.\n  - \"Madrid, Spain\"          → has comma and space. Use \"Madrid\" or \"madrid\".\n  - \"food I like\"            → free text. Use type \"Food\".\n\nIf the user asks about an attribute the graph may not model directly (color, size, age), prefer:\n  (a) emit a pattern that anchors on the entity type and predicate, leaving object=null, then the AGENT inspects the returned edges; OR\n  (b) emit an empty graph_patterns list and rely on RAG.\n\nPREDICATE: use a snake_case lowercase verb that captures the relation (e.g. likes, has, bought, lives_in, has_brother, has_grandmother). The backend canonicalizes common synonyms (loves→likes, owns→has, grandma→grandmother, neighbour→neighbor) — pick whatever feels natural for the question.\n\nPattern guide by question type:\n  - \"What do I have/like/know?\" → subject=\"User\", object=Type or null.\n    Example: \"what do I have?\" → {\"subject\":\"User\", \"predicate\":\"has\", \"object\":null}.\n    Example: \"what foods do I like?\" → {\"subject\":\"User\", \"predicate\":\"likes\", \"object\":\"Food\"}.\n  - Property of a specific entity (\"where does Juan live?\") → subject=name, object=null.\n    Example: \"where does Juan live?\" → {\"subject\":\"Juan\", \"predicate\":\"lives_in\", \"object\":null}.\n  - Reverse (\"who lives in Madrid?\") → subject=null, object=name, predicate required.\n    Example: \"who lives in Madrid?\" → {\"subject\":null, \"predicate\":\"lives_in\", \"object\":\"Madrid\"}.\n  - Existence check (\"do I like cheese?\") → all three concrete.\n    Example: \"do I like cheese?\" → {\"subject\":\"User\", \"predicate\":\"likes\", \"object\":\"cheese\"}.\n\nQUALIFIER MATCHING RULE: When the user describes a person with a relationship qualifier, use the QUALIFIED form in graph_patterns:\n  \"my brother Juan\"           → subject: \"Juan_brother\" (NOT \"Juan\")\n  \"my partner Pablo\"          → subject: \"Pablo_partner\" (NOT \"Pablo\")\n  \"my colleague Juan\"         → subject: \"Juan_colleague\" (NOT \"Juan\")\n  \"Juan\" (bare, no qualifier) → subject: \"Juan\" (backend fuzzy-matches all)\n\nExamples (note that ALL examples include ALL three fields):\n\nUser: \"Can you tell me which is my favourite food?\"\nAssistant: {\"rag_query\": \"the user's favorite food\", \"graph_patterns\": [{\"subject\":\"User\",\"predicate\":\"likes\",\"object\":\"Food\"}], \"time_context\": \"\"}\n\nUser: \"Do I like cheese?\"\nAssistant: {\"rag_query\": \"the user's preference for cheese\", \"graph_patterns\": [{\"subject\":\"User\",\"predicate\":\"likes\",\"object\":\"cheese\"}], \"time_context\": \"\"}\n\nUser: \"What do I have?\"\nAssistant: {\"rag_query\": \"things the user owns or has\", \"graph_patterns\": [{\"subject\":\"User\",\"predicate\":\"has\",\"object\":null}], \"time_context\": \"\"}\n\nUser: \"What color is my bike?\"\nAssistant: {\"rag_query\": \"the color of the user's bike\", \"graph_patterns\": [{\"subject\":\"User\",\"predicate\":\"has\",\"object\":\"Object\"}], \"time_context\": \"\"}\n\nUser: \"Where does my brother Juan live?\"\nAssistant: {\"rag_query\": \"where the user's brother Juan lives\", \"graph_patterns\": [{\"subject\":\"Juan_brother\",\"predicate\":\"lives_in\",\"object\":null}], \"time_context\": \"\"}\n\nUser: \"Who do I know that lives in Madrid?\"\nAssistant: {\"rag_query\": \"people the user knows who live in Madrid\", \"graph_patterns\": [{\"subject\":null,\"predicate\":\"lives_in\",\"object\":\"Madrid\"}], \"time_context\": \"\"}\n\nUser: \"What did my brother Juan tell me about the car yesterday?\"\nAssistant: {\"rag_query\": \"conversation with the user's brother Juan about the car\", \"graph_patterns\": [{\"subject\":\"Juan_brother\",\"predicate\":\"said\",\"object\":null}], \"time_context\": \"yesterday\"}\n\nUser: \"Do I have any meetings scheduled for tomorrow?\"\nAssistant: {\"rag_query\": \"the user's scheduled meetings\", \"graph_patterns\": [{\"subject\":\"User\",\"predicate\":\"has_appointment\",\"object\":\"Event\"}], \"time_context\": \"tomorrow\"}\n\nUser: \"Where does my partner Pablo work?\"\nAssistant: {\"rag_query\": \"where the user's partner Pablo works\", \"graph_patterns\": [{\"subject\":\"Pablo_partner\",\"predicate\":\"works_at\",\"object\":null}], \"time_context\": \"\"}"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        128,
+        -64
+      ],
+      "id": "a3c20ff7-3e30-4aff-82d6-11c26cc4c809",
+      "name": "LIBRARIAN",
+      "retryOnFail": false,
+      "waitBetweenTries": 100
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "17180119-85b2-4aeb-a7e3-4c1360cec6a6",
+              "leftValue": "={{ $json.statusCode }}",
+              "rightValue": 200,
+              "operator": {
+                "type": "number",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        576,
+        -64
+      ],
+      "id": "64a25f8c-d5c5-4596-8f45-a2048e8c94df",
+      "name": "If Format Error"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "1c24a845-9d6e-42aa-b415-3d7e8fab9216",
+              "leftValue": "={{ $('Syntax check and format').item.json.body.tries }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        704,
+        -272
+      ],
+      "id": "91c295d7-b46f-463f-a160-64e5b3c93020",
+      "name": "3 max tries"
+    },
+    {
+      "parameters": {
+        "errorMessage": "The librarian output format was invalid"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        880,
+        -272
+      ],
+      "id": "58711046-01f4-4354-9f76-84df72cf18b2",
+      "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "21c245aa-439f-47d6-b1bd-86d1e3895c35",
+              "name": "rag_results",
+              "value": "={{ $('Syntax check and format').item.json.body.memory_results }}",
+              "type": "string"
+            },
+            {
+              "id": "0a3fc34c-5b89-4e93-887f-f91b2513dd13",
+              "name": "graph_results",
+              "value": "={{ $('Syntax check and format').item.json.body.graph_results}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        736,
+        -64
+      ],
+      "id": "4b09ed3b-7dcf-42c4-a014-e969d823aac7",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "user_message"
+            },
+            {
+              "name": "chat_id"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -176,
+        -64
+      ],
+      "id": "4cefa09d-86dc-4231-87c0-93997d98dd7f",
+      "name": "Main flow call"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "78945b15-dce7-4b68-8b8b-f85a6b3bdb84",
+              "name": "user_message",
+              "value": "={{ $json.user_message }}",
+              "type": "string"
+            },
+            {
+              "id": "36883c1a-5e5c-4a35-8248-a56600a33dd2",
+              "name": "tries",
+              "value": "={{ $json.body.tries || 0 }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -16,
+        -64
+      ],
+      "id": "568a08d9-b406-4627-8e4a-bae3fdbf3730",
+      "name": "set tries"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://backend:8000/n8n/librarian_query",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "=message",
+              "value": "={{  $('LIBRARIAN').item.json.toJsonString() }}"
+            },
+            {
+              "name": "tries",
+              "value": "={{ $('set tries').item.json.tries || 0 }}"
+            },
+            {
+              "name": "=chat_id",
+              "value": "={{ $('Main flow call').item.json.chat_id }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        416,
+        -64
+      ],
+      "id": "00f6be6c-de13-46d4-8997-34eb5ac7a013",
+      "name": "Syntax check and format",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "model": "qwen2.5:3b",
+        "options": {
+          "temperature": 0.1,
+          "numCtx": 2048,
+          "format": "json"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        128,
+        112
+      ],
+      "id": "38df97fc-fccc-4aca-9102-1707ae255be3",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "nmLxs50Akyuoz65u",
+          "name": "Ollama account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "LIBRARIAN": {
+      "main": [
+        [
+          {
+            "node": "Syntax check and format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Format Error": {
+      "main": [
+        [
+          {
+            "node": "3 max tries",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "3 max tries": {
+      "main": [
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "set tries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Main flow call": {
+      "main": [
+        [
+          {
+            "node": "set tries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set tries": {
+      "main": [
+        [
+          {
+            "node": "LIBRARIAN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Syntax check and format": {
+      "main": [
+        [
+          {
+            "node": "If Format Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LIBRARIAN",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

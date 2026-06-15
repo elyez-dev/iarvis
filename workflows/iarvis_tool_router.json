@@ -1,0 +1,362 @@
+{
+  "name": "iarvis_tool_router",
+  "id": "UGsZDSw7D75aWrIX",
+  "active": true,
+  "versionId": "8eda11a0-137f-473f-b34c-9feefd5a6116",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "user_message"
+            },
+            {
+              "name": "chat_id"
+            },
+            {
+              "name": "rag_results"
+            },
+            {
+              "name": "graph_results"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -288,
+        -64
+      ],
+      "id": "d57d25e8-62a1-45c7-9516-be23895cf1a6",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "url": "http://backend:8000/n8n/list_tools",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -96,
+        -64
+      ],
+      "id": "27658fb9-d6f0-45d3-8152-0209e9c0402e",
+      "name": "Get tools"
+    },
+    {
+      "parameters": {
+        "model": "qwen2.5:3b",
+        "options": {
+          "temperature": 0.1,
+          "numCtx": 2048,
+          "format": "json"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        224,
+        112
+      ],
+      "id": "d8e7e69c-dc84-4195-9ce5-89b69866e527",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "nmLxs50Akyuoz65u",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.user_message }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are a tool selection system. Given a user message and a list of available tools, decide which tool to use and fill its parameters.\n\nAvailable tools (use EXACTLY the tool_id and parameter names shown):\n{{ $('Get tools').item.json.tools_prompt}}\n\nRules:\n- If the user's message asks to do something that a tool can handle, pick THAT tool.\n- If the user's message does NOT ask for any tool action, return {\"tool_id\": \"NONE\", \"parameters\": {}}.\n- For every required parameter: extract the value from the user's message. If the user didn't provide it, leave the parameter out — the backend will reject missing required params and you can retry.\n- For email recipients: use the exact email address the user said. NEVER invent or guess email addresses.\n- For dates/times: Today is {{ $today }}. convert to ISO format YYYY-MM-DDTHH:MM:SS+02:00. Example: if today is 2026-05-24 and the user says \"tomorrow 10\", emit \"2026-05-25T10:00:00+02:00\".\n- For optional parameters: only include them if the user explicitly provided that info. Omit them otherwise.\n- Reply ONLY with the JSON object specified by the schema. Nothing else.\n\nCONTEXT:\n- The user may ask you to fill the tools parameters with provided context from the rag and graph databases, if the context is NOT NONE and it is relevant given the user message, use the information below:\nRETRIEVED INFO RAG: {{ $json.rag_results }}\nRETRIEVED INFO GRAPH: {{ $json.graph_results }}\n\nSCHEMA:\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"tool_id\": {\"type\": \"string\"},\n    \"parameters\": {\"type\": \"object\"}\n  },\n  \"required\": [\"tool_id\", \"parameters\"]\n}\n\n(ALWAYS INCLUDE tool_id and parameters)"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        224,
+        -64
+      ],
+      "id": "1684f706-aede-472f-9256-7a12524bc806",
+      "name": "TOOL ROUTER"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://backend:8000/n8n/execute_tool",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "tool_id",
+              "value": "={{ $json.tool_id }}"
+            },
+            {
+              "name": "parameters",
+              "value": "={{ $json.parameters }}"
+            },
+            {
+              "name": "chat_id",
+              "value": "={{ $('When Executed by Another Workflow').item.json.chat_id }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        496,
+        -64
+      ],
+      "id": "0ca7fd42-e70e-4ee7-b105-a851ae33c99f",
+      "name": "HTTP Request",
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "17180119-85b2-4aeb-a7e3-4c1360cec6a6",
+              "leftValue": "={{ $json.statusCode }}",
+              "rightValue": 200,
+              "operator": {
+                "type": "number",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "234317f0-8a2b-42dc-9fa3-3dcb1dfb288e",
+              "leftValue": "={{ $json.error.status }}",
+              "rightValue": "200",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        704,
+        -64
+      ],
+      "id": "f4b348b1-e410-4cfb-bc54-e7cc6741c597",
+      "name": "If Format Error"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "1c24a845-9d6e-42aa-b415-3d7e8fab9216",
+              "leftValue": "={{ $('Syntax check and format').item.json.body.tries }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        688,
+        -272
+      ],
+      "id": "b4666e9e-b574-4c62-b58a-4f7bf3f2b542",
+      "name": "3 max tries"
+    },
+    {
+      "parameters": {
+        "errorMessage": "The archivist output format was invalid"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        864,
+        -288
+      ],
+      "id": "4d54fe42-3fb5-472b-9c60-b058f9ce111a",
+      "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "78945b15-dce7-4b68-8b8b-f85a6b3bdb84",
+              "name": "user_message",
+              "value": "={{ $('When Executed by Another Workflow').item.json.user_message }}",
+              "type": "string"
+            },
+            {
+              "id": "36883c1a-5e5c-4a35-8248-a56600a33dd2",
+              "name": "tries",
+              "value": "={{ $json.body.tries || 0 }}",
+              "type": "number"
+            },
+            {
+              "id": "6d46fb16-580b-4903-a98b-c1d4370d8cf2",
+              "name": "rag_results",
+              "value": "={{ $('When Executed by Another Workflow').item.json.rag_results }}",
+              "type": "string"
+            },
+            {
+              "id": "3978309b-cd8d-4502-aae2-5e1dd8b2f562",
+              "name": "graph_results",
+              "value": "={{ $('When Executed by Another Workflow').item.json.graph_results }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        -64
+      ],
+      "id": "d8d145a1-3720-4be4-abb0-d7f733615ad6",
+      "name": "set tries"
+    }
+  ],
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Get tools",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get tools": {
+      "main": [
+        [
+          {
+            "node": "set tries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "TOOL ROUTER",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TOOL ROUTER": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Format Error": {
+      "main": [
+        [
+          {
+            "node": "3 max tries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "3 max tries": {
+      "main": [
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "set tries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set tries": {
+      "main": [
+        [
+          {
+            "node": "TOOL ROUTER",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "If Format Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

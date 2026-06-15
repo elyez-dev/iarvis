@@ -1,0 +1,61 @@
+{
+  "name": "iarvis_tool_send_email",
+  "id": "fSCzZUs5cN48ormN",
+  "active": true,
+  "versionId": "bd15b8b8-f62a-492d-b0cf-d687b86bbcf1",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "tool_send_email",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7d9ab2df-6e34-47c3-bc1d-471ef00ac12a",
+      "name": "Webhook",
+      "webhookId": "5ddb2896-251c-4690-b60f-039baa253461"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.body.to }}",
+        "subject": "={{ $json.body.subject }}",
+        "message": "={{ $json.body.body }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "dba2da05-a924-48d0-a682-c81b5e9988ab",
+      "name": "Send a message",
+      "webhookId": "f972691c-8524-49bc-843f-1cee61826640",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "r7dpnqT5vChBwPC1",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

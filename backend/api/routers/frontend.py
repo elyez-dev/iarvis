@@ -3,6 +3,7 @@ import json
 
 from fastapi import APIRouter, HTTPException
 from schemas.chat import (
+    ActionDetail,
     ActionsResponse,
     ChatRequest,
     ChatResponse,
